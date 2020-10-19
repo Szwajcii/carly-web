@@ -7,6 +7,9 @@ import {OrdersComponent} from './carly-shared/components/orders/orders.component
 import {EnginesComponent} from './carly-shared/components/engines/engines.component';
 import {EngineAddComponent} from './carly-shared/components/engines/engine-add/engine-add.component';
 import {EngineEditComponent} from './carly-shared/components/engines/engine-edit/engine-edit.component';
+import {BreaksComponent} from './carly-shared/components/breaks/breaks.component';
+import {BreaksFormComponent} from './carly-shared/components/breaks/breaks-form/breaks-form.component';
+import {BreaksEditComponent} from './carly-shared/components/breaks/breaks-edit/breaks-edit.component';
 
 const routes: Routes = [
 
@@ -24,6 +27,14 @@ const routes: Routes = [
           {path: '', component: EnginesComponent},
           {path: 'add', component: EngineAddComponent},
           {path: 'detail/:id', component: EngineEditComponent}
+        ]
+      },
+      {
+        path: 'breaks',
+        children: [
+          {path: '', component: BreaksComponent},
+          {path: 'add', component: BreaksFormComponent},
+          {path: 'details/:id', component: BreaksEditComponent}
         ]
       }
     ]
