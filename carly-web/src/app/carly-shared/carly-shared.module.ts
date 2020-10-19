@@ -9,11 +9,13 @@ import { EnginesComponent } from './components/engines/engines.component';
 import { EnginesAddComponent } from './components/engines/engines-add/engines-add.component';
 import { EngineAddComponent } from './components/engines/engine-add/engine-add.component';
 import { EngineEditComponent } from './components/engines/engine-edit/engine-edit.component';
+import { BreaksComponent } from './components/breaks/breaks.component';
+import { BreaksFormComponent } from './components/breaks/breaks-form/breaks-form.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, PartsComponent, CarsComponent, OrdersComponent, EnginesComponentComponent, EnginesComponent, EnginesAddComponent, EngineAddComponent, EngineEditComponent],
+  declarations: [HomeComponent, PartsComponent, CarsComponent, OrdersComponent, EnginesComponentComponent, EnginesComponent, EnginesAddComponent, EngineAddComponent, EngineEditComponent, BreaksComponent, BreaksFormComponent],
   imports: [
     CommonModule
   ]
