@@ -4,21 +4,36 @@ import { HomeComponent } from './components/home/home.component';
 import { PartsComponent } from './components/parts/parts.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { EnginesComponentComponent } from './components/engines-component/engines-component.component';
 import { EnginesComponent } from './components/engines/engines.component';
-import { EnginesAddComponent } from './components/engines/engines-add/engines-add.component';
 import { EngineAddComponent } from './components/engines/engine-add/engine-add.component';
 import { EngineEditComponent } from './components/engines/engine-edit/engine-edit.component';
 import { BreaksComponent } from './components/breaks/breaks.component';
-import { BreaksFormComponent } from './components/breaks/breaks-form/breaks-form.component';
+import { BreaksAddComponent } from './components/breaks/breaks-add/breaks-add.component';
 import { BreaksEditComponent } from './components/breaks/breaks-edit/breaks-edit.component';
+import {CarlyMatModule} from './modules/carly-mat.module';
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from '../app-routing.module';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, PartsComponent, CarsComponent, OrdersComponent, EnginesComponentComponent, EnginesComponent, EnginesAddComponent, EngineAddComponent, EngineEditComponent, BreaksComponent, BreaksFormComponent, BreaksEditComponent],
+  declarations: [
+    HomeComponent,
+    PartsComponent,
+    CarsComponent,
+    OrdersComponent,
+    EnginesComponent,
+    EngineAddComponent,
+    EngineEditComponent,
+    BreaksComponent,
+    BreaksAddComponent,
+    BreaksEditComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    CarlyMatModule,
+    RouterModule,
+    AppRoutingModule
   ]
 })
 export class CarlySharedModule { }

@@ -1,6 +1,6 @@
-import {FormGroupHelper} from '../../../model/form-group-helper.model';
+import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
-import {ValueLabel} from "../../../model/value-label";
+import {ValueLabel} from '../../model/value-label';
 
 
 export const breaksDetailsFormFields: FormGroupHelper.Model[] = [

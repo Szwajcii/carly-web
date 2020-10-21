@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './carly-shared/components/home/home.component';
 import {PartsComponent} from './carly-shared/components/parts/parts.component';
 import {CarsComponent} from './carly-shared/components/cars/cars.component';
@@ -8,35 +8,34 @@ import {EnginesComponent} from './carly-shared/components/engines/engines.compon
 import {EngineAddComponent} from './carly-shared/components/engines/engine-add/engine-add.component';
 import {EngineEditComponent} from './carly-shared/components/engines/engine-edit/engine-edit.component';
 import {BreaksComponent} from './carly-shared/components/breaks/breaks.component';
-import {BreaksFormComponent} from './carly-shared/components/breaks/breaks-form/breaks-form.component';
 import {BreaksEditComponent} from './carly-shared/components/breaks/breaks-edit/breaks-edit.component';
+import {BreaksAddComponent} from './carly-shared/components/breaks/breaks-add/breaks-add.component';
 
 const routes: Routes = [
 
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
-    path: 'home', component: HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'parts',
+    component: PartsComponent
+  },
+  {
+    path: 'breaks',
+    component: BreaksComponent,
     children: [
-      {path: '', component: PartsComponent},
-      {
-        path: 'engines',
-        children: [
-          {path: '', component: EnginesComponent},
-          {path: 'add', component: EngineAddComponent},
-          {path: 'detail/:id', component: EngineEditComponent}
-        ]
-      },
-      {
-        path: 'breaks',
-        children: [
-          {path: '', component: BreaksComponent},
-          {path: 'add', component: BreaksFormComponent},
-          {path: 'details/:id', component: BreaksEditComponent}
-        ]
-      }
+      {path: 'add', component: BreaksAddComponent},
+      {path: 'details/:id', component: BreaksEditComponent}
+    ]
+  },
+  {
+    path: 'engines',
+    children: [
+      {path: '', component: EnginesComponent},
+      {path: 'add', component: EngineAddComponent},
+      {path: 'detail/:id', component: EngineEditComponent}
     ]
   },
   {
