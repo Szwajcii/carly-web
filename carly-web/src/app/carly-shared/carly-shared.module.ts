@@ -13,6 +13,21 @@ import { BreaksEditComponent } from './components/breaks/breaks-edit/breaks-edit
 import {CarlyMatModule} from './modules/carly-mat.module';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from '../app-routing.module';
+import { EquipmentComponent } from './components/equipment/equipment.component';
+import { EquipmentAddComponent } from './components/equipment/equipment-add/equipment-add.component';
+import { EquipmentEditComponent } from './components/equipment/equipment-edit/equipment-edit.component';
+import { TiresComponent } from './components/tires/tires.component';
+import { TiresAddComponent } from './components/tires/tires-add/tires-add.component';
+import { TiresEditComponent } from './components/tires/tires-edit/tires-edit.component';
+import { WheelsComponent } from './components/wheels/wheels.component';
+import { WheelsAddComponent } from './components/wheels/wheels-add/wheels-add.component';
+import { WheelsEditComponent } from './components/wheels/wheels-edit/wheels-edit.component';
+import { WindowsComponent } from './components/windows/windows.component';
+import { WindowsAddComponent } from './components/windows/windows-add/windows-add.component';
+import { WindowsEditComponent } from './components/windows/windows-edit/windows-edit.component';
+import { PaintingComponent } from './components/painting/painting.component';
+import { PaintingAddComponent } from './components/painting/painting-add/painting-add.component';
+import { PaintingEditComponent } from './components/painting/painting-edit/painting-edit.component';
 
 
 
@@ -27,7 +42,22 @@ import {AppRoutingModule} from '../app-routing.module';
     EngineEditComponent,
     BreaksComponent,
     BreaksAddComponent,
-    BreaksEditComponent
+    BreaksEditComponent,
+    EquipmentComponent,
+    EquipmentAddComponent,
+    EquipmentEditComponent,
+    TiresComponent,
+    TiresAddComponent,
+    TiresEditComponent,
+    WheelsComponent,
+    WheelsAddComponent,
+    WheelsEditComponent,
+    WindowsComponent,
+    WindowsAddComponent,
+    WindowsEditComponent,
+    PaintingComponent,
+    PaintingAddComponent,
+    PaintingEditComponent
   ],
   imports: [
     CommonModule,
