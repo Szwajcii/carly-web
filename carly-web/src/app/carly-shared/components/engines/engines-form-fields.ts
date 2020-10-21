@@ -1,6 +1,7 @@
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
 import {ValueLabel} from '../../model/value-label';
+import {Engine} from '../../model/engine.model';
 
 export const engineDetailsFormFields: FormGroupHelper.Model[] = [
   {
@@ -40,8 +41,7 @@ export const engineDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Number of cylinders',
     validators: [Validators.required],
     type: 'select',
-    // todo: Add select options
-    selectOptions: []
+    selectOptions: [...Object.values(Engine.CylinderType).map(value => ({label: value, value}))]
   },
   {
     inputName: 'price',
@@ -51,7 +51,7 @@ export const engineDetailsFormFields: FormGroupHelper.Model[] = [
   }
 ];
 
-export const enginePreviews: ValueLabel[] = [
+export const enginePreviews: Array<ValueLabel> = [
   {
     value: 'engine_1.png',
     label: 'Preview 1'
