@@ -28,6 +28,7 @@ import { WindowsEditComponent } from './components/windows/windows-edit/windows-
 import { PaintingComponent } from './components/painting/painting.component';
 import { PaintingAddComponent } from './components/painting/painting-add/painting-add.component';
 import { PaintingEditComponent } from './components/painting/painting-edit/painting-edit.component';
+import { FormGroupComponent } from './components/form-group/form-group.component';
 
 
 
@@ -57,7 +58,8 @@ import { PaintingEditComponent } from './components/painting/painting-edit/paint
     WindowsEditComponent,
     PaintingComponent,
     PaintingAddComponent,
-    PaintingEditComponent
+    PaintingEditComponent,
+    FormGroupComponent
   ],
   imports: [
     CommonModule,
