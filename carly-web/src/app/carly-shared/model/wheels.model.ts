@@ -1,16 +1,8 @@
 import {Brand} from './brand.model';
 import {Page} from './paginated.model';
+import {PreModel} from './premodel.model';
 
 export namespace Wheels {
-
-  export interface PreModel {
-    id: string;
-    name: string;
-    brand: Brand;
-    preview: string;
-    price: number;
-    createdDate: Date | string;
-  }
 
   export interface Model extends PreModel {
     diameter: DiameterType;
