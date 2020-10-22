@@ -1,14 +1,10 @@
-import {Brand} from './brand.model';
 import {Page} from './paginated.model';
+import {PreModel} from './premodel.model';
 
 export namespace Tires {
 
-  export interface Model {
-    brand: Brand;
-    name: string;
-    preview: string;
+  export interface Model extends PreModel {
     type: TireType;
-    price: number;
   }
 
   export type PaginatedModel = Page<Model>;
