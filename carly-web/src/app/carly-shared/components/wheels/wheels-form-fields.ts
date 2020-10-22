@@ -1,6 +1,7 @@
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
 import {ValueLabel} from '../../model/value-label';
+import {Wheels} from "../../model/wheels.model";
 
 export const wheelsDetailsFormFields: FormGroupHelper.Model[] = [
   {
@@ -28,7 +29,7 @@ export const wheelsDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Diameter',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: []
+    selectOptions: [...Object.values(Wheels.DiameterType).map(value => ({label: value, value}))]
   },
   {
     inputName: 'weight',
