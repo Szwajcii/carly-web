@@ -29,6 +29,7 @@ import { PaintingComponent } from './components/painting/painting.component';
 import { PaintingAddComponent } from './components/painting/painting-add/painting-add.component';
 import { PaintingEditComponent } from './components/painting/painting-edit/painting-edit.component';
 import { FormGroupComponent } from './components/form-group/form-group.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 
 
 
@@ -59,7 +60,8 @@ import { FormGroupComponent } from './components/form-group/form-group.component
     PaintingComponent,
     PaintingAddComponent,
     PaintingEditComponent,
-    FormGroupComponent
+    FormGroupComponent,
+    FilterBarComponent
   ],
   imports: [
     CommonModule,
