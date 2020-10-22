@@ -1,23 +1,15 @@
 import {Brand} from './brand.model';
 import {Page} from './paginated.model';
+import {PreModel} from './premodel.model';
 
 export namespace Engine {
 
-  export interface Model {
-    id: string;
-    brand: Brand;
-    name: string;
-    preview: string;
-    price: number;
-    createdDate: Date | string;
-
-    // todo: extract common fields to external model
+  export interface Model extends PreModel {
     horsePower: number;
     weight: number;
     capacity: number;
     numberOfCylinders: CylinderType;
   }
-
 
   export type PaginatedModel = Page<Model>;
 
