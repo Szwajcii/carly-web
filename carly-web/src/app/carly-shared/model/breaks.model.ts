@@ -1,17 +1,11 @@
 import {Page} from './paginated.model';
-import {Brand} from './brand.model';
+import {PreModel} from './premodel.model';
 
 
 export namespace Breaks {
 
-  export interface Model {
-    id: string;
-    name: string;
-    brand: Brand;
-    preview: string;
-    price: string;
-    createdDate: Date | string;
-    breaksType: string;
+  export interface Model extends PreModel {
+    breaksType: BreaksType;
   }
 
   export type PaginatedModel = Page<Model>;
