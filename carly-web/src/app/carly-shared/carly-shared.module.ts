@@ -33,6 +33,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
 import { PartsFormComponent } from './components/parts/parts-form/parts-form.component';
 import { BreaksAddComponent } from './components/breaks/breaks-add/breaks-add.component';
 import { EngineFormComponent } from './components/engines/engine-form/engine-form.component';
+import { WheelsFormComponent } from './components/wheels/wheels-form/wheels-form.component';
 
 
 
@@ -67,7 +68,8 @@ import { EngineFormComponent } from './components/engines/engine-form/engine-for
     FilterBarComponent,
     PartsFormComponent,
     BreaksAddComponent,
-    EngineFormComponent
+    EngineFormComponent,
+    WheelsFormComponent
   ],
   imports: [
     CommonModule,
