@@ -23,4 +23,12 @@ export class BreaksManagementService {
     return this.http.get<Breaks.Model>(`${this.breaksManagementApi}/${id}`);
   }
 
+  create(model: Breaks.POST): Observable<Breaks.Model> {
+    return this.http.post<Breaks.Model>(`${this.breaksManagementApi}`, model);
+  }
+
+  update(model: Breaks.PUT): Observable<Breaks.Model> {
+    return this.http.put<Breaks.Model>(`${this.breaksManagementApi}`, model);
+  }
+
 }
