@@ -5,14 +5,29 @@
 
     <div *ngIf="!details">
       <h1>Add new breaks</h1>
-    </div>
 
+      <app-parts-form
+        [partFormDetailsControls]="breaksDetailsFormControls"
+        [partType]="'breaks'"
+        [partPreviews]="breaksPreviews"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
 
     <!-- Edit breaks -->
     <div *ngIf="details">
       <h1>{{breaksModel.name}}</h1>
 
-
+      <app-parts-form
+        [partModel]="breaksModel"
+        [partFormDetailsControls]="breaksDetailsFormControls"
+        [partType]="'breaks'"
+        [partPreviews]="breaksPreviews"
+        [isDisabled]="true"
+        [details]="details"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
 
     </div>
 
