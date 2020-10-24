@@ -38,7 +38,6 @@ export class BreaksFormComponent implements OnInit {
 
   constructor(
     private messageService: MessageService,
-    private formBuilder: FormBuilder,
     private formGroupService: FormGroupHelperService,
     private router: Router,
     private breaksManagementService: BreaksManagementService
