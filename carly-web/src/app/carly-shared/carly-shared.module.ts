@@ -8,7 +8,7 @@ import { EnginesComponent } from './components/engines/engines.component';
 import { EngineAddComponent } from './components/engines/engine-add/engine-add.component';
 import { EngineEditComponent } from './components/engines/engine-edit/engine-edit.component';
 import { BreaksComponent } from './components/breaks/breaks.component';
-import { BreaksAddComponent } from './components/breaks/breaks-add/breaks-add.component';
+import { BreaksFormComponent } from './components/breaks/breaks-form/breaks-form.component';
 import { BreaksEditComponent } from './components/breaks/breaks-edit/breaks-edit.component';
 import {CarlyMatModule} from './modules/carly-mat.module';
 import {RouterModule} from '@angular/router';
@@ -30,6 +30,8 @@ import { PaintingAddComponent } from './components/painting/painting-add/paintin
 import { PaintingEditComponent } from './components/painting/painting-edit/painting-edit.component';
 import { FormGroupComponent } from './components/form-group/form-group.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { PartsFormComponent } from './components/parts/parts-form/parts-form.component';
+import { BreaksAddComponent } from './components/breaks/breaks-add/breaks-add.component';
 
 
 
@@ -43,7 +45,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     EngineAddComponent,
     EngineEditComponent,
     BreaksComponent,
-    BreaksAddComponent,
+    BreaksFormComponent,
     BreaksEditComponent,
     EquipmentComponent,
     EquipmentAddComponent,
@@ -61,7 +63,9 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     PaintingAddComponent,
     PaintingEditComponent,
     FormGroupComponent,
-    FilterBarComponent
+    FilterBarComponent,
+    PartsFormComponent,
+    BreaksAddComponent
   ],
   imports: [
     CommonModule,
