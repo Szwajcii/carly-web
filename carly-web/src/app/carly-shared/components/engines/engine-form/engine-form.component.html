@@ -1,1 +1,36 @@
-<p>engine-form works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <!-- Add new engine -->
+
+    <div *ngIf="!details">
+      <h1>Add new engine</h1>
+
+      <app-parts-form
+        [partFormDetailsControls]="engineDetailsFormControls"
+        [partType]="'engine'"
+        [partPreviews]="enginePreviews"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+    <!-- Edit engine -->
+
+    <div *ngIf="details">
+      <h1>{{engineModel.name}}</h1>
+
+      <app-parts-form
+        [partModel]="engineModel"
+        [partFormDetailsControls]="engineDetailsFormControls"
+        [partType]="'engine'"
+        [partPreviews]="enginePreviews"
+        [isDisabled]="true"
+        [details]="details"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+  </div>
+</div>
