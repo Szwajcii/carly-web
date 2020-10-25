@@ -1,1 +1,6 @@
-<p>tires-edit works!</p>
+<app-tires-form
+  *ngIf="tiresModel"
+  [tiresModel]="tiresModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-tires-form>

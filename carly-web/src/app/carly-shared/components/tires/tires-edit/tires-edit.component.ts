@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map, mergeMap} from 'rxjs/operators';
+
+import {Tires} from '../../../model/tires.model';
+import {PartFormAction} from '../../../model/part-form-action.model';
+import {TiresManagementService} from '../../../resources/tires-management.service';
 
 @Component({
   selector: 'app-tires-edit',
@@ -7,9 +14,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TiresEditComponent implements OnInit {
 
-  constructor() { }
+  tiresModel: Tires.Model;
+  formAction = PartFormAction.EDIT;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private tiresManagementService: TiresManagementService
+  ) {
+  }
 
   ngOnInit(): void {
+
+    this.findTiresById().pipe(
+      mergeMap(id => this.tiresManagementService.findById(id)),
+      map(model => {
+        console.log(200, model);
+        return model;
+      })
+    ).subscribe(model => {
+      this.tiresModel = model;
+    });
+  }
+
+  private findTiresById(): Observable<string> {
+    return this.activatedRoute.params.pipe(map(params => params.id));
   }
 
 }
