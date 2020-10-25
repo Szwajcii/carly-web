@@ -1,1 +1,6 @@
-<p>breaks-edit works!</p>
+<app-breaks-form
+  *ngIf="breaksModel"
+  [breaksModel]="breaksModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-breaks-form>

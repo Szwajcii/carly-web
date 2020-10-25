@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {map, mergeMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+
+import {Breaks} from '../../../model/breaks.model';
+import {PartFormAction} from '../../../model/part-form-action.model';
+import {BreaksManagementService} from '../../../resources/breaks-management.service';
 
 @Component({
   selector: 'app-breaks-edit',
@@ -7,9 +14,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreaksEditComponent implements OnInit {
 
-  constructor() { }
+  breaksModel: Breaks.Model;
+  formAction = PartFormAction.EDIT;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private breaksManagementService: BreaksManagementService
+  ) {
+  }
 
   ngOnInit(): void {
+
+    this.findBreaksById()
+      .pipe(
+        mergeMap(id => this.breaksManagementService.findById(id)),
+        map(model => {
+          console.log(200, model);
+          return model;
+        })
+      ).subscribe(model => {
+      this.breaksModel = model;
+    });
+
+  }
+
+  private findBreaksById(): Observable<string> {
+    return this.activatedRoute.params.pipe(map(params => params.id));
   }
 
 }
