@@ -1,1 +1,6 @@
-<p>engine-edit works!</p>
+<app-engine-form
+  *ngIf="engineModel"
+  [engineModel]="engineModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-engine-form>
