@@ -1,1 +1,6 @@
-<p>wheels-edit works!</p>
+<app-wheels-form
+  *ngIf="wheelsModel"
+  [wheelsModel]="wheelsModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-wheels-form>

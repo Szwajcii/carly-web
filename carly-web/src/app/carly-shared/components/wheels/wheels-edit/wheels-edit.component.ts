@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {map, mergeMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+
+import {Wheels} from '../../../model/wheels.model';
+import {PartFormAction} from '../../../model/part-form-action.model';
+import {WheelsManagementService} from '../../../resources/wheels-management.service';
 
 @Component({
   selector: 'app-wheels-edit',
@@ -7,9 +14,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WheelsEditComponent implements OnInit {
 
-  constructor() { }
+  wheelsModel: Wheels.Model;
+  formAction = PartFormAction.EDIT;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private wheelsManagementService: WheelsManagementService
+  ) {
+  }
 
   ngOnInit(): void {
+
+    this.findWheelsById()
+      .pipe(
+        mergeMap(id => this.wheelsManagementService.findById(id)),
+        map(model => {
+          console.log(200, model);
+          return model;
+        })
+      )
+      .subscribe(model => {
+        this.wheelsModel = model;
+      });
+
+  }
+
+  private findWheelsById(): Observable<string> {
+    return this.activatedRoute.params.pipe(map(params => params.id));
   }
 
 }
