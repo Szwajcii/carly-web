@@ -35,6 +35,7 @@ import { BreaksAddComponent } from './components/breaks/breaks-add/breaks-add.co
 import { EngineFormComponent } from './components/engines/engine-form/engine-form.component';
 import { WheelsFormComponent } from './components/wheels/wheels-form/wheels-form.component';
 import { WindowsFormComponent } from './components/windows/windows-form/windows-form.component';
+import { TiresFormComponent } from './components/tires/tires-form/tires-form.component';
 
 
 
@@ -71,7 +72,8 @@ import { WindowsFormComponent } from './components/windows/windows-form/windows-
     BreaksAddComponent,
     EngineFormComponent,
     WheelsFormComponent,
-    WindowsFormComponent
+    WindowsFormComponent,
+    TiresFormComponent
   ],
   imports: [
     CommonModule,
