@@ -1,5 +1,6 @@
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
+import {ValueLabel} from "../../model/value-label";
 
 export const windowsDetailsFormFields: FormGroupHelper.Model[] = [
   {
@@ -27,5 +28,13 @@ export const windowsDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Price',
     validators: [Validators.required],
     type: 'number'
+  }
+];
+
+
+export const windowsPreviews: Array<ValueLabel> = [
+  {
+    value: '',
+    label: ''
   }
 ];
