@@ -1,1 +1,36 @@
-<p>wheels-form works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <!-- Add new wheels -->
+
+    <div *ngIf="!details">
+      <h1>Add new wheels</h1>
+
+      <app-parts-form
+        [partFormDetailsControls]="wheelsDetailsFormControls"
+        [partType]="'wheels'"
+        [partPreviews]="wheelsPreview"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+    <!-- Edit wheels -->
+
+    <div *ngIf="details">
+      <h1>{{wheelsModel.name}}</h1>
+
+      <app-parts-form
+        [partModel]="wheelsModel"
+        [partFormDetailsControls]="wheelsDetailsFormControls"
+        [partType]="'wheels'"
+        [partPreviews]="wheelsPreview"
+        [isDisabled]="true"
+        [details]="details"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+  </div>
+</div>
