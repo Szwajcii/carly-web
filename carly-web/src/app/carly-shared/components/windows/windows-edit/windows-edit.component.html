@@ -1,1 +1,6 @@
-<p>windows-edit works!</p>
+<app-windows-form
+  *ngIf="windowsModel"
+  [windowsModel]="windowsModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-windows-form>
