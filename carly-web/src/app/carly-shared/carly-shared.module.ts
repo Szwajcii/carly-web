@@ -37,6 +37,7 @@ import { WheelsFormComponent } from './components/wheels/wheels-form/wheels-form
 import { WindowsFormComponent } from './components/windows/windows-form/windows-form.component';
 import { TiresFormComponent } from './components/tires/tires-form/tires-form.component';
 import { PaintingFormComponent } from './components/painting/painting-form/painting-form.component';
+import { EquipmentFormComponent } from './components/equipment/equipment-form/equipment-form.component';
 
 
 
@@ -75,7 +76,8 @@ import { PaintingFormComponent } from './components/painting/painting-form/paint
     WheelsFormComponent,
     WindowsFormComponent,
     TiresFormComponent,
-    PaintingFormComponent
+    PaintingFormComponent,
+    EquipmentFormComponent
   ],
   imports: [
     CommonModule,
