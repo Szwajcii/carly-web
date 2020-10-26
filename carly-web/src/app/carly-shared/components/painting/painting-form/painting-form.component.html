@@ -1,1 +1,30 @@
-<p>painting-form works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <!-- Add new painting -->
+    <div *ngIf="!details">
+      <h1>Add new painting</h1>
+
+      <app-parts-form
+        [partFormDetailsControls]="paintingDetailsFormControls"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+    <!-- Edit painting -->
+    <div *ngIf="details">
+      <h1>{{paintingModel.name}}</h1>
+
+      <app-parts-form
+        [partModel]="paintingModel"
+        [partFormDetailsControls]="paintingDetailsFormControls"
+        [isDisabled]="true"
+        [details]="details"
+        (submitEvent)="onSubmit($event)">
+      </app-parts-form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,1 +1,6 @@
-<p>painting-edit works!</p>
+<app-painting-form
+  *ngIf="paintingModel"
+  [paintingModel]="paintingModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-painting-form>
