@@ -1,1 +1,33 @@
-<p>parts-form works!</p>
+<form [formGroup]="generalForm" *ngIf="generalForm">
+
+  <div *ngIf="details">
+    <mat-slide-toggle (change)="changeMode()">Edit</mat-slide-toggle>
+  </div>
+
+  <div class="flex-container">
+
+    <div class="flex-container-content">
+
+      <form-group
+        *ngIf="partDetailsForm"
+        [formGroup]="generalForm"
+        [name]="'partDetailsForm'"
+        [controls]="partFormDetailsControls"
+        [gridColumns]="gridColumns"></form-group>
+
+    </div>
+
+    <div class="flex-container-content">
+      <img src="../../../assets/{{partType}}/{{getPartPreview()}}" class="">
+    </div>
+
+  </div>
+
+  <div>
+    <button mat-flat-button type="button" (click)="goBack()">Cancel</button>
+    <button mat-flat-button type="submit" (click)="onSubmit()">Save</button>
+  </div>
+
+</form>
+<p>General form: {{ partDetailsForm.value | json }}</p>
+<p>Is form valid: {{ partDetailsForm.valid }}</p>

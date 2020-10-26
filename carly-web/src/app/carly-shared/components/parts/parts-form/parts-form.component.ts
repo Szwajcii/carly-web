@@ -26,6 +26,10 @@ export class PartsFormComponent implements OnInit {
   @Input() details = false;
   @Output() submitEvent = new EventEmitter();
 
+  generalForm: FormGroup;
+  partDetailsForm: FormGroup;
+  gridColumns = 4;
+
   // todo: Consider adding breakpointService
   constructor(
     private formBuilder: FormBuilder,
@@ -33,9 +37,6 @@ export class PartsFormComponent implements OnInit {
     private router: Router
   ) {
   }
-
-  generalForm: FormGroup;
-  partDetailsForm: FormGroup;
 
   ngOnInit(): void {
 
