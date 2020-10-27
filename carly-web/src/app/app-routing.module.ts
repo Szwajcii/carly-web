@@ -10,6 +10,7 @@ import {EngineEditComponent} from './carly-shared/components/engines/engine-edit
 import {BreaksComponent} from './carly-shared/components/breaks/breaks.component';
 import {BreaksEditComponent} from './carly-shared/components/breaks/breaks-edit/breaks-edit.component';
 import {BreaksAddComponent} from './carly-shared/components/breaks/breaks-add/breaks-add.component';
+import {AuthComponent} from './auth/auth.component';
 
 const routes: Routes = [
 
@@ -43,8 +44,10 @@ const routes: Routes = [
   },
   {
     path: 'orders', component: OrdersComponent
+  },
+  {
+    path: 'auth', component: AuthComponent
   }
-
 ];
 
 @NgModule({
