@@ -38,6 +38,7 @@ import { WindowsFormComponent } from './components/windows/windows-form/windows-
 import { TiresFormComponent } from './components/tires/tires-form/tires-form.component';
 import { PaintingFormComponent } from './components/painting/painting-form/painting-form.component';
 import { EquipmentFormComponent } from './components/equipment/equipment-form/equipment-form.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 
@@ -77,7 +78,8 @@ import { EquipmentFormComponent } from './components/equipment/equipment-form/eq
     WindowsFormComponent,
     TiresFormComponent,
     PaintingFormComponent,
-    EquipmentFormComponent
+    EquipmentFormComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
