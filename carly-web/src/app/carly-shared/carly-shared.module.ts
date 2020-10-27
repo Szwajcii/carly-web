@@ -81,6 +81,9 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     EquipmentFormComponent,
     LoadingSpinnerComponent
   ],
+  exports: [
+    LoadingSpinnerComponent
+  ],
   imports: [
     CommonModule,
     CarlyMatModule,
