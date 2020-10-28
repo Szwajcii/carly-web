@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  authenticateApi: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAk2fqwwqPRhohlWM193c250lPshPC3PLU'
+  signupApi: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAk2fqwwqPRhohlWM193c250lPshPC3PLU',
+  loginApi: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAk2fqwwqPRhohlWM193c250lPshPC3PLU'
 };
 
 /*
