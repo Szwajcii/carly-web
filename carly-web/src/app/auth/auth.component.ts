@@ -3,6 +3,7 @@ import {AuthResponseData, AuthService} from './auth.service';
 import {NgForm} from '@angular/forms';
 import {AuthModel} from '../carly-shared/model/auth-model';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +17,8 @@ export class AuthComponent implements OnInit {
   error: string = null;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -41,17 +43,18 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       authAction = this.authService.login(authModel);
-      this.isLoading = false;
     } else {
       authAction = this.authService.signUp(authModel);
-      this.isLoading = false;
     }
 
     authAction.subscribe(data => {
       console.log(data);
+      this.isLoading = false;
+      this.router.navigate(['/home']);
     }, errorMessage => {
       console.log(errorMessage);
       this.error = errorMessage;
+      this.isLoading = false;
     });
 
     form.reset();
