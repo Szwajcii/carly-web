@@ -11,6 +11,7 @@ import {BreaksComponent} from './carly-shared/components/breaks/breaks.component
 import {BreaksEditComponent} from './carly-shared/components/breaks/breaks-edit/breaks-edit.component';
 import {BreaksAddComponent} from './carly-shared/components/breaks/breaks-add/breaks-add.component';
 import {AuthComponent} from './auth/auth.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'parts',
-    component: PartsComponent
+    component: PartsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'breaks',
