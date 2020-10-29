@@ -1,4 +1,5 @@
 <!-- todo: Rebuild navigation bar -->
+<!-- todo: Display links depend on user is login or not  -->
 <header>
   <div class="toolbar">
     <div class="logo">
@@ -10,7 +11,7 @@
       <a routerLinkActive="active-link" [routerLink]="['/cars']">Cars</a>
       <a routerLinkActive="active-link" [routerLink]="['/orders']">Orders</a>
       <a routerLinkActive="active-link" [routerLink]="['/auth']">Authenticate</a>
-      <a>Logout</a>
+      <a (click)="onLogout()">Logout</a>
     </div>
   </div>
 </header>
