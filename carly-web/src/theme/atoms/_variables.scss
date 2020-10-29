@@ -6,7 +6,8 @@ $white: #F5F5F5;
 $black: #000;
 $dark: #212121;
 $bodyBg: #9E9E9E;
-
+$bodyBgLighten: #ABABAB;
+$bodyBgDarken: #393939;
 
 $col-primary: #FFB300;
 $col-primary-hover: #eba200;
@@ -20,3 +21,7 @@ $col-text: #585858;
 
 
 /* MEDIA */
+$wrapper-width: 1280px;
+
+/* ANIMATION */
+$transition: all .3s ease;
