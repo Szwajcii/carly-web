@@ -2,15 +2,24 @@
 
 /* ATOMS */
 @import "theme/atoms/buttons.scss";
+@import "theme/atoms/grid.scss";
 @import "theme/atoms/typography.scss";
 @import "theme/atoms/variables.scss";
 
 /* MOLECULES */
 @import "theme/molecules/card.scss";
 @import "theme/molecules/forms.scss";
+@import "theme/molecules/navbar.scss";
 
 
 /* BASIC */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, $bodyBgLighten, $bodyBgDarken);
+  overflow-x: hidden;
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

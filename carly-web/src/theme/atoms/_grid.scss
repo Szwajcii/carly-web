@@ -1,0 +1,23 @@
+@import 'variables';
+
+.wrapper {
+  width: 100%;
+  max-width: $wrapper-width;
+  padding: 3em 0 2em 2em;
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: -1%;
+  margin-right: -1%;
+
+  .flex-container-content {
+
+
+
+  }
+
+}
