@@ -41,6 +41,7 @@ import { EquipmentFormComponent } from './components/equipment/equipment-form/eq
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import {UserCanAccessDirective} from './directives/user-can-access.directive';
 import {CarlyRoleGuard} from './services/guards/carly-role-guard';
+import { SliderComponent } from './components/slider/slider.component';
 
 
 
@@ -82,7 +83,8 @@ import {CarlyRoleGuard} from './services/guards/carly-role-guard';
     PaintingFormComponent,
     EquipmentFormComponent,
     LoadingSpinnerComponent,
-    UserCanAccessDirective
+    UserCanAccessDirective,
+    SliderComponent
   ],
   exports: [
     LoadingSpinnerComponent,
