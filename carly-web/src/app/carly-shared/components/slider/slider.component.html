@@ -1,1 +1,21 @@
-<p>slider works!</p>
+<div class="slider">
+  <div class="slider-card">
+    <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let news of newsList; let i = index" [class.active]="i == 0">
+          <div class="slide-content">
+            <img alt="{{news.title}} image" src="../../assets/home/{{news.image}}" class="image-preview">
+            <h2>{{news.title}}</h2>
+
+            <h3>{{news.description}}</h3>
+
+            <button mat-flat-button color="accent" (click)="takeNewsAction(i)">Get more</button>
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators slide-dots">
+        <li data-target="#newsCarousel" *ngFor="let news of newsList; let i = index" [class.active]="i == 0" [attr.data-slide-to]="i"></li>
+      </ol>
+    </div>
+  </div>
+</div>
