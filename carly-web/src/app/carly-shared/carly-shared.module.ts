@@ -42,6 +42,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import {UserCanAccessDirective} from './directives/user-can-access.directive';
 import {CarlyRoleGuard} from './services/guards/carly-role-guard';
 import { SliderComponent } from './components/slider/slider.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -84,7 +85,8 @@ import { SliderComponent } from './components/slider/slider.component';
     EquipmentFormComponent,
     LoadingSpinnerComponent,
     UserCanAccessDirective,
-    SliderComponent
+    SliderComponent,
+    NotificationsComponent
   ],
   exports: [
     LoadingSpinnerComponent,
