@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthResponseData, AuthService} from './auth.service';
+import {AuthService} from './auth.service';
 import {NgForm} from '@angular/forms';
 import {AuthModel} from '../carly-shared/model/auth-model';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {AuthResponseData} from '../carly-shared/model/auth-response-data.model';
 
 @Component({
   selector: 'app-auth',
