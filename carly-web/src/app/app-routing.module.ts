@@ -12,6 +12,8 @@ import {BreaksEditComponent} from './carly-shared/components/breaks/breaks-edit/
 import {BreaksAddComponent} from './carly-shared/components/breaks/breaks-add/breaks-add.component';
 import {AuthComponent} from './auth/auth.component';
 import {AuthGuard} from './auth/auth.guard';
+import {CarlyRoleGuard} from './carly-shared/services/guards/carly-role-guard';
+import {Roles} from './carly-shared/model/roles.model';
 
 const routes: Routes = [
 
@@ -45,7 +47,10 @@ const routes: Routes = [
     path: 'cars', component: CarsComponent
   },
   {
-    path: 'orders', component: OrdersComponent
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [CarlyRoleGuard],
+    data: {roles: [Roles.CARLY_CUSTOMER]}
   },
   {
     path: 'auth', component: AuthComponent
