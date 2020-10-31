@@ -39,6 +39,8 @@ import { TiresFormComponent } from './components/tires/tires-form/tires-form.com
 import { PaintingFormComponent } from './components/painting/painting-form/painting-form.component';
 import { EquipmentFormComponent } from './components/equipment/equipment-form/equipment-form.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import {UserCanAccessDirective} from './directives/user-can-access.directive';
+import {CarlyRoleGuard} from './services/guards/carly-role-guard';
 
 
 
@@ -79,16 +81,21 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     TiresFormComponent,
     PaintingFormComponent,
     EquipmentFormComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    UserCanAccessDirective
   ],
   exports: [
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    UserCanAccessDirective
   ],
   imports: [
     CommonModule,
     CarlyMatModule,
     RouterModule,
     AppRoutingModule
+  ],
+  providers: [
+    CarlyRoleGuard
   ]
 })
 export class CarlySharedModule { }
