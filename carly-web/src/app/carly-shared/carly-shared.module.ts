@@ -46,6 +46,10 @@ import { NewsComponent } from './components/news/news.component';
 import { NewsAddComponent } from './components/news/news-add/news-add.component';
 import { NewsEditComponent } from './components/news/news-edit/news-edit.component';
 import { NewsFormComponent } from './components/news/news-form/news-form.component';
+import { CompanyComponent } from './components/company/company.component';
+import { CompanyAddComponent } from './components/company/company-add/company-add.component';
+import { CompanyFormComponent } from './components/company/company-form/company-form.component';
+import { CompanyEditComponent } from './components/company/company-edit/company-edit.component';
 
 
 
@@ -93,7 +97,11 @@ import { NewsFormComponent } from './components/news/news-form/news-form.compone
     NewsComponent,
     NewsAddComponent,
     NewsEditComponent,
-    NewsFormComponent
+    NewsFormComponent,
+    CompanyComponent,
+    CompanyAddComponent,
+    CompanyFormComponent,
+    CompanyEditComponent
   ],
   exports: [
     LoadingSpinnerComponent,
