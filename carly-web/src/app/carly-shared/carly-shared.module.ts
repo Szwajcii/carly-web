@@ -43,6 +43,10 @@ import {UserCanAccessDirective} from './directives/user-can-access.directive';
 import {CarlyRoleGuard} from './services/guards/carly-role-guard';
 import { SliderComponent } from './components/slider/slider.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NewsComponent } from './components/news/news.component';
+import { NewsAddComponent } from './components/news/news-add/news-add.component';
+import { NewsEditComponent } from './components/news/news-edit/news-edit.component';
+import { NewsFormComponent } from './components/news/news-form/news-form.component';
 
 
 
@@ -86,7 +90,11 @@ import { NotificationsComponent } from './components/notifications/notifications
     LoadingSpinnerComponent,
     UserCanAccessDirective,
     SliderComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    NewsComponent,
+    NewsAddComponent,
+    NewsEditComponent,
+    NewsFormComponent
   ],
   exports: [
     LoadingSpinnerComponent,
@@ -95,8 +103,7 @@ import { NotificationsComponent } from './components/notifications/notifications
   imports: [
     CommonModule,
     CarlyMatModule,
-    RouterModule,
-    AppRoutingModule
+    RouterModule
   ],
   providers: [
     CarlyRoleGuard
