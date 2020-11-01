@@ -9,7 +9,7 @@ import {News} from '../../model/news.model';
 })
 export class SliderComponent implements OnInit {
 
-  newsList: News[];
+  newsList: News.Model[];
 
   constructor(
     private router: Router
