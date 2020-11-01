@@ -12,7 +12,6 @@ import { BreaksFormComponent } from './components/breaks/breaks-form/breaks-form
 import { BreaksEditComponent } from './components/breaks/breaks-edit/breaks-edit.component';
 import {CarlyMatModule} from './modules/carly-mat.module';
 import {RouterModule} from '@angular/router';
-import {AppRoutingModule} from '../app-routing.module';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 import { EquipmentAddComponent } from './components/equipment/equipment-add/equipment-add.component';
 import { EquipmentEditComponent } from './components/equipment/equipment-edit/equipment-edit.component';
