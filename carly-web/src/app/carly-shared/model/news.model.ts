@@ -1,3 +1,5 @@
+import {Page} from './paginated.model';
+
 export namespace News {
 
   export interface Model {
@@ -6,4 +8,11 @@ export namespace News {
     image: string;
     newsType: string;
   }
+
+  export type PaginatedModel = Page<Model>;
+
+  export type POST = Model;
+
+  export type PUT = Model;
+
 }
