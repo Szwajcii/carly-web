@@ -30,4 +30,8 @@ export class EquipmentManagementService {
     return this.http.put<Equipment.Model>(`${this.equipmentManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.equipmentManagementApi}/delete/${id}`);
+  }
+
 }

@@ -30,4 +30,8 @@ export class EngineManagementService {
     return this.http.put<Engine.Model>(`${this.engineManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.engineManagementApi}/delete/${id}`);
+  }
+
 }

@@ -31,4 +31,8 @@ export class BreaksManagementService {
     return this.http.put<Breaks.Model>(`${this.breaksManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.breaksManagementApi}/delete/${id}`);
+  }
+
 }

@@ -29,4 +29,8 @@ export class WheelsManagementService {
     return this.http.put<Wheels.Model>(`${this.wheelsManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.wheelsManagementApi}/delete/${id}`);
+  }
+
 }

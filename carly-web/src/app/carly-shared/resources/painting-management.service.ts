@@ -30,4 +30,8 @@ export class PaintingManagementService {
     return this.http.put<Painting.Model>(`${this.paintingManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.paintingManagementApi}/delete/${id}`);
+  }
+
 }

@@ -30,4 +30,8 @@ export class WindowsManagementService {
     return this.http.put<Windows.Model>(`${this.windowsManagementApi}`, model);
   }
 
+  delete(id: string) {
+    this.http.delete(`${this.windowsManagementApi}/delete/${id}`);
+  }
+
 }
