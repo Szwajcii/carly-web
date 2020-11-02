@@ -50,6 +50,9 @@ import { CompanyComponent } from './components/company/company.component';
 import { CompanyAddComponent } from './components/company/company-add/company-add.component';
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 import { CompanyEditComponent } from './components/company/company-edit/company-edit.component';
+import { UserComponent } from './components/user/user.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { NotificationsBadgeComponent } from './components/notifications/notifications-badge/notifications-badge.component';
 
 
 
@@ -101,7 +104,10 @@ import { CompanyEditComponent } from './components/company/company-edit/company-
     CompanyComponent,
     CompanyAddComponent,
     CompanyFormComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    UserComponent,
+    UserEditComponent,
+    NotificationsBadgeComponent
   ],
   exports: [
     LoadingSpinnerComponent,
