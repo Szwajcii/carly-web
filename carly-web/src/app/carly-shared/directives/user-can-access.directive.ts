@@ -19,9 +19,6 @@ export class UserCanAccessDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('User can access directive');
-    console.log(400, this.roles);
-
     this.authService.getUserContext()
       .pipe(
         map(userContext => {
