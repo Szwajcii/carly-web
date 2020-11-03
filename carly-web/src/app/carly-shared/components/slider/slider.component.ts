@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {News} from '../../model/news.model';
+import {newsObject} from '../news/news-object';
 
 @Component({
   selector: 'app-slider',
@@ -17,6 +18,8 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // FIXME: Fill newsList with objects from BE. Remove newsObject after.
+    this.newsList = newsObject;
   }
 
   takeNewsAction(index: number) {
