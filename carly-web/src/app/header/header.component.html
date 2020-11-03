@@ -9,14 +9,17 @@
         <li>
           <a routerLinkActive="active-link" [routerLink]="['/home']">Home</a>
         </li>
-        <li>
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
           <a routerLinkActive="active-link" [routerLink]="['/parts']">Parts</a>
         </li>
         <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany]">
           <a routerLinkActive="active-link" [routerLink]="['/cars']">Cars</a>
         </li>
-        <li>
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
           <a routerLinkActive="active-link" [routerLink]="['/orders']">Orders</a>
+        </li>
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany]">
+          <a routerLinkActive="active-link" [routerLink]="['/news']">News</a>
         </li>
         <li>
           <a routerLinkActive="active-link" [routerLink]="['/auth']">Authenticate</a>
