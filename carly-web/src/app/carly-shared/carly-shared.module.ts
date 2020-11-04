@@ -113,7 +113,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   exports: [
     LoadingSpinnerComponent,
-    UserCanAccessDirective
+    UserCanAccessDirective,
+    CarlyMatModule,
+    FormGroupComponent
   ],
   imports: [
     CommonModule,
