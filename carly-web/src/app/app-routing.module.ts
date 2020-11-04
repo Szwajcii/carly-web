@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthComponent} from './auth/auth.component';
-import {AuthGuard} from './auth/auth.guard';
+import {AuthComponent} from './carly-shared/components/auth/auth.component';
+import {AuthGuard} from './carly-shared/components/auth/auth.guard';
 import {CarlyRoleGuard} from './carly-shared/services/guards/carly-role-guard';
 import {Roles} from './carly-shared/model/roles.model';
 import {CarlyMatcher} from './carly-shared/services/matcher';
