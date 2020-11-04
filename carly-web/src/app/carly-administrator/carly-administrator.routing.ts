@@ -29,6 +29,8 @@ import {PaintingAddComponent} from '../carly-shared/components/painting/painting
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
 import {UserComponent} from '../carly-shared/components/user/user.component';
 import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
+import {NewsAddComponent} from '../carly-shared/components/news/news-add/news-add.component';
+import {NewsEditComponent} from '../carly-shared/components/news/news-edit/news-edit.component';
 
 
 export const ROUTES: Routes = [
@@ -38,7 +40,14 @@ export const ROUTES: Routes = [
     children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'news', component: NewsComponent},
+      {
+        path: 'news',
+        children: [
+          {path: '', component: NewsComponent},
+          {path: 'add', component: NewsAddComponent},
+          {path: 'details/:id', component: NewsEditComponent}
+        ]
+      },
       {path: 'orders', component: OrdersComponent},
       {
         path: 'users',
@@ -49,63 +58,63 @@ export const ROUTES: Routes = [
       },
       {
         path: 'cars',
-        component: CarsComponent,
         children: [
+          {path: '', component: CarsComponent}
         ]
       },
       {path: 'parts', component: PartsComponent},
       {
         path: 'breaks',
-        component: BreaksComponent,
         children: [
+          {path: '', component: BreaksComponent},
           {path: 'add', component: BreaksAddComponent},
           {path: 'details/:id', component: BreaksEditComponent}
         ]
       },
       {
         path: 'engines',
-        component: EnginesComponent,
         children: [
+          {path: '', component: EnginesComponent},
           {path: 'add', component: EngineAddComponent},
           {path: 'details/:id', component: EngineEditComponent}
         ]
       },
       {
         path: 'equipment',
-        component: EquipmentComponent,
         children: [
+          {path: '', component: EquipmentComponent},
           {path: 'add', component: EquipmentAddComponent},
           {path: 'details/;id', component: EquipmentEditComponent}
         ]
       },
       {
         path: 'painting',
-        component: PaintingComponent,
         children: [
+          {path: '', component: PaintingComponent},
           {path: 'add', component: PaintingAddComponent},
           {path: 'details/:id', component: PaintingEditComponent}
         ]
       },
       {
         path: 'tires',
-        component: TiresComponent,
         children: [
+          {path: '', component: TiresComponent},
           {path: 'add', component: TiresAddComponent},
           {path: 'details/:id', component: TiresEditComponent}
         ]
       },
       {
         path: 'wheels',
-        component: WheelsComponent,
         children: [
+          {path: '', component: WheelsComponent},
           {path: 'add', component: WheelsAddComponent},
           {path: 'details/:id', component: WheelsEditComponent}
         ]
       },
       {
         path: 'windows',
-        component: WindowsComponent,
         children: [
+          {path: '', component: WindowsComponent},
           {path: 'add', component: WindowsAddComponent},
           {path: 'details/:id', component: WindowsEditComponent}
         ]

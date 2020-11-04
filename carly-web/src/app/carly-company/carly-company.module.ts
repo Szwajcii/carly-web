@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {CarlyCompanyComponent} from './carly-company.component';
 import {CarlySharedModule} from '../carly-shared/carly-shared.module';
 import {CarlyCompanyRouting} from './carly-company.routing';
+import {CarlyMatModule} from '../carly-shared/modules/carly-mat.module';
 
 @NgModule({
   declarations: [CarlyCompanyComponent],
@@ -11,6 +12,7 @@ import {CarlyCompanyRouting} from './carly-company.routing';
     CommonModule,
     CarlyCompanyRouting,
     CarlySharedModule,
+    CarlyMatModule,
     RouterModule
   ]
 })

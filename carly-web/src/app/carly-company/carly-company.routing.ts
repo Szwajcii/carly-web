@@ -40,8 +40,8 @@ export const ROUTES: Routes = [
       {path: 'home', component: HomeComponent},
       {
         path: 'news',
-        component: NewsComponent,
         children: [
+          {path: '', component: NewsComponent},
           {path: 'add', component: NewsAddComponent},
           {path: ':id', component: NewsEditComponent}
         ]
@@ -49,63 +49,63 @@ export const ROUTES: Routes = [
       {path: 'orders', component: OrdersComponent},
       {
         path: 'cars',
-        component: CarsComponent,
         children: [
+          {path: '', component: CarsComponent}
         ]
       },
       {path: 'parts', component: PartsComponent},
       {
         path: 'breaks',
-        component: BreaksComponent,
         children: [
+          {path: '', component: BreaksComponent},
           {path: 'add', component: BreaksAddComponent},
           {path: 'details/:id', component: BreaksEditComponent}
         ]
       },
       {
         path: 'engines',
-        component: EnginesComponent,
         children: [
+          {path: '', component: EnginesComponent},
           {path: 'add', component: EngineAddComponent},
           {path: 'details/:id', component: EngineEditComponent}
         ]
       },
       {
         path: 'equipment',
-        component: EquipmentComponent,
         children: [
+          {path: '', component: EquipmentComponent},
           {path: 'add', component: EquipmentAddComponent},
           {path: 'details/:id', component: EquipmentEditComponent}
         ]
       },
       {
         path: 'painting',
-        component: PaintingComponent,
         children: [
+          {path: '', component: PaintingComponent},
           {path: 'add', component: PaintingAddComponent},
           {path: 'details/:id', component: PaintingEditComponent}
         ]
       },
       {
         path: 'tires',
-        component: TiresComponent,
         children: [
+          {path: '', component: TiresComponent},
           {path: 'add', component: TiresAddComponent},
           {path: 'details/:id', component: TiresEditComponent}
         ]
       },
       {
         path: 'wheels',
-        component: WheelsComponent,
         children: [
+          {path: '', component: WheelsComponent},
           {path: 'add', component: WheelsAddComponent},
           {path: 'details/:id', component: WheelsEditComponent}
         ]
       },
       {
         path: 'windows',
-        component: WindowsComponent,
         children: [
+          {path: '', component: WheelsComponent},
           {path: 'add', component: WindowsAddComponent},
           {path: 'details/:id', component: WindowsEditComponent}
         ]
