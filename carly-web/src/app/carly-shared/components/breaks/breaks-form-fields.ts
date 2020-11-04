@@ -9,13 +9,17 @@ export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
     inputName: 'name',
     label: 'Name',
     validators: [Validators.required],
-    type: 'text'
+    type: 'text',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'brand',
     label: 'Brand',
     validators: [Validators.required],
     type: 'select',
+    cols: 4,
+    rows: 1,
     selectOptions: []
   },
   {
@@ -23,6 +27,8 @@ export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Preview',
     validators: [Validators.required],
     type: 'select',
+    cols: 4,
+    rows: 1,
     selectOptions: []
   },
   {
@@ -30,13 +36,17 @@ export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Breaks type',
     validators: [Validators.required],
     type: 'select',
+    cols: 4,
+    rows: 1,
     selectOptions: [...Object.values(Breaks.BreaksType).map(value => ({label: value, value}))]
   },
   {
     inputName: 'price',
     label: 'Price',
     validators: [Validators.required],
-    type: 'number'
+    type: 'number',
+    cols: 4,
+    rows: 1
   }
 ];
 
