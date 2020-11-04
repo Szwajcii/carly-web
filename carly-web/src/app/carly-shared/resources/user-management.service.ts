@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../components/auth/auth.service';
 import {Roles} from '../model/roles.model';
 import {UserContext} from '../model/user-context.model';
 import {User} from '../model/user.model';

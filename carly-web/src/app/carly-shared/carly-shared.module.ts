@@ -55,11 +55,13 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
 import { NotificationsBadgeComponent } from './components/notifications/notifications-badge/notifications-badge.component';
 import {FormGroupHelperService} from './services/form-group-helper.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthComponent} from './components/auth/auth.component';
 
 
 
 @NgModule({
   declarations: [
+    AuthComponent,
     HomeComponent,
     PartsComponent,
     CarsComponent,

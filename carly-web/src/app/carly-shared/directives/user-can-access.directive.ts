@@ -1,5 +1,5 @@
 import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../components/auth/auth.service';
 import {Roles} from '../model/roles.model';
 import {map} from 'rxjs/operators';
 
