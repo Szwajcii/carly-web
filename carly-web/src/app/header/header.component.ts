@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from '../auth/auth.service';
+import {AuthService} from '../carly-shared/components/auth/auth.service';
 import {Subscription} from 'rxjs';
 import {UserContext} from '../carly-shared/model/user-context.model';
 import {Roles} from '../carly-shared/model/roles.model';
