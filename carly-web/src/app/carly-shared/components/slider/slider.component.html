@@ -3,7 +3,7 @@
     <div id="newsCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let news of newsList; let i = index" [class.active]="i == 0">
-          <div class="slide-content">
+          <div class="slider-content">
             <img alt="{{news.title}} image" src="../../assets/home/{{news.image}}" class="image-preview">
             <h2>{{news.title}}</h2>
 
