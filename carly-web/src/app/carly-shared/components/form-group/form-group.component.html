@@ -1,36 +1,34 @@
-<div [formGroup]="formGroup" class="formGroup">
-  <div [formGroupName]="name" *ngIf="formGroup.get(name)">
+<div [formGroup]="fg" class="fg">
+  <div [formGroupName]="name" *ngIf="fg.get(name)">
     <mat-grid-list
       [cols]="gridColumns"
       rowHeight="60px">
-      <ng-container *ngFor="let item of controls; let i=index">
+      <ng-container *ngFor="let item of controls; let i=index;">
         <mat-grid-tile
           [colspan]="item.cols || 1"
           [rowspan]="item.rows || 1"
           class="general-form-item">
           <ng-container *ngIf="!item.group" [ngSwitch]="item.type">
 
-            <!-- Select case -->
+            <!--Select case-->
             <mat-form-field *ngSwitchCase="'select'" class="general-form-field fixed-height">
-              <mat-select [placeholder]="item.label" [formControlName]="item.inputName"
-                          [multiple]="item.selectMultiple">
-                <mat-option *ngFor="let option of item.selectOptions"
-                            [value]="option.value">{{option.label}}</mat-option>
+              <mat-select [placeholder]="item.label" [formControlName]="item.inputName" [multiple]="item.selectMultiple">
+                <mat-option *ngFor="let option of item.selectOptions" [value]="option.value">{{option.label}}</mat-option>
               </mat-select>
               <mat-error *ngFor="let error of item.errors">
                 <div *ngIf="checkForErrors(name, item.inputName, error)">{{error.message}}</div>
               </mat-error>
             </mat-form-field>
 
-            <!-- Checkbox case -->
-            <mat-form-field *ngSwitchCase="'checkbox'" class="general-form-field fixed-height fg-checkbox">
+            <!--Checkbox case-->
+            <div *ngSwitchCase="'checkbox'" class="general-form-field fixed-height fg-checkbox">
               <mat-checkbox [formControlName]="item.inputName">{{item.label}}</mat-checkbox>
               <mat-error *ngFor="let error of item.errors">
-                <div *ngif="checkForErrors(name, item.inputName, error)">{{error.message}}</div>
+                <div *ngIf="checkForErrors(name, item.inputName, error)">{{error.message}}</div>
               </mat-error>
-            </mat-form-field>
+            </div>
 
-            <!-- Textarea case -->
+            <!--Textarea case-->
             <mat-form-field *ngSwitchCase="'textarea'" class="general-form-field fixed-height">
               <textarea
                 [formControlName]="item.inputName"
@@ -41,17 +39,18 @@
               </mat-error>
             </mat-form-field>
 
-            <!-- Default case -->
+            <!--Default case-->
             <mat-form-field *ngSwitchDefault class="general-form-field fixed-height">
-              <input type="{{item.type}}"
-                     [formControlName]="item.inputName"
-                     matInput
-                     [placeholder]="item.label">
+              <input
+                type="{{item.type}}"
+                [formControlName]="item.inputName"
+                matInput
+                [placeholder]="item.label">
             </mat-form-field>
 
           </ng-container>
 
-          <!-- Nested textarea/number case -->
+          <!--Nested textarea/number case-->
           <div *ngIf="item.group" [formControlName]="item.inputName">
             <div class="fixed-height nested-label">{{item.label}}</div>
             <mat-form-field *ngFor="let nestedItem of item.inputs" class="general-form-field fixed-height">
@@ -66,7 +65,6 @@
               </mat-error>
             </mat-form-field>
           </div>
-
         </mat-grid-tile>
       </ng-container>
     </mat-grid-list>

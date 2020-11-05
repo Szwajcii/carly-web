@@ -9,14 +9,14 @@ import {FormGroupHelper} from '../../model/form-group-helper.model';
 })
 export class FormGroupComponent {
 
-  @Input() formGroup: FormGroup;
+  @Input() fg: FormGroup;
   @Input() gridColumns?: number = 4;
   @Input() name: string;
   @Input() controls: FormGroupHelper.ModelControl;
   @Output() click = new EventEmitter<string>();
 
   checkForErrors(fgName: string, fcName: string, error: FormGroupHelper.ErrorValidators, fcNestedName?: string) {
-    const formGroup = this.formGroup.get(fgName);
+    const formGroup = this.fg.get(fgName);
     const formNestedControl = fcNestedName ? formGroup.get(fcNestedName) : formGroup;
     const formControl = formNestedControl.get(fcName);
 
