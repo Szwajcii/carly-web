@@ -1,0 +1,14 @@
+<h2>Customer information</h2>
+
+<app-form-group
+  [fg]="generalForm"
+  [name]="'regCustomerDetailsForm'"
+  [controls]="regCustomerDetailsFormControls"
+  [gridColumns]="gridColumns">
+</app-form-group>
+
+<button class="btn col-primary"
+        (click)="onSubmit()"
+        style="width: 100%; margin: 1em 0">
+  Register now
+</button>

@@ -1,0 +1,23 @@
+<h2>Company information</h2>
+
+<app-form-group
+  [fg]="generalForm"
+  [name]="'companyDetails'"
+  [controls]="regCompanyDetailsFormControls"
+  [gridColumns]="gridColumns">
+</app-form-group>
+
+<h2>Address information (optional)</h2>
+
+<app-form-group
+  [fg]="generalForm"
+  [name]="'addressDetails'"
+  [controls]="addressDetailsFormControls"
+  [gridColumns]="gridColumns">
+</app-form-group>
+
+<button class="btn col-primary"
+        (click)="onSubmit()"
+        style="width: 100%; margin: 1em 0">
+  Register now
+</button>
