@@ -1,3 +1,5 @@
+@import '../atoms/variables';
+
 .nav-container {
 
   display: flex;
@@ -6,10 +8,18 @@
   flex-wrap: wrap;
   margin: 2% 2%;
 
+  @media only screen and (max-width: 640px) {
+    flex-direction: column;
+  }
+
   .nav-logo {
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 640px) {
+      justify-content: center;
+    }
 
     img {
       width: 60%;
@@ -26,11 +36,30 @@
       justify-content: space-between;
       align-items: center;
       list-style: none;
-      width: 500px;
 
       li {
 
 
+        &:not(:last-child) {
+          margin-right: 2.4em;
+        }
+
+        a {
+          color: $white;
+          font-size: 20px;
+          text-transform: lowercase;
+          text-decoration: none;
+
+          &:hover {
+            color: $col-primary;
+            text-decoration: underline;
+          }
+
+        }
+
+        .active-link {
+          color: $col-primary;
+        }
 
       }
 

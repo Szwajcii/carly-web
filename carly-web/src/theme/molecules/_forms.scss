@@ -1,0 +1,108 @@
+@import "../atoms/variables";
+
+.general-form-field {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+
+.form-group {
+
+  width: 100%;
+  margin-bottom: 2em;
+
+  label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-field {
+
+    position: relative;
+
+    input {
+      width: 100%;
+      border: 1px solid $col-border;
+      border-radius: 0.6em;
+      font-size: 20px;
+      padding: 0.6em 0.6em 0.6em 2.4em;
+      box-shadow: inset -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
+
+      &:focus {
+        outline: none;
+        border: 1px solid $col-primary;
+      }
+
+    }
+
+
+    i {
+      position: absolute;
+      font-size: 1.6em;
+      left: 0.6em;
+      top: 0.65em;
+      color: $col-secondary;
+    }
+  }
+
+}
+
+
+.form-controls {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  border-bottom: 1px solid black;
+  align-items: center;
+
+  button {
+    width: 100%;
+    margin-bottom: 1.4em;
+    font-size: 1.4em;
+    padding: 0.6em;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+  }
+
+  a {
+    text-align: center;
+    color: $col-primary;
+    margin-bottom: 1.4em;
+    font-size: 20px;
+
+    &:hover {
+      color: $col-primary-hover;
+    }
+
+  }
+
+}
+
+.register-control {
+  display: flex;
+  justify-content: center;
+
+  .btn {
+    font-size: 1.4em;
+  }
+
+  button {
+    background: transparent;
+    border: 2px solid $col-primary;
+
+    &:hover {
+      color: $col-primary;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+  }
+
+}

@@ -1,0 +1,23 @@
+@import "../atoms/variables";
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+
+  .terms {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      font-size: 18px;
+    }
+
+    i {
+      color: $col-primary;
+    }
+
+  }
+
+}
