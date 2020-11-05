@@ -17,11 +17,20 @@ $col-secondary: #616161;
 $col-border: #d1d1d1;
 $col-text: #585858;
 
+$warningColor: #bb0000;
+
+$alert-color: #ac6d6d;
+$alert-color__border: #741212;
+
 /* FONTS */
 
 
 /* MEDIA */
-$wrapper-width: 1280px;
+$wrapper-width: 1200px;
 
 /* ANIMATION */
 $transition: all .3s ease;
+
+/* BOX SHADOWS */
+$box-shadow__base: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
+$box-shadow__grid-card: -5px 5px 10px 0 rgba(0, 0, 0, 0.3);
