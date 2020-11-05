@@ -1,0 +1,36 @@
+@import '../atoms/variables';
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.6em;
+  border-radius: 1em;
+  background-color: #fff;
+  box-shadow: $box-shadow__base;
+  margin-bottom: 2em;
+  min-height: 600px;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    background-color: inherit;
+    border-bottom: none;
+    padding: 0;
+    border-bottom: 1px solid $dark;
+
+    .controls {
+
+      button {
+
+        &:not(:last-child) {
+          margin-right: 2em;
+        }
+
+      }
+
+    }
+
+  }
+
+}
