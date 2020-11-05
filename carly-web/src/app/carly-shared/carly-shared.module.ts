@@ -60,6 +60,7 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {RegistrationConfirmationComponent} from './components/registration/registration-confirmation/registration-confirmation.component';
 import {RegistrationCompanyComponent} from './components/registration/registration-company/registration-company.component';
 import {RegistrationCustomerComponent} from './components/registration/registration-customer/registration-customer.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -118,7 +119,8 @@ import {RegistrationCustomerComponent} from './components/registration/registrat
     RegistrationComponent,
     RegistrationConfirmationComponent,
     RegistrationCompanyComponent,
-    RegistrationCustomerComponent
+    RegistrationCustomerComponent,
+    ResetPasswordComponent
   ],
   exports: [
     LoadingSpinnerComponent,
