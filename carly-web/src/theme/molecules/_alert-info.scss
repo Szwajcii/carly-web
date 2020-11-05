@@ -1,0 +1,19 @@
+@import "../atoms/variables";
+
+.alert-info {
+
+  padding: 1.6em 2em;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  border: 2px solid $alert-color__border;
+  background: $alert-color;
+
+  p {
+    font-size: 18px;
+    color: $dark;
+    margin: 0;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+}
