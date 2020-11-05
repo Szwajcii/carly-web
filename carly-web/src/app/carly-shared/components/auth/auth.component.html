@@ -1,0 +1,57 @@
+<div class="auth-form">
+  <div>
+    <!-- Display error message -->
+    <div class="alert-info" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Display loading spinner -->
+    <div *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="form-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email"
+                 id="email"
+                 class=""
+                 ngModel
+                 name="email"
+                 required
+                 email>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="form-field">
+          <i class="fas fa-key"></i>
+          <input type="password"
+                 id="password"
+                 class=""
+                 ngModel
+                 name="password"
+                 required
+                 minlength="6">
+        </div>
+      </div>
+
+      <div class="form-controls">
+        <button mat-flat-button type="submit" class="col-primary" [disabled]="!authForm.valid">
+          {{ isLoginMode ? 'Login' : 'Sign up' }}
+        </button>
+        <a [routerLink]="" (click)="openResetPasswordPage()">Forgot password?</a>
+      </div>
+
+      <div class="register-control">
+        <button type="button" class="btn" (click)="openRegistrationPage()">
+          Register new account
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
