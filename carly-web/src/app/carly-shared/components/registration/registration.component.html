@@ -1,0 +1,13 @@
+<div class="registration-form">
+
+  <h1>Register new account</h1>
+
+  <mat-slide-toggle (click)="toggleRegistrationMode()">
+    Are you a company user?
+  </mat-slide-toggle>
+
+  <app-registration-company *ngIf="isCompanyUser"></app-registration-company>
+
+  <app-registration-customer *ngIf="!isCompanyUser"></app-registration-customer>
+
+</div>
