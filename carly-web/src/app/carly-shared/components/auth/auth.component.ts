@@ -1,10 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './auth.service';
-import {NgForm} from '@angular/forms';
-import {AuthModel} from '../carly-shared/model/auth-model';
-import {Observable} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import {AuthResponseData} from '../carly-shared/model/auth-response-data.model';
+import {NgForm} from '@angular/forms';
+import {Observable} from 'rxjs';
+
+import {AuthService} from './auth.service';
+import {AuthModel} from '../../model/auth-model';
+import {AuthResponseData} from '../../model/auth-response-data.model';
+import {RegistrationComponent} from '../registration/registration.component';
+import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +23,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
   }
 
@@ -28,6 +33,14 @@ export class AuthComponent implements OnInit {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  openRegistrationPage() {
+    this.dialog.open(RegistrationComponent);
+  }
+
+  openResetPasswordPage() {
+    this.dialog.open(ResetPasswordComponent);
   }
 
   onSubmit(form: NgForm) {
