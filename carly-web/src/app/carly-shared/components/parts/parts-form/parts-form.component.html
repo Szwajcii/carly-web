@@ -6,26 +6,25 @@
 
   <div class="flex-container">
 
-    <div class="flex-container-content">
+    <div class="flex-container__content">
 
       <app-form-group
         *ngIf="partDetailsForm"
-        [formGroup]="generalForm"
+        [fg]="generalForm"
         [name]="'partDetailsForm'"
         [controls]="partFormDetailsControls"
         [gridColumns]="gridColumns"></app-form-group>
 
     </div>
 
-    <div class="flex-container-content">
+    <div class="flex-container__content--image">
       <img alt="{{partType}} image" src="../../../assets/{{partType}}/{{getPartPreview()}}" class="">
     </div>
-
   </div>
 
-  <div>
-    <button mat-flat-button type="button" (click)="goBack()">Cancel</button>
-    <button mat-flat-button type="submit" (click)="onSubmit()">Save</button>
+  <div class="controls">
+    <button mat-flat-button type="button" class="col-danger" (click)="goBack()">Cancel</button>
+    <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
   </div>
 
 </form>

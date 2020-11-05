@@ -13,7 +13,6 @@ import {ValueLabel} from '../../../model/value-label';
 })
 export class PartsFormComponent implements OnInit {
 
-  private static PARTS_PATH = '/parts/';
   private static PREVIEW = 'preview';
 
   @Input() partModel: any;
@@ -84,7 +83,7 @@ export class PartsFormComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate([PartsFormComponent.PARTS_PATH + this.partType]);
+    this.router.navigate(['/' + this.partType]);
   }
 
   changeMode() {
