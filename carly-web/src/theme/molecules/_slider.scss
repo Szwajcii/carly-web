@@ -1,0 +1,55 @@
+@import '../atoms/variables';
+
+.slider-card {
+  max-width: 440px;
+  min-height: 600px;
+  padding: 2.6em;
+  border-radius: 1em;
+  background-color: #fff;
+  box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
+
+  .slider-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .image-preview {
+      width: 350px;
+      height: auto;
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      font-size: 2em;
+      color: $black;
+      margin-bottom: 0.6em;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      color: $col-text;
+      margin-bottom: 1.4em;
+      text-align: justify;
+    }
+
+  }
+
+  .slide-dots {
+    position: inherit;
+    margin-top: 2em;
+    margin-bottom: 0;
+
+    li {
+
+      background-color: $bodyBg;
+
+      &.active {
+        background-color: $col-primary;
+      }
+
+    }
+
+  }
+
+}
