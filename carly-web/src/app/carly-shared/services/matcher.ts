@@ -10,7 +10,7 @@ export class CarlyMatcher {
   ) {
     const user = JSON.parse(localStorage.getItem('carly-app.userContext'));
 
-    const isMatch = user ? user.role === Roles.CARLY_ADMINISTRATOR : false;
+    const isMatch = user ? user.roles.includes(Roles.CARLY_ADMINISTRATOR) : false;
     if (isMatch) {
       return {consumed: []};
     } else {
@@ -24,8 +24,7 @@ export class CarlyMatcher {
     route: Route
   ) {
     const user = JSON.parse(localStorage.getItem('carly-app.userContext'));
-
-    const isMatch = user ? user.role === Roles.CARLY_COMPANY : false;
+    const isMatch = user ? user.roles.includes(Roles.CARLY_COMPANY) : false;
     if (isMatch) {
       return {consumed: []};
     } else {
@@ -39,8 +38,7 @@ export class CarlyMatcher {
     route: Route
   ) {
     const user = JSON.parse(localStorage.getItem('carly-app.userContext'));
-
-    const isMatch = user ? user.role === Roles.CARLY_CUSTOMER : false;
+    const isMatch = user ? user.roles.includes(Roles.CARLY_CUSTOMER) : false;
     if (isMatch) {
       return {consumed: []};
     } else {
