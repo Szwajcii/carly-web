@@ -1,6 +1,6 @@
 import {Validators} from '@angular/forms';
 import {FormGroupHelper} from '../../../model/form-group-helper.model';
-import {Registration} from '../../../model/registration.model';
+import {Gender} from '../../../model/gender.enum';
 
 export const regCustomerFormFields: FormGroupHelper.Model[] = [
   {
@@ -38,7 +38,7 @@ export const regCustomerFormFields: FormGroupHelper.Model[] = [
     type: 'select',
     cols: 4,
     rows: 1,
-    selectOptions: [...Object.values(Registration.Gender).map(value => ({label: value, value}))]
+    selectOptions: [...Object.values(Gender).map(value => ({label: value, value}))]
   },
   {
     inputName: 'email',
@@ -59,6 +59,14 @@ export const regCustomerFormFields: FormGroupHelper.Model[] = [
     ]
   },
   {
+    inputName: 'phone',
+    label: 'Phone number',
+    validators: [Validators.required],
+    type: 'text',
+    cols: 4,
+    rows: 1,
+  },
+  {
     inputName: 'password',
     label: 'Password',
     validators: [Validators.required, Validators.minLength(6)],
@@ -73,7 +81,7 @@ export const regCustomerFormFields: FormGroupHelper.Model[] = [
     ]
   },
   {
-    inputName: 'repeatPassword',
+    inputName: 'rePassword',
     label: 'Repeat password',
     validators: [Validators.required, Validators.minLength(6)],
     type: 'password',
