@@ -1,21 +1,24 @@
+import {Roles} from './roles.model';
+import {Address} from './address.model';
+import {Car} from './car.model';
+import {Gender} from './gender.enum';
+
 export class User {
-  constructor(
-    public email: string,
-    public id: string,
-    private _token: string,
-    private _tokenExpirationDate: Date
-  ) {
-  }
 
-  get token() {
-    if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
-      return null;
-    }
-    return this._token;
-  }
-
-  get tokenExpirationDate() {
-    return this._tokenExpirationDate;
-  }
+  id: string;
+  roles: Roles[];
+  companyId: string;
+  code: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  address: Address;
+  addressHistory: Address[];
+  cars: Car.Model[];
+  gender: Gender;
+  password: string;
+  createdAt: Date | string;
+  enabled: boolean;
 
 }
