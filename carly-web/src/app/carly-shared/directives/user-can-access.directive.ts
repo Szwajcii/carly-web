@@ -2,6 +2,7 @@ import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from
 import {AuthService} from '../components/auth/auth.service';
 import {Roles} from '../model/roles.model';
 import {map} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 
 @Directive({
@@ -10,6 +11,7 @@ import {map} from 'rxjs/operators';
 export class UserCanAccessDirective implements OnInit, OnDestroy {
 
   @Input('appUserCanAccess') roles: Roles[];
+  private permission$: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -19,13 +21,13 @@ export class UserCanAccessDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authService.getUserContext()
+    this.permission$ = this.authService.getUserContext()
       .pipe(
         map(userContext => {
-          if (this.roles) {
-            return !!this.roles.find(role => role === userContext.role);
+          if (userContext != null && this.roles) {
+            return !!this.roles.some(role => userContext.roles.includes(role));
           } else {
-            return true;
+            return false;
           }
         })
       ).subscribe(isAllowed => {
@@ -38,7 +40,7 @@ export class UserCanAccessDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
+    this.permission$.unsubscribe();
   }
 
 }
