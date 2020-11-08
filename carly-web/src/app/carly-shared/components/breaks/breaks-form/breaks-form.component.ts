@@ -4,7 +4,7 @@ import {FormGroup} from '@angular/forms';
 
 import {Breaks} from '../../../model/breaks.model';
 import {ValueLabel} from '../../../model/value-label';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {BreaksManagementService} from '../../../resources/breaks-management.service';
@@ -20,7 +20,7 @@ export class BreaksFormComponent implements OnInit {
   private static PREVIEW = 'preview';
 
   @Input() isDisabled = false;
-  @Input() formAction: PartFormAction;
+  @Input() formAction: FormAction;
   @Input() breaksModel: Breaks.Model;
   @Input() submitEvent: EventEmitter<Breaks.Model> = new EventEmitter<Breaks.Model>();
   @Input() details = false;
@@ -62,7 +62,7 @@ export class BreaksFormComponent implements OnInit {
   createOrUpdate(breaks: Breaks.Model) {
     let partAction;
 
-    if (this.formAction === PartFormAction.CREATE) {
+    if (this.formAction === FormAction.CREATE) {
       partAction = this.breaksManagementService.create(breaks);
     } else {
       partAction = this.breaksManagementService.update(breaks);

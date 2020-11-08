@@ -4,7 +4,7 @@ import {map, mergeMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 import {Breaks} from '../../../model/breaks.model';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {BreaksManagementService} from '../../../resources/breaks-management.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {BreaksManagementService} from '../../../resources/breaks-management.serv
 export class BreaksEditComponent implements OnInit {
 
   breaksModel: Breaks.Model;
-  formAction = PartFormAction.EDIT;
+  formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,

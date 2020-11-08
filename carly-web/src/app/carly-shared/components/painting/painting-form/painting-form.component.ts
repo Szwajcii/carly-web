@@ -5,7 +5,7 @@ import {FormGroup} from '@angular/forms';
 import {Painting} from '../../../model/painting.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {PaintingManagementService} from '../../../resources/painting-management.service';
 import {paintingDetailsFormFields} from '../painting-form-fields';
 
@@ -18,7 +18,7 @@ export class PaintingFormComponent implements OnInit {
 
 
   @Input() isDisabled = false;
-  @Input() formAction: PartFormAction;
+  @Input() formAction: FormAction;
   @Input() paintingModel: Painting.Model;
   @Input() submitEvent: EventEmitter<Painting.Model> = new EventEmitter<Painting.Model>();
   @Input() details = false;
@@ -50,7 +50,7 @@ export class PaintingFormComponent implements OnInit {
   createOrUpdate(painting: Painting.Model) {
     let action;
 
-    if (this.formAction === PartFormAction.CREATE) {
+    if (this.formAction === FormAction.CREATE) {
       action = this.paintingManagementService.create(painting);
     } else {
       action = this.paintingManagementService.update(painting);

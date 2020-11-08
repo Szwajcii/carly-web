@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 
 import {Windows} from '../../../model/windows.model';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {WindowsManagementService} from '../../../resources/windows-management.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {WindowsManagementService} from '../../../resources/windows-management.se
 export class WindowsEditComponent implements OnInit {
 
   windowsModel: Windows.Model;
-  formAction = PartFormAction.EDIT;
+  formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,

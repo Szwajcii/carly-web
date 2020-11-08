@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 
 import {Engine} from '../../../model/engine.model';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {EngineManagementService} from '../../../resources/engine-management.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {EngineManagementService} from '../../../resources/engine-management.serv
 export class EngineEditComponent implements OnInit {
 
   engineModel: Engine.Model;
-  formAction = PartFormAction.EDIT;
+  formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,

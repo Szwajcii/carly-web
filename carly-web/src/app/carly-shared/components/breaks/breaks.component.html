@@ -7,7 +7,7 @@
         <button mat-stroked-button color="primary">
           Clear all
         </button>
-        <button mat-flat-button color="accent" [routerLink]="['/breaks/add']">
+        <button *appUserCanAccess="[]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
           Add breaks
         </button>
       </div>
@@ -16,7 +16,7 @@
     <div class="filter-container">
       <div class="filter-bar-container">
         <!-- Finish filter bar -->
-        <filter-bar></filter-bar>
+        <app-filter-bar></app-filter-bar>
       </div>
       <div class="filter-fields">
         <!-- todo: Filter fields here -->

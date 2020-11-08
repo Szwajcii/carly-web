@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Roles} from '../../model/roles.model';
 
 @Component({
   selector: 'app-breaks',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breaks.component.scss']
 })
 export class BreaksComponent implements OnInit {
+
+  CarlyCompany = Roles.CARLY_COMPANY;
 
   constructor() { }
 

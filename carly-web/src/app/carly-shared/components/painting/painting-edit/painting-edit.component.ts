@@ -4,7 +4,7 @@ import {map, mergeMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 import {Painting} from '../../../model/painting.model';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {PaintingManagementService} from '../../../resources/painting-management.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {PaintingManagementService} from '../../../resources/painting-management.
 export class PaintingEditComponent implements OnInit {
 
   paintingModel: Painting.Model;
-  formAction = PartFormAction.EDIT;
+  formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,

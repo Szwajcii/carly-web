@@ -7,7 +7,7 @@ import {ValueLabel} from '../../../model/value-label';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {EngineManagementService} from '../../../resources/engine-management.service';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {engineDetailsFormFields, enginePreviews} from '../engines-form-fields';
 
 @Component({
@@ -20,7 +20,7 @@ export class EngineFormComponent implements OnInit {
   private static PREVIEW = 'preview';
 
   @Input() isDisabled = false;
-  @Input() formAction: PartFormAction;
+  @Input() formAction: FormAction;
   @Input() engineModel: Engine.Model;
   @Input() submitEvent: EventEmitter<Engine.Model> = new EventEmitter<Engine.Model>();
   @Input() details = false;
@@ -60,7 +60,7 @@ export class EngineFormComponent implements OnInit {
   createOrUpdate(engine: Engine.Model) {
     let partAction;
 
-    if (this.formAction === PartFormAction.CREATE) {
+    if (this.formAction === FormAction.CREATE) {
       partAction = this.engineManagementService.create(engine);
     } else {
       partAction = this.engineManagementService.update(engine);

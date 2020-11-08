@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 
 import {Tires} from '../../../model/tires.model';
 import {ValueLabel} from '../../../model/value-label';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {TiresManagementService} from '../../../resources/tires-management.service';
@@ -20,7 +20,7 @@ export class TiresFormComponent implements OnInit {
   private static PREVIEW = 'preview';
 
   @Input() isDisabled = false;
-  @Input() formAction: PartFormAction;
+  @Input() formAction: FormAction;
   @Input() tiresModel: Tires.Model;
   @Input() submitEvent: EventEmitter<Tires.Model> = new EventEmitter<Tires.Model>();
   @Input() details = false;
@@ -60,7 +60,7 @@ export class TiresFormComponent implements OnInit {
   createOrUpdate(tires: Tires.Model) {
     let partAction;
 
-    if (this.formAction === PartFormAction.CREATE) {
+    if (this.formAction === FormAction.CREATE) {
       partAction = this.tiresManagementService.create(tires);
     } else {
       partAction = this.tiresManagementService.update(tires);

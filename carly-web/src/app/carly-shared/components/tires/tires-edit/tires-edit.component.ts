@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 
 import {Tires} from '../../../model/tires.model';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {TiresManagementService} from '../../../resources/tires-management.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {TiresManagementService} from '../../../resources/tires-management.servic
 export class TiresEditComponent implements OnInit {
 
   tiresModel: Tires.Model;
-  formAction = PartFormAction.EDIT;
+  formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,

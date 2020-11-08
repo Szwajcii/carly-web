@@ -4,7 +4,7 @@ import {FormGroup} from '@angular/forms';
 
 import {Windows} from '../../../model/windows.model';
 import {ValueLabel} from '../../../model/value-label';
-import {PartFormAction} from '../../../model/part-form-action.model';
+import {FormAction} from '../../../model/form-action.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {WindowsManagementService} from '../../../resources/windows-management.service';
@@ -20,7 +20,7 @@ export class WindowsFormComponent implements OnInit {
   private static PREVIEW = 'preview';
 
   @Input() isDisabled = false;
-  @Input() formAction: PartFormAction;
+  @Input() formAction: FormAction;
   @Input() windowsModel: Windows.Model;
   @Input() submitEvent: EventEmitter<Windows.Model> = new EventEmitter<Windows.Model>();
   @Input() details = false;
@@ -61,7 +61,7 @@ export class WindowsFormComponent implements OnInit {
   createOrUpdate(windows: Windows.Model) {
     let partAction;
 
-    if (this.formAction === PartFormAction.CREATE) {
+    if (this.formAction === FormAction.CREATE) {
       partAction = this.windowsManagementService.create(windows);
     } else {
       partAction = this.windowsManagementService.update(windows);
