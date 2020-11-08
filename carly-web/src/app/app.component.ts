@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './auth/auth.service';
+import {AuthService} from './carly-shared/components/auth/auth.service';
 
 @Component({
   selector: 'app-root',
