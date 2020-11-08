@@ -6,9 +6,9 @@ import {Observable} from 'rxjs';
 
 import {AuthService} from './auth.service';
 import {AuthModel} from '../../model/auth-model';
-import {AuthResponseData} from '../../model/auth-response-data.model';
 import {RegistrationComponent} from '../registration/registration.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
+import {CarlyJwtResponse} from '../../model/carly-jwt-response.model';
 
 @Component({
   selector: 'app-auth',
@@ -31,10 +31,6 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSwitchMode() {
-    this.isLoginMode = !this.isLoginMode;
-  }
-
   openRegistrationPage() {
     this.dialog.open(RegistrationComponent);
   }
@@ -51,22 +47,14 @@ export class AuthComponent implements OnInit {
     this.isLoading = true;
 
     const authModel = new AuthModel(form.value.email, form.value.password);
-    console.log(authModel);
 
-    let authAction: Observable<AuthResponseData>;
-
-    if (this.isLoginMode) {
-      authAction = this.authService.login(authModel);
-    } else {
-      authAction = this.authService.signUp(authModel);
-    }
+    let authAction: Observable<CarlyJwtResponse>;
+    authAction = this.authService.login(authModel);
 
     authAction.subscribe(data => {
-      console.log(data);
       this.isLoading = false;
       this.router.navigate(['/home']);
     }, errorMessage => {
-      console.log(errorMessage);
       this.error = errorMessage;
       this.isLoading = false;
     });
