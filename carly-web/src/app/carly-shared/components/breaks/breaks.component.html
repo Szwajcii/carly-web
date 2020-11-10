@@ -3,11 +3,11 @@
 
     <div class="card-header">
       <h1>Breaks</h1>
-      <div class="controls">
+      <div class="card-controls">
         <button mat-stroked-button color="primary">
           Clear all
         </button>
-        <button *appUserCanAccess="[]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
+        <button *appUserCanAccess="[CarlyCompany]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
           Add breaks
         </button>
       </div>
@@ -23,6 +23,79 @@
       </div>
     </div>
 
+    <div *ngIf="datasource.loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="datasource.loading">
+      <mat-progress-bar mode="indeterminate" class=""></mat-progress-bar>
+    </div>
+
+    <table mat-table #table [dataSource]="datasource"
+          [hidden]="datasource.max === 0" class=""
+          matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <ng-container cdkColumnDef="name">
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header>Breaks name</mat-header-cell>
+        <mat-cell *cdkCellDef="let col">
+          <mat-card class="">
+            <mat-card-header>
+              <!-- todo: Implement img-loader component -->
+              <!--            <img-loader></img-loader>-->
+              <mat-card-title><a [routerLink]="['details', col.id]">{{col.name}}</a></mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="brand">
+        <mat-header-cell mat-sort-header *cdkHeaderCellDef>Brand</mat-header-cell>
+        <mat-cell *cdkCellDef="let col">
+          <div>{{col.brand}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="price">
+        <mat-header-cell mat-sort-header *cdkHeaderCellDef>Price</mat-header-cell>
+        <mat-cell *cdkCellDef="let col">
+          <div>{{col.price}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createdDate">
+        <mat-header-cell mat-sort-header *cdkHeaderCellDef>Created date</mat-header-cell>
+        <mat-cell *cdkCellDef="let col">
+          <div>{{col.createdDate | DateTimePipe}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="modifiedDate">
+        <mat-header-cell mat-sort-header *cdkHeaderCellDef>Modified date</mat-header-cell>
+        <mat-cell *cdkCellDef="let col">
+          <div>{{col.modifiedDate | DateTimePipe}}</div>
+        </mat-cell>
+      </ng-container>
+
+    </table>
+
+    <div class="">
+      <mat-paginator #paginator
+                     class="paginator"
+                     [length]="datasource.max"
+                     [pageIndex]="0"
+                     [pageSize]="20"
+                     [pageSizeOptions]="[20, 50, 100]"
+                     [hidden]="datasource.dataToDisplay.length == 0"
+      >
+      </mat-paginator>
+    </div>
+
+    <div class="" *ngIf="datasource.dataToDisplay.length == 0">
+      No records found
+    </div>
 
   </div>
 </div>
