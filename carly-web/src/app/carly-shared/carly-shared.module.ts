@@ -61,6 +61,8 @@ import {RegistrationConfirmationComponent} from './components/registration/regis
 import {RegistrationCompanyComponent} from './components/registration/registration-company/registration-company.component';
 import {RegistrationCustomerComponent} from './components/registration/registration-customer/registration-customer.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
+import {DatePipe, DateTimePipe} from './services/date.pipe';
 
 
 @NgModule({
@@ -120,13 +122,18 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     RegistrationConfirmationComponent,
     RegistrationCompanyComponent,
     RegistrationCustomerComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UserFormComponent,
+    DatePipe,
+    DateTimePipe
   ],
   exports: [
     LoadingSpinnerComponent,
     UserCanAccessDirective,
     CarlyMatModule,
-    FormGroupComponent
+    FormGroupComponent,
+    DatePipe,
+    DateTimePipe
   ],
   imports: [
     CommonModule,
