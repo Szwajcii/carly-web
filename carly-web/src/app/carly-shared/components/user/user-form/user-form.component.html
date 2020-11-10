@@ -1,0 +1,37 @@
+<form [formGroup]="generalForm">
+
+  <div>
+    <mat-slide-toggle (change)="toggleEdit()">Edit</mat-slide-toggle>
+  </div>
+
+  <div>
+    <h2>User information</h2>
+
+    <app-form-group
+      *ngIf="userDetailsForm"
+      [fg]="generalForm"
+      [name]="'userDetailsForm'"
+      [controls]="userDetailsFormControls"
+      [gridColumns]="gridColumns">
+    </app-form-group>
+
+    <h2>Address information</h2>
+
+    <app-form-group
+      *ngIf="addressDetailsForm"
+      [fg]="generalForm"
+      [name]="'addressDetailsForm'"
+      [controls]="addressDetailsFormControls"
+      [gridColumns]="gridColumns">
+    </app-form-group>
+
+  </div>
+
+  <div class="controls">
+    <button mat-flat-button type="button" class="col-danger" (click)="goBack()">Cancel</button>
+    <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
+  </div>
+
+</form>
+
+<p>General form {{generalForm.value | json}}</p>
