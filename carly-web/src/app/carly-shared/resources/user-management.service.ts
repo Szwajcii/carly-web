@@ -25,12 +25,19 @@ export class UserManagementService {
     return null;
   }
 
-  // FIXME: After connection with BE replace UserContext with User model!!!
+  findById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.userManagementApi}/id`);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.userManagementApi}`, user);
+  }
+
   getUserContext(): Observable<UserContext> {
     return this.authService.userContext;
   }
 
   isUserHasRole(role: Roles): Observable<boolean> {
-    return this.getUserContext().pipe(map(user => user.role === role));
+    return this.getUserContext().pipe(map(user => user.roles.includes(role)));
   }
 }
