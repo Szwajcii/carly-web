@@ -29,6 +29,7 @@ import {WindowsEditComponent} from '../carly-shared/components/windows/windows-e
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
 import {PaintingAddComponent} from '../carly-shared/components/painting/painting-add/painting-add.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
+import {CompanyEditComponent} from '../carly-shared/components/company/company-edit/company-edit.component';
 
 
 export const ROUTES: Routes = [
@@ -108,6 +109,12 @@ export const ROUTES: Routes = [
           {path: '', component: WheelsComponent},
           {path: 'add', component: WindowsAddComponent},
           {path: 'details/:id', component: WindowsEditComponent}
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {path: '', component: CompanyEditComponent}
         ]
       }
     ]

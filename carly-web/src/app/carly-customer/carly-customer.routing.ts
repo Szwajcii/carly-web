@@ -20,6 +20,7 @@ import {PaintingComponent} from '../carly-shared/components/painting/painting.co
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
 import {UserComponent} from '../carly-shared/components/user/user.component';
 import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
+import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
 
 
 export const ROUTES: Routes = [
@@ -81,10 +82,15 @@ export const ROUTES: Routes = [
         ]
       },
       {
-        path: 'profile',
-        component: UserComponent,
+        path: 'orders',
         children: [
-          {path: ':id', component: UserEditComponent}
+          {path: '', component: OrdersComponent}
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {path: '', component: UserEditComponent}
         ]
       }
     ]
