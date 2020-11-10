@@ -55,7 +55,7 @@ export class RegistrationCompanyComponent implements OnInit {
     }
 
     const registration: Registration.Model = {
-      ...this.generalForm.value
+      ...this.regCompanyDetailsForm.value
     };
 
     this.authService.signUpCompany(registration).subscribe(

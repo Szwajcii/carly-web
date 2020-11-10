@@ -17,7 +17,7 @@ export const regCompanyFormFields: FormGroupHelper.Model[] = [
     ]
   },
   {
-    inputName: 'phoneNumber',
+    inputName: 'phone',
     label: 'Phone number',
     validators: [Validators.required],
     type: 'text',
@@ -57,7 +57,7 @@ export const regCompanyFormFields: FormGroupHelper.Model[] = [
     ]
   },
   {
-    inputName: 'repeatPassword',
+    inputName: 'rePassword',
     label: 'Repeat password',
     validators: [Validators.required, Validators.minLength(6)],
     type: 'password',
