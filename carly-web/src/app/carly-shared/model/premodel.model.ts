@@ -7,4 +7,5 @@ export class PreModel {
   preview?: string;
   price: number;
   createdDate: Date | string;
+  modifiedDate: Date | string;
 }
