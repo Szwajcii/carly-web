@@ -6,7 +6,7 @@
 
     <div class="nav-links">
       <ul>
-        <li>
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
           <a routerLinkActive="active-link" [routerLink]="['/home']">Home</a>
         </li>
         <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
@@ -21,7 +21,13 @@
         <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany]">
           <a routerLinkActive="active-link" [routerLink]="['/news']">News</a>
         </li>
-        <li>
+        <li *appUserCanAccess="[CarlyCustomer]">
+          <a routerLinkActive="active-link" [routerLink]="['/profile']">My profile</a>
+        </li>
+        <li *appUserCanAccess="[CarlyCompany]">
+          <a routerLinkActive="active-link" [routerLink]="['/profile']">My profile</a>
+        </li>
+        <li *ngIf="isAuthenticated">
           <a [routerLink]="" (click)="onLogout()">Logout</a>
         </li>
       </ul>
