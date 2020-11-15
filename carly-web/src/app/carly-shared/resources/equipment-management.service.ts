@@ -18,6 +18,10 @@ export class EquipmentManagementService {
     return this.http.get<Equipment.PaginatedModel>(`${this.equipmentManagementApi}`, {params});
   }
 
+  findAllEquipment(): Observable<Equipment.Model[]> {
+    return this.http.get<Equipment.Model[]>(`${this.equipmentManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Equipment.Model> {
     return this.http.get<Equipment.Model>(`${this.equipmentManagementApi}/${id}`);
   }

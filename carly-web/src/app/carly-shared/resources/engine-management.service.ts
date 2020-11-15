@@ -18,6 +18,10 @@ export class EngineManagementService {
     return this.http.get<Engine.PaginatedModel>(`${this.engineManagementApi}`, {params});
   }
 
+  findAllEngine(): Observable<Engine.Model[]> {
+    return this.http.get<Engine.Model[]>(`${this.engineManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Engine.Model> {
     return this.http.get<Engine.Model>(`${this.engineManagementApi}/${id}`);
   }

@@ -17,6 +17,10 @@ export class WheelsManagementService {
     return this.http.get<Wheels.PaginatedModel>(`${this.wheelsManagementApi}`, {params});
   }
 
+  findAllWheels(): Observable<Wheels.Model[]> {
+    return this.http.get<Wheels.Model[]>(`${this.wheelsManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Wheels.Model> {
     return this.http.get<Wheels.Model>(`${this.wheelsManagementApi}/${id}`);
   }

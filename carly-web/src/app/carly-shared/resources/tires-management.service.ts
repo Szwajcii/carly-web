@@ -17,6 +17,10 @@ export class TiresManagementService {
     return this.http.get<Tires.PaginatedModel>(`${this.tiresManagementApi}`, {params});
   }
 
+  findAllTires(): Observable<Tires.Model[]> {
+    return this.http.get<Tires.Model[]>(`${this.tiresManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Tires.Model> {
     return this.http.get<Tires.Model>(`${this.tiresManagementApi}/${id}`);
   }

@@ -19,6 +19,10 @@ export class BreaksManagementService {
     return this.http.get<Breaks.PaginatedModel>(`${this.breaksManagementApi}`, {params});
   }
 
+  findAllBreaks(): Observable<Breaks.Model[]> {
+    return this.http.get<Breaks.Model[]>(`${this.breaksManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Breaks.Model> {
     return this.http.get<Breaks.Model>(`${this.breaksManagementApi}/${id}`);
   }

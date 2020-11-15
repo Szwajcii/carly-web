@@ -18,6 +18,10 @@ export class PaintingManagementService {
     return this.http.get<Painting.PaginatedModel>(`${this.paintingManagementApi}`, {params});
   }
 
+  findAllPaintings(): Observable<Painting.Model[]> {
+    return this.http.get<Painting.Model[]>(`${this.paintingManagementApi}/all`);
+  }
+
   findById(id: string): Observable<Painting.Model> {
     return this.http.get<Painting.Model>(`${this.paintingManagementApi}/${id}`);
   }
