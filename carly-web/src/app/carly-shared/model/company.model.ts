@@ -5,7 +5,7 @@ export namespace Company {
 
   export interface Model {
     id: string;
-    name: string;
+    companyName: string;
     email: string;
     phoneNumber: string;
     address: Address;
