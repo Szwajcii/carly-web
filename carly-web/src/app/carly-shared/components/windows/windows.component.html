@@ -1,1 +1,35 @@
-<p>windows works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <div class="card-header">
+      <h1>Windows</h1>
+      <div class="card-controls">
+        <button mat-stroked-button color="primary">
+          Clear all
+        </button>
+        <button *appUserCanAccess="[CarlyCompany, CarlyAdministrator]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
+          Add windows
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" class=""></mat-progress-bar>
+    </div>
+
+    <app-data-table
+      *ngIf="windows"
+      [displayedColumns]="displayedColumns"
+      [data]="windows">
+    </app-data-table>
+
+    <div class="" *ngIf="!loading">
+      No records found
+    </div>
+
+  </div>
+</div>
