@@ -63,6 +63,15 @@ import {RegistrationCustomerComponent} from './components/registration/registrat
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import {DatePipe, DateTimePipe} from './services/date.pipe';
+import { DataTableComponent } from './components/data-table/data-table.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CarModelComponent } from './components/car-model/car-model.component';
+import { CarModelFormComponent } from './components/car-model/car-model-form/car-model-form.component';
+import { CarModelAddComponent } from './components/car-model/car-model-add/car-model-add.component';
+import { CarModelEditComponent } from './components/car-model/car-model-edit/car-model-edit.component';
+import { CarFormComponent } from './components/cars/car-form/car-form.component';
+import { CarEditComponent } from './components/cars/car-edit/car-edit.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -125,7 +134,16 @@ import {DatePipe, DateTimePipe} from './services/date.pipe';
     ResetPasswordComponent,
     UserFormComponent,
     DatePipe,
-    DateTimePipe
+    DateTimePipe,
+    DataTableComponent,
+    ChangePasswordComponent,
+    CarModelComponent,
+    CarModelFormComponent,
+    CarModelAddComponent,
+    CarModelEditComponent,
+    CarFormComponent,
+    CarEditComponent,
+    ConfirmationDialogComponent
   ],
   exports: [
     LoadingSpinnerComponent,
