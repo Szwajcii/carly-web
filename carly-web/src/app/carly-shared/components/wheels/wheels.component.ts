@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Roles} from '../../model/roles.model';
+import {Wheels} from '../../model/wheels.model';
 
 @Component({
   selector: 'app-wheels',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WheelsComponent implements OnInit {
 
-  constructor() { }
+  CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+
+  wheels: Wheels.Model[];
+  loading = true;
+
+  public displayedColumns: Array<string> = [
+    'name',
+    'price'
+  ];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
