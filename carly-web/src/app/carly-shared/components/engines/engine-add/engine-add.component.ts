@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormAction} from '../../../model/form-action.model';
 
 @Component({
   selector: 'app-engine-add',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EngineAddComponent implements OnInit {
 
-  constructor() { }
+  formAction = FormAction.CREATE;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

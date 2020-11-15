@@ -1,1 +1,35 @@
-<p>engines works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <div class="card-header">
+      <h1>Engines</h1>
+      <div class="card-controls">
+        <button mat-stroked-button color="primary" (click)="clearFilters()">
+          Clear all
+        </button>
+        <button *appUserCanAccess="[CarlyCompany, CarlyAdministrator]" mat-flat-button color="accent" [routerLink]="['/engines/add']">
+          Add engine
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" class=""></mat-progress-bar>
+    </div>
+
+    <app-data-table
+      *ngIf="engines"
+      [displayedColumns]="displayedColumns"
+      [data]="engines">
+    </app-data-table>
+
+    <div class="" *ngIf="!loading">
+      No records found
+    </div>
+
+  </div>
+</div>
