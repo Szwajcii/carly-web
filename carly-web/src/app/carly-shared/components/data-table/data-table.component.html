@@ -1,0 +1,103 @@
+<div class="data-table" style="width: 100%">
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Type here to filter...">
+  </mat-form-field>
+
+  <mat-table mat-table #table [dataSource]="datasource" matSort>
+
+    <!-- Name column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a [routerLink]="['detail', element.id]">{{element.name}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Brand column -->
+    <ng-container matColumnDef="brand">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.brand}}</mat-cell>
+    </ng-container>
+
+    <!-- Price column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+    </ng-container>
+
+    <!-- Create date column -->
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Created date</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.createdDate | DateTimePipe}}</mat-cell>
+    </ng-container>
+
+    <!-- Modified date column -->
+    <ng-container matColumnDef="modifiedDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Modified Date</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.modifiedDate | DateTimePipe}}</mat-cell>
+    </ng-container>
+
+    <!-- Weight column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Weight</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.weight}}</mat-cell>
+    </ng-container>
+
+    <!-- Diameter column -->
+    <ng-container matColumnDef="diameter">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Diameter</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.diameter}}</mat-cell>
+    </ng-container>
+
+    <!-- Breaks Type column -->
+    <ng-container matColumnDef="breaksType">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.breaksType}}</mat-cell>
+    </ng-container>
+
+    <!-- Color column -->
+    <ng-container matColumnDef="color">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Color</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.color}}</mat-cell>
+    </ng-container>
+
+    <!-- Variant column -->
+    <ng-container matColumnDef="variant">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Variant</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.variant}}</mat-cell>
+    </ng-container>
+
+    <!-- Horse power -->
+    <ng-container matColumnDef="horsePower">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Horse power</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.horsePower}}</mat-cell>
+    </ng-container>
+
+    <!-- Capacity column -->
+    <ng-container matColumnDef="capacity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Capacity</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.capacity}}</mat-cell>
+    </ng-container>
+
+    <!-- Engine type column -->
+    <ng-container matColumnDef="engineType">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Engine type</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.engineType}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator
+    [length]="datasource.data.length"
+    [pageIndex]="0"
+    [pageSize]="25"
+    [pageSizeOptions]="[25, 50, 100]"
+    [hidden]="datasource.data.length === 0">
+  </mat-paginator>
+
+</div>
