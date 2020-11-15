@@ -7,6 +7,7 @@ import {CompanyManagementService} from '../../../resources/company-management.se
 import {UserManagementService} from '../../../resources/user-management.service';
 import {Roles} from '../../../model/roles.model';
 import {of} from 'rxjs';
+import {FormAction} from '../../../model/form-action.model';
 
 @Component({
   selector: 'app-company-edit',
@@ -17,6 +18,7 @@ export class CompanyEditComponent implements OnInit {
 
   isDisabled = true;
   company: Company.Model;
+  formAction: FormAction.EDIT;
 
   constructor(
     private companyManagementService: CompanyManagementService,
@@ -27,7 +29,6 @@ export class CompanyEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   findCompanyId() {

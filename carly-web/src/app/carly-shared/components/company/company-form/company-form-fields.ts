@@ -1,41 +1,32 @@
+
 import {FormGroupHelper} from '../../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
 
 export const companyDetailsFormFields: FormGroupHelper.Model[] = [
   {
-    inputName: 'name',
-    label: 'Name',
+    inputName: 'companyName',
+    label: 'Company name',
     validators: [Validators.required],
-    type: 'text'
+    type: 'text',
+    cols: 4,
+    rows: 1
   },
   {
-    inputName: '',
-    label: '',
+    inputName: 'phone',
+    label: 'Phone number',
     validators: [Validators.required],
-    type: ''
+    type: 'text',
+    cols: 4,
+    rows: 1,
+    selectOptions: [{value: 'One', label: 'One'}]
   },
   {
-    inputName: '',
-    label: '',
+    inputName: 'email',
+    label: 'Email',
     validators: [Validators.required],
-    type: ''
-  },
-  {
-    inputName: '',
-    label: '',
-    validators: [Validators.required],
-    type: ''
-  },
-  {
-    inputName: '',
-    label: '',
-    validators: [Validators.required],
-    type: ''
-  },
-  {
-    inputName: '',
-    label: '',
-    validators: [Validators.required],
-    type: ''
+    type: 'text',
+    cols: 4,
+    rows: 1,
+    isDisabled: true
   }
 ];

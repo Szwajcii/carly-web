@@ -1,1 +1,33 @@
-<p>company-form works!</p>
+<form [formGroup]="generalForm" *ngIf="generalForm">
+
+  <div>
+    <mat-slide-toggle (change)="toggleEdit()">Edit</mat-slide-toggle>
+  </div>
+
+  <div>
+    <h2>Company information</h2>
+
+    <app-form-group
+      *ngIf="companyDetailsForm"
+      [fg]="generalForm"
+      [name]="'companyDetailsForm'"
+      [controls]="companyDetailsFormControls"
+      [gridColumns]="gridColumns"></app-form-group>
+
+    <h2>Address information</h2>
+
+    <app-form-group
+      *ngIf="addressDetailsForm"
+      [fg]="generalForm"
+      [name]="'addressDetailsForm'"
+      [controls]="addressDetailsFormControls"
+      [gridColumns]="gridColumns"></app-form-group>
+  </div>
+
+  <div class="controls">
+    <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
+  </div>
+
+</form>
+
+<p>General form {{generalForm.value | json}}</p>

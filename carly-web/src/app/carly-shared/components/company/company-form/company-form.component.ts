@@ -8,6 +8,8 @@ import {CompanyManagementService} from '../../../resources/company-management.se
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {companyDetailsFormFields} from './company-form-fields';
 import {addressFormFields} from '../../../model/address-form-fields';
+import {MatDialog} from "@angular/material/dialog";
+import {ChangePasswordComponent} from "../../change-password/change-password.component";
 
 @Component({
   selector: 'app-company-form',
@@ -16,9 +18,12 @@ import {addressFormFields} from '../../../model/address-form-fields';
 })
 export class CompanyFormComponent implements OnInit {
 
-  @Input() isDisabled = false;
+  @Input() isDisabled: boolean;
   @Input() company: Company.Model;
+  @Input() formAction;
   @Input() editCompany = false;
+
+  gridColumns = 4;
 
   generalForm: FormGroup;
 
@@ -33,7 +38,8 @@ export class CompanyFormComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private formGroupService: FormGroupHelperService,
-    private companyManagementService: CompanyManagementService
+    private companyManagementService: CompanyManagementService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -51,6 +57,15 @@ export class CompanyFormComponent implements OnInit {
       companyDetailsForm: this.companyDetailsForm,
       addressDetailsForm: this.addressDetailsForm
     });
+
+    if (this.company) {
+      this.setFormValue(this.company);
+    }
+
+    if (this.isDisabled) {
+      this.generalForm.disable();
+    }
+
   }
 
   setFormValue(company: Company.Model) {
@@ -65,6 +80,20 @@ export class CompanyFormComponent implements OnInit {
         .get(control.inputName)
         .setValue(company[control.inputName])
       );
+  }
+
+  toggleEdit() {
+    this.isDisabled = !this.isDisabled;
+    if (this.isDisabled) {
+      this.setFormValue(this.company);
+      this.generalForm.disable();
+    } else {
+      this.generalForm.enable();
+    }
+  }
+
+  openChangePasswordDialog() {
+    this.dialog.open(ChangePasswordComponent);
   }
 
   onSubmit() {
