@@ -1,1 +1,35 @@
-<p>tires works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <div class="card-header">
+      <h1>Tires</h1>
+      <div class="card-controls">
+        <button mat-stroked-button color="primary">
+          Clear all
+        </button>
+        <button *appUserCanAccess="[CarlyCompany, CarlyAdministrator]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
+          Add tires
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" class=""></mat-progress-bar>
+    </div>
+
+    <app-data-table
+      *ngIf="tires"
+      [displayedColumns]="displayedColumns"
+      [data]="tires">
+    </app-data-table>
+
+    <div class="" *ngIf="!loading">
+      No records found
+    </div>
+
+  </div>
+</div>

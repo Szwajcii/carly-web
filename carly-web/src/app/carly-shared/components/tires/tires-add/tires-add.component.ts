@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormAction} from '../../../model/form-action.model';
 
 @Component({
   selector: 'app-tires-add',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TiresAddComponent implements OnInit {
 
-  constructor() { }
+  formAction = FormAction.CREATE;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
