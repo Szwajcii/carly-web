@@ -7,7 +7,7 @@ export namespace CarModel {
     id: string;
     brand: Brand;
     name: string;
-    variants: Array<CarVariant>;
+    variant: CarVariant;
   }
 
   export type PaginatedModel = Page<Model>;
