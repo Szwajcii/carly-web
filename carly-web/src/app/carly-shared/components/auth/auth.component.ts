@@ -8,7 +8,7 @@ import {AuthService} from './auth.service';
 import {AuthModel} from '../../model/auth-model';
 import {RegistrationComponent} from '../registration/registration.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
-import {CarlyJwtResponse} from '../../model/carly-jwt-response.model';
+import {JwtTokenResponse} from '../../model/jwt-token-response.model';
 
 @Component({
   selector: 'app-auth',
@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
 
     const authModel = new AuthModel(form.value.email, form.value.password);
 
-    let authAction: Observable<CarlyJwtResponse>;
+    let authAction: Observable<JwtTokenResponse>;
     authAction = this.authService.login(authModel);
 
     authAction.subscribe(data => {

@@ -2,13 +2,13 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {BehaviorSubject, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import {AuthModel} from '../../model/auth-model';
 import {UserContext} from '../../model/user-context.model';
 import {Registration} from '../../model/registration.model';
 import {MessageResponse} from '../../model/message-response.model';
-import {CarlyJwtResponse} from '../../model/carly-jwt-response.model';
+import {JwtTokenResponse} from '../../model/jwt-token-response.model';
 import {MessageService} from '../../services/message.service';
 
 @Injectable({
@@ -39,9 +39,9 @@ export class AuthService {
   }
 
   login(model: AuthModel) {
-    return this.http.post<CarlyJwtResponse>(`${AuthService.AUTH_API}/signin`, model)
+    return this.http.post<JwtTokenResponse>(`${AuthService.AUTH_API}/signin`, model)
       .pipe(tap(resData => {
-        this.handleAuthentication(resData.carlyJwt);
+        this.handleAuthentication(resData.jwtToken);
       }));
   }
 
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   // todo: this method should be in user management
-  getUserContext() {
+  getUserContext(): Observable<UserContext> {
     return this.userContext;
   }
 
