@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="card">
+
+    <h1>{{carModel.name}}</h1>
+
+    <app-car-model-form
+      *ngIf="carModel"
+      [formAction]="formAction"
+      [isDisabled]="isDisabled"
+      [details]="details">
+    </app-car-model-form>
+
+  </div>
+</div>
