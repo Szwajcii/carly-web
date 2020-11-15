@@ -1,4 +1,3 @@
-import {Brand} from './brand.model';
 import {Page} from './paginated.model';
 import {PreModel} from './premodel.model';
 
@@ -8,7 +7,7 @@ export namespace Engine {
     horsePower: number;
     weight: number;
     capacity: number;
-    numberOfCylinders: CylinderType;
+    engineType: CylinderType;
   }
 
   export type PaginatedModel = Page<Model>;
