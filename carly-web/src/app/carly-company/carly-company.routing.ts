@@ -106,7 +106,7 @@ export const ROUTES: Routes = [
       {
         path: 'windows',
         children: [
-          {path: '', component: WheelsComponent},
+          {path: '', component: WindowsComponent},
           {path: 'add', component: WindowsAddComponent},
           {path: 'details/:id', component: WindowsEditComponent}
         ]
