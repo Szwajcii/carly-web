@@ -1,8 +1,10 @@
 export class Brand {
-  id: string;
+  companyId: string;
   name: string;
+  rating: number;
 
-  constructor(name: string) {
+  constructor(companyId: string, name: string) {
+    this.companyId = companyId;
     this.name = name;
   }
 
