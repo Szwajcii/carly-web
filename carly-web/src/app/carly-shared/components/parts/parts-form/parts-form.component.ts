@@ -14,7 +14,9 @@ import {ValueLabel} from '../../../model/value-label';
 export class PartsFormComponent implements OnInit {
 
   private static PREVIEW = 'preview';
+  private static BRAND = 'brand';
 
+  @Input() isCompanyContext = false;
   @Input() partModel: any;
   @Input() partInputFields: FormGroupHelper.Model[];
   @Input() partFormDetailsControls: FormGroupHelper.ModelControl[];
@@ -38,6 +40,12 @@ export class PartsFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (this.isCompanyContext) {
+      // If we are logged as Company user - brand is set from context.
+      this.partFormDetailsControls = this.partFormDetailsControls
+        .filter(control => control.inputName !== PartsFormComponent.BRAND);
+    }
 
     this.partDetailsForm = this.formBuilder.group(
       this.formGroupService.getControlsFromModel(this.partFormDetailsControls)
