@@ -15,9 +15,9 @@ export namespace Breaks {
   export type PUT = Model;
 
   export enum BreaksType {
-    HYDRAULIC = 'Hydraulic',
-    MECHANIC = 'Mechanic',
-    PNEUMATIC = 'Pneumatic'
+    HYDRAULIC = 'HYDRAULIC',
+    MECHANIC = 'MECHANIC',
+    PNEUMATIC = 'PNEUMATIC'
   }
 
 }
