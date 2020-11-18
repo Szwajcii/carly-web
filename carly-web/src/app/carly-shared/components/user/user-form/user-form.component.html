@@ -27,7 +27,7 @@
 
   </div>
 
-  <div class="controls">
+  <div class="controls" *ngIf="!this.isDisabled">
     <button mat-flat-button type="button" class="col-danger" (click)="goBack()">Cancel</button>
     <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
   </div>
