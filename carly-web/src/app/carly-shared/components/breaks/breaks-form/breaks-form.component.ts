@@ -9,6 +9,12 @@ import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {BreaksManagementService} from '../../../resources/breaks-management.service';
 import {breaksDetailsFormFields, breaksPreviews} from '../breaks-form-fields';
+import {Brand} from '../../../model/brand.model';
+import {UserManagementService} from '../../../resources/user-management.service';
+import {Roles} from '../../../model/roles.model';
+import {Observable} from 'rxjs';
+import {map, mergeMap} from 'rxjs/operators';
+import {CompanyManagementService} from '../../../resources/company-management.service';
 
 @Component({
   selector: 'app-breaks-form',
@@ -25,6 +31,9 @@ export class BreaksFormComponent implements OnInit {
   @Input() submitEvent: EventEmitter<Breaks.Model> = new EventEmitter<Breaks.Model>();
   @Input() details = false;
 
+  isCompanyContext = false;
+  brands: Array<Brand>;
+  breaksBrand: Brand;
   breaksPreviews: Array<ValueLabel>;
   breaksDetailsForm: FormGroup;
   breaksDetailsFormControls = this.formGroupService.addControlToModel(breaksDetailsFormFields)
@@ -40,14 +49,63 @@ export class BreaksFormComponent implements OnInit {
     private messageService: MessageService,
     private formGroupService: FormGroupHelperService,
     private router: Router,
-    private breaksManagementService: BreaksManagementService
+    private breaksManagementService: BreaksManagementService,
+    private userManagementService: UserManagementService,
+    private companyManagementService: CompanyManagementService
   ) {
   }
 
   ngOnInit(): void {
     this.breaksPreviews = breaksPreviews;
+    this.findBrands();
+    this.findBrandFromContext();
+
+    // fixme: Remove this after testing
+    this.breaksDetailsFormControls.forEach(controlModel => {
+      if (controlModel.inputName === 'brand') {
+        controlModel.selectOptions.push({value: 'BMW', label: 'BMW'});
+      }
+    });
   }
 
+  findBrands() {
+    // todo: Replace this with company from context or get companies from DB
+  }
+
+  findBrandFromContext() {
+    const action = this.findCompanyId();
+
+    if (action != null) {
+      action.pipe(
+        mergeMap(id => this.companyManagementService.findById(id)),
+        map(model => {
+          return model;
+        })
+      ).subscribe(data => {
+        this.breaksBrand = new Brand(data.id, data.companyName);
+        console.log(400, this.breaksBrand);
+      }, error => {
+        this.messageService.showMessage('Unexpected error has occurred!');
+        console.log(error);
+      });
+    }
+  }
+
+  findCompanyId(): Observable<string> {
+    return this.userManagementService.isUserHasRole(Roles.CARLY_COMPANY)
+      .pipe(
+        mergeMap(hasRole => {
+          if (hasRole) {
+            this.isCompanyContext = true;
+            return this.userManagementService.getUserContext()
+              .pipe(map(data => data.id));
+          }
+          return null;
+        })
+      );
+  }
+
+  // Take event from PartForm component
   onSubmit($event) {
     this.breaksDetailsForm = $event;
 
@@ -55,8 +113,11 @@ export class BreaksFormComponent implements OnInit {
       ...this.breaksDetailsForm.value
     };
 
-    this.createOrUpdate(breaks);
+    if (this.isCompanyContext) {
+      breaks.brand = this.breaksBrand;
+    }
 
+    this.createOrUpdate(breaks);
   }
 
   createOrUpdate(breaks: Breaks.Model) {
@@ -71,7 +132,7 @@ export class BreaksFormComponent implements OnInit {
     partAction.subscribe(data => {
       this.messageService.showMessage('Breaks created!');
       this.submitEvent.emit(breaks);
-      this.router.navigate(['/parts/breaks', 'details', data.id, 'edit']);
+      this.router.navigate(['/breaks', 'details', data.id, 'edit']);
     }, error => {
       this.messageService.showMessage('Create breaks failed!');
       console.log(error);
