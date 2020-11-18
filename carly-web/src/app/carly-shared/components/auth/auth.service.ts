@@ -18,7 +18,9 @@ export class AuthService {
 
   private static USER_CONTEXT = 'carly-app.userContext';
   private static AUTH_API = 'api/auth';
-  private tokenExpirationTimer: any;
+  private static ONE_MINUTE_MILLISECONDS = 60000;
+  private refreshTokenTimer: any;
+  private tokenExpirationDuration: any;
   userContext = new BehaviorSubject<UserContext>(null);
 
   constructor(
@@ -46,6 +48,7 @@ export class AuthService {
   }
 
   autoLogin() {
+    console.log(666, 'AUTOLOGIN');
     const userData: UserContext = JSON.parse(localStorage.getItem(AuthService.USER_CONTEXT));
     if (!userData) {
       this.router.navigate(['/auth']);
@@ -53,6 +56,7 @@ export class AuthService {
     }
 
     this.userContext.next(userData);
+    // refresh token if expired
   }
 
   logout() {
@@ -61,17 +65,17 @@ export class AuthService {
       this.userContext.next(null);
       this.router.navigate(['/auth']);
       localStorage.removeItem(AuthService.USER_CONTEXT);
-      if (this.tokenExpirationTimer) {
-        clearTimeout(this.tokenExpirationTimer);
+      if (this.refreshTokenTimer) {
+        clearTimeout(this.refreshTokenTimer);
       }
-      this.tokenExpirationTimer = null;
+      this.refreshTokenTimer = null;
     }, error => {
       console.log(error);
     });
   }
 
   autoLogout(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
+    this.refreshTokenTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
@@ -87,11 +91,30 @@ export class AuthService {
       ...JSON.parse(decodedToken)
     };
     userContext.token = token;
-    this.refreshToken(+userContext.exp * 1000);
+    console.log(new Date(+userContext.exp * 1000));
+    this.tokenExpirationDuration = new Date(+userContext.exp * 1000).getTime() - new Date().getTime();
+    // Refresh token one minute before token will expire
+    this.autoRefreshToken(this.tokenExpirationDuration - AuthService.ONE_MINUTE_MILLISECONDS);
     this.userContext.next(userContext);
     localStorage.setItem(AuthService.USER_CONTEXT, JSON.stringify(userContext));
   }
 
+  private autoRefreshToken(refreshDuration: number) {
+    this.refreshTokenTimer = setTimeout(() => {
+      this.refreshToken();
+    }, refreshDuration);
+  }
+
+  private refreshToken() {
+    console.log(100, 'REFRESH TOKEN');
+    this.http.get<JwtTokenResponse>(`${AuthService.AUTH_API}/refresh-token`)
+      .subscribe(resData => {
+        this.handleAuthentication(resData.jwtToken);
+      }, error => {
+        console.log(error);
+        this.logout();
+      });
+  }
 
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
@@ -122,12 +145,6 @@ export class AuthService {
         break;
     }
     return throwError(errorMessage);
-  }
-
-  private refreshToken(expirationDuration: number) {
-    // todo: Make call for new token here
-    // setTimeout which makes call for new token after expirationDuration - 1 minute or so
-    console.log(500, expirationDuration);
   }
 
 }
