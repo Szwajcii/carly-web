@@ -1,6 +1,5 @@
 import {PreModel} from './premodel.model';
 import {Page} from './paginated.model';
-import {CarBody} from './car-body.model';
 import {Transmission} from './transmission.enum';
 import {Engine} from './engine.model';
 import {Breaks} from './breaks.model';
@@ -15,21 +14,20 @@ export namespace Car {
 
   export interface Model extends PreModel {
     model: CarModel.Model;
-    maxSpeed: number;
-    accelerate: number;
-    yearOfProduction: number;
     engine: Engine.Model;
-    transmission: Transmission;
-    carBody: CarBody;
     wheels: Wheels.Model;
     breaks: Breaks.Model;
     tires: Tires.Model;
     windows: Windows.Model;
+    bodyPainting: Painting.Model;
+    equipment: Array<Equipment.Model>;
+    maxSpeed: number;
+    accelerate: number;
+    yearOfProduction: number;
+    transmission: Transmission;
     weight: number;
     numberOfDoors: number;
-    bodyPainting: Painting.Model;
     leasingAvailable: boolean;
-    equipment: Array<Equipment.Model>;
   }
 
   export type PaginatedModel = Page<Model>;
