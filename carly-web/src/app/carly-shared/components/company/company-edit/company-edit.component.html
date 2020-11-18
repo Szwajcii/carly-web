@@ -2,8 +2,10 @@
   <div class="card">
 
     <app-company-form
+      *ngIf="company"
       [formAction]="formAction"
-      [company]="company">
+      [company]="company"
+      [isDisabled]="isDisabled">
     </app-company-form>
 
   </div>
