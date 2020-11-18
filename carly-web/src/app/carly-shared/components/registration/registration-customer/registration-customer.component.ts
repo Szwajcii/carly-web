@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {Registration} from '../../../model/registration.model';
 import {regCustomerFormFields} from './registration-customer-form-fields';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {AuthService} from '../../auth/auth.service';
+import {MatDialogRef} from '@angular/material/dialog';
+import {RegistrationComponent} from '../registration.component';
 
 
 @Component({
@@ -15,8 +17,6 @@ import {AuthService} from '../../auth/auth.service';
 export class RegistrationCustomerComponent implements OnInit {
 
   gridColumns = 4;
-  isRegistrationSuccess = false;
-  errorMessage;
   generalForm: FormGroup;
   regCustomerDetailsForm: FormGroup;
   regCustomerDetailsFormControls = this.formGroupService.addControlToModel(regCustomerFormFields);
@@ -24,7 +24,8 @@ export class RegistrationCustomerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private formGroupService: FormGroupHelperService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialogRef: MatDialogRef<RegistrationComponent>
   ) {
   }
 
@@ -41,6 +42,10 @@ export class RegistrationCustomerComponent implements OnInit {
 
   onSubmit() {
 
+    // Because we have nested component in dialog component
+    // we need to set property by using reference to this dialog
+    this.dialogRef.componentInstance.loading = true;
+
     const registration: Registration.Model = {
       ...this.regCustomerDetailsForm.value
     };
@@ -48,13 +53,29 @@ export class RegistrationCustomerComponent implements OnInit {
     this.authService.signUpCustomer(registration).subscribe(
       data => {
         console.log(data);
-        this.isRegistrationSuccess = true;
+        this.onRegistrationSuccess();
       }, error => {
-        this.errorMessage = 'Unexpected error occurred! Please try later!';
+        this.onRegistrationFailure();
         console.log(error);
       }
     );
 
+  }
+
+  onRegistrationSuccess() {
+    this.dialogRef.componentInstance.title = 'Success! Welcome on board!';
+    this.dialogRef.componentInstance.message = 'Please check your email to continue.';
+    this.dialogRef.componentInstance.isSuccess = true;
+    this.dialogRef.componentInstance.isRegistration = false;
+    this.dialogRef.componentInstance.loading = false;
+  }
+
+  onRegistrationFailure() {
+    this.dialogRef.componentInstance.title = 'Success! Welcome on board!';
+    this.dialogRef.componentInstance.message = 'Unexpected error occurred! Please try later!';
+    this.dialogRef.componentInstance.isSuccess = false;
+    this.dialogRef.componentInstance.isRegistration = false;
+    this.dialogRef.componentInstance.loading = false;
   }
 
 }

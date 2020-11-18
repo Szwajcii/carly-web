@@ -14,8 +14,6 @@ import {addressFormFields} from '../../../model/address-form-fields';
 })
 export class RegistrationCompanyComponent implements OnInit {
 
-  @Output()
-
   gridColumns = 4;
   generalForm: FormGroup;
 

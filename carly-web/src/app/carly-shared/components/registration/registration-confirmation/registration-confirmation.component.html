@@ -1,1 +1,14 @@
-<p>registration-confirmation works!</p>
+<div class="confirmation">
+
+  <div class="confirmation-content">
+
+    <i class="far fa-check-circle" *ngIf="isSuccess"></i>
+
+    <i class="fas fa-exclamation" *ngIf="!isSuccess"></i>
+
+    <h2>{{title}}</h2>
+    <h3>{{message}}</h3>
+
+  </div>
+
+</div>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-registration',
@@ -7,8 +7,12 @@ import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  @Input() isRegistrationSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
   isCompanyUser = false;
+  loading = false;
+  isRegistration = true;
+  isSuccess = false;
+  message: string;
+  title: string;
 
   constructor() {
   }
