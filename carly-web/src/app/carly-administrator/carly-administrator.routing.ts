@@ -31,6 +31,9 @@ import {UserComponent} from '../carly-shared/components/user/user.component';
 import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
 import {NewsAddComponent} from '../carly-shared/components/news/news-add/news-add.component';
 import {NewsEditComponent} from '../carly-shared/components/news/news-edit/news-edit.component';
+import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
+import {CarModelAddComponent} from '../carly-shared/components/car-model/car-model-add/car-model-add.component';
+import {CarEditComponent} from '../carly-shared/components/cars/car-edit/car-edit.component';
 
 
 export const ROUTES: Routes = [
@@ -60,6 +63,14 @@ export const ROUTES: Routes = [
         path: 'cars',
         children: [
           {path: '', component: CarsComponent}
+        ]
+      },
+      {
+        path: 'models',
+        children: [
+          {path: '', component: CarModelComponent},
+          {path: 'add', component: CarModelAddComponent},
+          {path: 'details/:id', component: CarEditComponent}
         ]
       },
       {path: 'parts', component: PartsComponent},

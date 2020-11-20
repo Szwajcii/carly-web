@@ -18,9 +18,9 @@ import {WindowsComponent} from '../carly-shared/components/windows/windows.compo
 import {WindowsEditComponent} from '../carly-shared/components/windows/windows-edit/windows-edit.component';
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
-import {UserComponent} from '../carly-shared/components/user/user.component';
 import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
 import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
+import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
 
 
 export const ROUTES: Routes = [
@@ -31,6 +31,9 @@ export const ROUTES: Routes = [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
       {path: 'cars', component: CarsComponent},
+      {
+        path: 'models', component: CarModelComponent
+      },
       {path: 'parts', component: PartsComponent},
       {
         path: 'breaks',
