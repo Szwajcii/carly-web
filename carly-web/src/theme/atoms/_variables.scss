@@ -35,4 +35,5 @@ $transition: all .3s ease;
 
 /* BOX SHADOWS */
 $box-shadow__base: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
-$box-shadow__grid-card: -5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+$box-shadow__grid-card: -5px 5px 15px 0 rgba(0, 0, 0, 0.3),
+                        5px -5px 15px 0 rgba(0, 0, 0, 0.3);;
