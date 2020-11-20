@@ -118,7 +118,7 @@ export class CarModelFormComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['/car-model']);
+    this.router.navigate(['/models']);
   }
 
 }

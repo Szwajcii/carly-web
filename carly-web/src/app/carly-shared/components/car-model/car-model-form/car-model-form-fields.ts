@@ -16,7 +16,7 @@ export const carModelFormFields: FormGroupHelper.Model[] = [
     label: 'Brand',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: [...Object.values(CarModel.CarVariant).map(value => ({label: value, value}))],
+    selectOptions: [],
     cols: 4,
     rows: 1
   },
@@ -25,6 +25,7 @@ export const carModelFormFields: FormGroupHelper.Model[] = [
     label: 'Variant',
     validators: [Validators.required],
     type: 'select',
+    selectOptions: [...Object.values(CarModel.CarVariant).map(value => ({label: value, value}))],
     cols: 4,
     rows: 1
   },
