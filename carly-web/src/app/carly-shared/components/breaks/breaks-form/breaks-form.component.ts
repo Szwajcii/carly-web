@@ -59,13 +59,6 @@ export class BreaksFormComponent implements OnInit {
     this.breaksPreviews = breaksPreviews;
     this.findBrands();
     this.findBrandFromContext();
-
-    // fixme: Remove this after testing
-    this.breaksDetailsFormControls.forEach(controlModel => {
-      if (controlModel.inputName === 'brand') {
-        controlModel.selectOptions.push({value: 'BMW', label: 'BMW'});
-      }
-    });
   }
 
   findBrands() {

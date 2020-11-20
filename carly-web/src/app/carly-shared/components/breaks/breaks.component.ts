@@ -22,6 +22,7 @@ export class BreaksComponent implements OnInit {
   @ViewChild('filterBar') filterBar: FilterBarComponent;
   breaks: Breaks.Model[];
   loading = true;
+  noRecords = false;
 
   public breaksFilterFormControls = this.formGroupService.addControlToModel(partsFilterFormFields);
   public breaksFilterForm = this.formBuilder.group(this.formGroupService.getControlsFromModel(this.breaksFilterFormControls));
@@ -32,7 +33,8 @@ export class BreaksComponent implements OnInit {
 
   public displayedColumns: Array<string> = [
     'name',
-    'price'
+    'price',
+    'delete'
   ];
 
   public columnsToFilter: Array<string> = [];
@@ -49,6 +51,7 @@ export class BreaksComponent implements OnInit {
     this.breaksService.findAllBreaks().subscribe(resData => {
       this.breaks = resData;
       this.loading = false;
+      this.noRecords = this.breaks.length === 0;
     }, error => {
       this.messageService.showMessage('Connection problem', 3000);
       this.loading = false;

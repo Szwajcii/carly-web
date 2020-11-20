@@ -13,12 +13,12 @@
       </div>
     </div>
 
-    <div *ngIf="loading">
+    <div class="searching" *ngIf="loading">
       Searching, please wait
     </div>
 
     <div class="" *ngIf="loading">
-      <mat-progress-bar mode="indeterminate" class=""></mat-progress-bar>
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
     </div>
 
     <app-data-table
@@ -27,8 +27,14 @@
       [data]="breaks">
     </app-data-table>
 
-    <div class="" *ngIf="!loading">
+    <div class="no-records" *ngIf="noRecords">
       No records found
+    </div>
+
+    <div class="controls">
+      <button mat-stroked-button color="warn" [routerLink]="['/parts']">
+        Go to parts
+      </button>
     </div>
 
   </div>
