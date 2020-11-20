@@ -13,11 +13,11 @@
   .card-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     background-color: inherit;
     border-bottom: none;
     padding: 0;
-    border-bottom: 1px solid $dark;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
     .card-controls {
 
