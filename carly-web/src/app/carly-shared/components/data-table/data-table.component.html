@@ -1,6 +1,6 @@
 <div class="data-table" style="width: 100%">
 
-  <mat-form-field>
+  <mat-form-field style="width: 100%">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Type here to filter...">
   </mat-form-field>
@@ -85,6 +85,14 @@
     <ng-container matColumnDef="engineType">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Engine type</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.engineType}}</mat-cell>
+    </ng-container>
+
+    <!-- Delete element column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-stroked-button color="warn">Delete</button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
