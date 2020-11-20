@@ -1,6 +1,8 @@
 <div class="wrapper">
   <div class="flex-container">
     <div class="auth-page">
+      <h1>Welcome to Carly App</h1>
+
       <!-- Display error message -->
       <div class="alert-info" *ngIf="error">
         <p>{{ error }}</p>
@@ -12,7 +14,6 @@
       </div>
 
       <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
-        <h1>Sign in</h1>
         <div class="form-group">
           <label for="email">Email</label>
           <div class="form-field">

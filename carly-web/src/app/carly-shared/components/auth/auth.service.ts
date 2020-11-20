@@ -36,7 +36,6 @@ export class AuthService {
   }
 
   signUpCompany(model: Registration.Model) {
-    console.log(model);
     return this.http.post<MessageResponse>(`${AuthService.AUTH_API}/signup-company`, model);
   }
 
@@ -48,7 +47,6 @@ export class AuthService {
   }
 
   autoLogin() {
-    console.log(666, 'AUTOLOGIN');
     const userData: UserContext = JSON.parse(localStorage.getItem(AuthService.USER_CONTEXT));
     if (!userData) {
       this.router.navigate(['/auth']);
@@ -56,7 +54,19 @@ export class AuthService {
     }
 
     this.userContext.next(userData);
-    // refresh token if expired
+
+    // After autoLogin check if token is still active
+    this.tokenExpirationDuration = new Date(+userData.exp * 1000).getTime() - new Date().getTime();
+    const isTokenActive = this.tokenExpirationDuration > AuthService.ONE_MINUTE_MILLISECONDS;
+
+    if (this.tokenExpirationDuration < 0) {
+      this.logout();
+    } else if (isTokenActive) {
+      this.clearRefreshTokenTimer();
+      this.autoRefreshToken(this.tokenExpirationDuration - AuthService.ONE_MINUTE_MILLISECONDS);
+    } else {
+      this.refreshToken();
+    }
   }
 
   logout() {
@@ -65,10 +75,7 @@ export class AuthService {
       this.userContext.next(null);
       this.router.navigate(['/auth']);
       localStorage.removeItem(AuthService.USER_CONTEXT);
-      if (this.refreshTokenTimer) {
-        clearTimeout(this.refreshTokenTimer);
-      }
-      this.refreshTokenTimer = null;
+      this.clearRefreshTokenTimer();
     }, error => {
       console.log(error);
     });
@@ -91,10 +98,16 @@ export class AuthService {
       ...JSON.parse(decodedToken)
     };
     userContext.token = token;
-    console.log(new Date(+userContext.exp * 1000));
     this.tokenExpirationDuration = new Date(+userContext.exp * 1000).getTime() - new Date().getTime();
     // Refresh token one minute before token will expire
+    this.clearRefreshTokenTimer();
     this.autoRefreshToken(this.tokenExpirationDuration - AuthService.ONE_MINUTE_MILLISECONDS);
+
+    // Clear current user when this method is called from refreshToken method - this will prevent user duplication
+    if (this.userContext.getValue() !== null) {
+      this.userContext.next(null);
+    }
+
     this.userContext.next(userContext);
     localStorage.setItem(AuthService.USER_CONTEXT, JSON.stringify(userContext));
   }
@@ -105,8 +118,7 @@ export class AuthService {
     }, refreshDuration);
   }
 
-  private refreshToken() {
-    console.log(100, 'REFRESH TOKEN');
+  public refreshToken() {
     this.http.get<JwtTokenResponse>(`${AuthService.AUTH_API}/refresh-token`)
       .subscribe(resData => {
         this.handleAuthentication(resData.jwtToken);
@@ -114,6 +126,13 @@ export class AuthService {
         console.log(error);
         this.logout();
       });
+  }
+
+  private clearRefreshTokenTimer() {
+    if (this.refreshTokenTimer) {
+      clearTimeout(this.refreshTokenTimer);
+    }
+    this.refreshTokenTimer = null;
   }
 
   private handleError(errorRes: HttpErrorResponse) {
