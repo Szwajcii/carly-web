@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormAction} from '../../../model/form-action.model';
 
 @Component({
   selector: 'app-equipment-add',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./equipment-add.component.scss']
 })
 export class EquipmentAddComponent implements OnInit {
+
+  formAction = FormAction.CREATE;
 
   constructor() { }
 

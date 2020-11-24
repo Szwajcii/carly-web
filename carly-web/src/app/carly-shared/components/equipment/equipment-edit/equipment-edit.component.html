@@ -1,1 +1,6 @@
-<p>equipment-edit works!</p>
+<app-equipment-form
+  *ngIf="equipmentModel"
+  [equipmentModel]="equipmentModel"
+  [formAction]="formAction"
+  [details]="true">
+</app-equipment-form>
