@@ -10,11 +10,7 @@ import {FormGroupHelperService} from '../../../services/form-group-helper.servic
 import {BreaksManagementService} from '../../../resources/breaks-management.service';
 import {breaksDetailsFormFields, breaksPreviews} from '../breaks-form-fields';
 import {Brand} from '../../../model/brand.model';
-import {UserManagementService} from '../../../resources/user-management.service';
-import {Roles} from '../../../model/roles.model';
-import {Observable} from 'rxjs';
-import {map, mergeMap} from 'rxjs/operators';
-import {CompanyManagementService} from '../../../resources/company-management.service';
+import {BrandManagementService} from '../../../resources/brand-management.service';
 
 @Component({
   selector: 'app-breaks-form',
@@ -50,52 +46,17 @@ export class BreaksFormComponent implements OnInit {
     private formGroupService: FormGroupHelperService,
     private router: Router,
     private breaksManagementService: BreaksManagementService,
-    private userManagementService: UserManagementService,
-    private companyManagementService: CompanyManagementService
+    private brandManagementService: BrandManagementService
   ) {
   }
 
   ngOnInit(): void {
     this.breaksPreviews = breaksPreviews;
-    this.findBrands();
-    this.findBrandFromContext();
-  }
-
-  findBrands() {
-    // todo: Replace this with company from context or get companies from DB
-  }
-
-  findBrandFromContext() {
-    const action = this.findCompanyId();
-
-    if (action != null) {
-      action.pipe(
-        mergeMap(id => this.companyManagementService.findById(id)),
-        map(model => {
-          return model;
-        })
-      ).subscribe(data => {
-        this.breaksBrand = new Brand(data.id, data.companyName);
-        console.log(400, this.breaksBrand);
-      }, error => {
-        this.messageService.showMessage('Unexpected error has occurred!');
-        console.log(error);
-      });
+    const companyContextIdObservable = this.brandManagementService.findCompanyContextId();
+    if (companyContextIdObservable != null) {
+      this.isCompanyContext = true;
+      this.breaksBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
     }
-  }
-
-  findCompanyId(): Observable<string> {
-    return this.userManagementService.isUserHasRole(Roles.CARLY_COMPANY)
-      .pipe(
-        mergeMap(hasRole => {
-          if (hasRole) {
-            this.isCompanyContext = true;
-            return this.userManagementService.getUserContext()
-              .pipe(map(data => data.id));
-          }
-          return null;
-        })
-      );
   }
 
   // Take event from PartForm component

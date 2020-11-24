@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {Breaks} from '../../../model/breaks.model';
 import {FormAction} from '../../../model/form-action.model';
 import {BreaksManagementService} from '../../../resources/breaks-management.service';
+import {MessageService} from '../../../services/message.service';
 
 @Component({
   selector: 'app-breaks-edit',
@@ -19,7 +20,8 @@ export class BreaksEditComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private breaksManagementService: BreaksManagementService
+    private breaksManagementService: BreaksManagementService,
+    private messageService: MessageService
   ) {
   }
 
@@ -34,8 +36,10 @@ export class BreaksEditComponent implements OnInit {
         })
       ).subscribe(model => {
       this.breaksModel = model;
+    }, error => {
+        this.messageService.showMessage('Unexpected error occurred!');
+        console.log(error);
     });
-
   }
 
   private findBreaksById(): Observable<string> {
