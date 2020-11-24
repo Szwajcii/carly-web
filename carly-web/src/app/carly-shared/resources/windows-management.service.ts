@@ -18,7 +18,7 @@ export class WindowsManagementService {
     return this.http.get<Windows.PaginatedModel>(`${this.windowsManagementApi}`, {params});
   }
 
-  findAllWheels(): Observable<Windows.Model[]> {
+  findAllWindows(): Observable<Windows.Model[]> {
     return this.http.get<Windows.Model[]>(`${this.windowsManagementApi}/all`);
   }
 
