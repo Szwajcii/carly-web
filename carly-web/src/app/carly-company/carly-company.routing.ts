@@ -10,29 +10,21 @@ import {WheelsComponent} from '../carly-shared/components/wheels/wheels.componen
 import {WindowsComponent} from '../carly-shared/components/windows/windows.component';
 import {EquipmentComponent} from '../carly-shared/components/equipment/equipment.component';
 import {NewsComponent} from '../carly-shared/components/news/news.component';
-import {NewsAddComponent} from '../carly-shared/components/news/news-add/news-add.component';
 import {NewsEditComponent} from '../carly-shared/components/news/news-edit/news-edit.component';
 import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
 import {HomeComponent} from '../carly-shared/components/home/home.component';
-import {BreaksAddComponent} from '../carly-shared/components/breaks/breaks-add/breaks-add.component';
 import {BreaksEditComponent} from '../carly-shared/components/breaks/breaks-edit/breaks-edit.component';
-import {EngineAddComponent} from '../carly-shared/components/engines/engine-add/engine-add.component';
 import {EngineEditComponent} from '../carly-shared/components/engines/engine-edit/engine-edit.component';
-import {EquipmentAddComponent} from '../carly-shared/components/equipment/equipment-add/equipment-add.component';
 import {EquipmentEditComponent} from '../carly-shared/components/equipment/equipment-edit/equipment-edit.component';
-import {TiresAddComponent} from '../carly-shared/components/tires/tires-add/tires-add.component';
 import {TiresEditComponent} from '../carly-shared/components/tires/tires-edit/tires-edit.component';
-import {WheelsAddComponent} from '../carly-shared/components/wheels/wheels-add/wheels-add.component';
 import {WheelsEditComponent} from '../carly-shared/components/wheels/wheels-edit/wheels-edit.component';
-import {WindowsAddComponent} from '../carly-shared/components/windows/windows-add/windows-add.component';
 import {WindowsEditComponent} from '../carly-shared/components/windows/windows-edit/windows-edit.component';
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
-import {PaintingAddComponent} from '../carly-shared/components/painting/painting-add/painting-add.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
 import {CompanyEditComponent} from '../carly-shared/components/company/company-edit/company-edit.component';
 import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
-import {CarModelAddComponent} from '../carly-shared/components/car-model/car-model-add/car-model-add.component';
 import {CarModelEditComponent} from '../carly-shared/components/car-model/car-model-edit/car-model-edit.component';
+import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 
 
 export const ROUTES: Routes = [
@@ -46,7 +38,6 @@ export const ROUTES: Routes = [
         path: 'news',
         children: [
           {path: '', component: NewsComponent},
-          {path: 'add', component: NewsAddComponent},
           {path: ':id', component: NewsEditComponent}
         ]
       },
@@ -61,7 +52,6 @@ export const ROUTES: Routes = [
         path: 'models',
         children: [
           {path: '', component: CarModelComponent},
-          {path: 'add', component: CarModelAddComponent},
           {path: 'details/:id', component: CarModelEditComponent}
         ]
       },
@@ -70,7 +60,6 @@ export const ROUTES: Routes = [
         path: 'breaks',
         children: [
           {path: '', component: BreaksComponent},
-          {path: 'add', component: BreaksAddComponent},
           {path: 'details/:id', component: BreaksEditComponent}
         ]
       },
@@ -78,7 +67,6 @@ export const ROUTES: Routes = [
         path: 'engines',
         children: [
           {path: '', component: EnginesComponent},
-          {path: 'add', component: EngineAddComponent},
           {path: 'details/:id', component: EngineEditComponent}
         ]
       },
@@ -86,7 +74,6 @@ export const ROUTES: Routes = [
         path: 'equipment',
         children: [
           {path: '', component: EquipmentComponent},
-          {path: 'add', component: EquipmentAddComponent},
           {path: 'details/:id', component: EquipmentEditComponent}
         ]
       },
@@ -94,7 +81,6 @@ export const ROUTES: Routes = [
         path: 'painting',
         children: [
           {path: '', component: PaintingComponent},
-          {path: 'add', component: PaintingAddComponent},
           {path: 'details/:id', component: PaintingEditComponent}
         ]
       },
@@ -102,7 +88,6 @@ export const ROUTES: Routes = [
         path: 'tires',
         children: [
           {path: '', component: TiresComponent},
-          {path: 'add', component: TiresAddComponent},
           {path: 'details/:id', component: TiresEditComponent}
         ]
       },
@@ -110,7 +95,6 @@ export const ROUTES: Routes = [
         path: 'wheels',
         children: [
           {path: '', component: WheelsComponent},
-          {path: 'add', component: WheelsAddComponent},
           {path: 'details/:id', component: WheelsEditComponent}
         ]
       },
@@ -118,7 +102,6 @@ export const ROUTES: Routes = [
         path: 'windows',
         children: [
           {path: '', component: WindowsComponent},
-          {path: 'add', component: WindowsAddComponent},
           {path: 'details/:id', component: WindowsEditComponent}
         ]
       },
@@ -126,6 +109,12 @@ export const ROUTES: Routes = [
         path: 'profile',
         children: [
           {path: '', component: CompanyEditComponent}
+        ]
+      },
+      {
+        path: 'factories',
+        children: [
+          {path: '', component: FactoriesComponent}
         ]
       }
     ]
