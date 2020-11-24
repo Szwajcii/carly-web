@@ -10,6 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
 
+  public filter: string;
   public datasource = new MatTableDataSource([]);
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -40,6 +41,11 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   applyFilter(filterValue: string) {
     this.datasource.filter = filterValue.trim().toLowerCase();
+  }
+
+  clearFilter() {
+    this.datasource.filter = '';
+    this.filter = '';
   }
 
 }
