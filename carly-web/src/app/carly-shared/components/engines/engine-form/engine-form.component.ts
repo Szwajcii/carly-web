@@ -9,6 +9,8 @@ import {FormGroupHelperService} from '../../../services/form-group-helper.servic
 import {EngineManagementService} from '../../../resources/engine-management.service';
 import {FormAction} from '../../../model/form-action.model';
 import {engineDetailsFormFields, enginePreviews} from '../engines-form-fields';
+import {Brand} from '../../../model/brand.model';
+import {BrandManagementService} from '../../../resources/brand-management.service';
 
 @Component({
   selector: 'app-engine-form',
@@ -25,6 +27,9 @@ export class EngineFormComponent implements OnInit {
   @Input() submitEvent: EventEmitter<Engine.Model> = new EventEmitter<Engine.Model>();
   @Input() details = false;
 
+  isCompanyContext = false;
+  brands: Array<Brand>;
+  engineBrand: Brand;
   enginePreviews: Array<ValueLabel>;
   engineDetailsForm: FormGroup;
   engineDetailsFormControls = this.formGroupService.addControlToModel(engineDetailsFormFields)
@@ -39,12 +44,18 @@ export class EngineFormComponent implements OnInit {
     private messageService: MessageService,
     private formGroupService: FormGroupHelperService,
     private router: Router,
-    private engineManagementService: EngineManagementService
+    private engineManagementService: EngineManagementService,
+    private brandManagementService: BrandManagementService
   ) {
   }
 
   ngOnInit(): void {
     this.enginePreviews = enginePreviews;
+    const companyContextIdObservable = this.brandManagementService.findCompanyContextId();
+    if (companyContextIdObservable != null) {
+      this.isCompanyContext = true;
+      this.engineBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
+    }
   }
 
   onSubmit($event) {
@@ -53,6 +64,10 @@ export class EngineFormComponent implements OnInit {
     const engine: Engine.Model = {
       ...this.engineDetailsForm.value
     };
+
+    if (this.isCompanyContext) {
+      engine.brand = this.engineBrand;
+    }
 
     this.createOrUpdate(engine);
   }

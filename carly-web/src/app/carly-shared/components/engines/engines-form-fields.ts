@@ -9,45 +9,59 @@ export const engineDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Brand',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: []
+    selectOptions: [],
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'name',
     label: 'Name',
     validators: [Validators.required],
-    type: 'text'
+    type: 'text',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'preview',
     label: 'Preview',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: []
+    selectOptions: [],
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'horsePower',
     label: 'Horse Power',
     validators: [Validators.required],
-    type: 'number'
+    type: 'number',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'capacity',
     label: 'Capacity',
     validators: [Validators.required],
-    type: 'number'
+    type: 'number',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'numberOfCylinders',
     label: 'Number of cylinders',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: [...Object.values(Engine.CylinderType).map(value => ({label: value, value}))]
+    selectOptions: [...Object.values(Engine.CylinderType).map(value => ({label: value, value}))],
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'price',
     label: 'Price',
     validators: [Validators.required],
-    type: 'number'
+    type: 'number',
+    cols: 4,
+    rows: 1
   }
 ];
 

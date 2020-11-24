@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Roles} from '../../model/roles.model';
 import {Engine} from '../../model/engine.model';
 import {EngineManagementService} from '../../resources/engine-management.service';
+import {MessageService} from '../../services/message.service';
+import {DataTableComponent} from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-engines',
@@ -13,8 +15,10 @@ export class EnginesComponent implements OnInit {
   CarlyCompany = Roles.CARLY_COMPANY;
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
+  @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   engines: Engine.Model[];
   loading = true;
+  noRecords = false;
 
   public displayedColumns: Array<string> = [
     'name',
@@ -22,14 +26,25 @@ export class EnginesComponent implements OnInit {
   ];
 
   constructor(
+    private messageService: MessageService,
     private engineManagementService: EngineManagementService
   ) {
   }
 
   ngOnInit(): void {
+    this.engineManagementService.findAllEngine().subscribe(resData => {
+      this.engines = resData;
+      this.loading = false;
+      this.noRecords = this.engines.length === 0;
+    }, error => {
+      this.messageService.showMessage('Connection problem', 3000);
+      this.loading = false;
+      console.log(error);
+    });
   }
 
   clearFilters() {
+    this.dataTable.clearFilter();
   }
 
 }
