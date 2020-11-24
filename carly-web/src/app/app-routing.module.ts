@@ -29,6 +29,12 @@ const routes: Routes = [
         data: {roles: [Roles.CARLY_CUSTOMER]},
         matcher: CarlyMatcher.carlyCustomerMatcher,
         loadChildren: () => import('./carly-customer/carly-customer.module').then(module => module.CarlyCustomerModule)
+      },
+      {
+        canActivate: [CarlyRoleGuard],
+        data: {roles: [Roles.CARLY_FACTORY]},
+        matcher: CarlyMatcher.carlyFactoryMatcher,
+        loadChildren: () => import('./carly-factory/carly-factory.module').then(module => module.CarlyFactoryModule)
       }
     ]
   },
