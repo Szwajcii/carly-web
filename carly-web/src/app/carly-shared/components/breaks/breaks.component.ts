@@ -8,6 +8,7 @@ import {MessageService} from '../../services/message.service';
 import {BreaksManagementService} from '../../resources/breaks-management.service';
 import {partsFilterFormFields} from '../../model/parts-filter-form';
 import {Breaks} from '../../model/breaks.model';
+import {DataTableComponent} from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-breaks',
@@ -16,10 +17,11 @@ import {Breaks} from '../../model/breaks.model';
 })
 export class BreaksComponent implements OnInit {
 
-  CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyFactory = Roles.CARLY_FACTORY;
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
   @ViewChild('filterBar') filterBar: FilterBarComponent;
+  @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   breaks: Breaks.Model[];
   loading = true;
   noRecords = false;
@@ -59,5 +61,8 @@ export class BreaksComponent implements OnInit {
     });
   }
 
+  clearFilters() {
+    this.dataTable.clearFilter();
+  }
 
 }

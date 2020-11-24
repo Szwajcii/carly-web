@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Roles} from '../../model/roles.model';
 import {Wheels} from '../../model/wheels.model';
+import {DataTableComponent} from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-wheels',
@@ -9,9 +10,10 @@ import {Wheels} from '../../model/wheels.model';
 })
 export class WheelsComponent implements OnInit {
 
-  CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyFactory = Roles.CARLY_FACTORY;
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
+  @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   wheels: Wheels.Model[];
   loading = true;
 
@@ -24,6 +26,10 @@ export class WheelsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  clearFilters() {
+    this.dataTable.clearFilter();
   }
 
 }

@@ -1,1 +1,41 @@
-<p>painting works!</p>
+<div class="wrapper">
+  <div class="card">
+    <div class="card-header">
+      <h1>Painting</h1>
+      <div class="card-controls">
+        <button mat-stroked-button color="primary" (click)="clearFilters()">
+          Clear all
+        </button>
+        <button *appUserCanAccess="[CarlyFactory, CarlyAdministrator]" mat-flat-button color="accent" [routerLink]="['/breaks/add']">
+          Add breaks
+        </button>
+      </div>
+    </div>
+
+    <div class="searching" *ngIf="loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+
+    <app-data-table
+      *ngIf="paintings"
+      [displayedColumns]="displayedColumns"
+      [data]="paintings"
+      [hidden]="noRecords">
+    </app-data-table>
+
+    <div class="no-records" *ngIf="noRecords">
+      No records found
+    </div>
+
+    <div class="controls">
+      <button mat-stroked-button color="warn" [routerLink]="['/parts']">
+        Go to parts
+      </button>
+    </div>
+
+  </div>
+</div>
