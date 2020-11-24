@@ -72,6 +72,7 @@ import { CarModelEditComponent } from './components/car-model/car-model-edit/car
 import { CarFormComponent } from './components/cars/car-form/car-form.component';
 import { CarEditComponent } from './components/cars/car-edit/car-edit.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { FactoriesComponent } from './components/factories/factories.component';
 
 
 @NgModule({
@@ -143,7 +144,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     CarModelEditComponent,
     CarFormComponent,
     CarEditComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FactoriesComponent
   ],
   exports: [
     LoadingSpinnerComponent,
