@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
 
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
-  CarlyCustomer = Roles.CARLY_CUSTOMER;
   CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyCustomer = Roles.CARLY_CUSTOMER;
+  CarlyFactory = Roles.CARLY_FACTORY;
 
   constructor(
     private authService: AuthService

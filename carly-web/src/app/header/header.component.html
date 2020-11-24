@@ -6,28 +6,28 @@
 
     <div class="nav-links">
       <ul>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/home']">Home</a>
         </li>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/parts']">Parts</a>
         </li>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/models']">Models</a>
         </li>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/cars']">Cars</a>
         </li>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany, CarlyCustomer]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany]">
+          <a routerLinkActive="active-link" [routerLink]="['/factories']">Factories</a>
+        </li>
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/orders']">Orders</a>
         </li>
-        <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany]">
+        <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/news']">News</a>
         </li>
-        <li *appUserCanAccess="[CarlyCustomer]">
-          <a routerLinkActive="active-link" [routerLink]="['/profile']">My profile</a>
-        </li>
-        <li *appUserCanAccess="[CarlyCompany]">
+        <li *appUserCanAccess="[CarlyCompany, CarlyCustomer, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/profile']">My profile</a>
         </li>
         <li *ngIf="isAuthenticated">
