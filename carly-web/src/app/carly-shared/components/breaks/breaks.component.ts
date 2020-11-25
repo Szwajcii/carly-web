@@ -35,8 +35,7 @@ export class BreaksComponent implements OnInit {
 
   public displayedColumns: Array<string> = [
     'name',
-    'price',
-    'delete'
+    'price'
   ];
 
   public columnsToFilter: Array<string> = [];
@@ -63,6 +62,11 @@ export class BreaksComponent implements OnInit {
 
   clearFilters() {
     this.dataTable.clearFilter();
+  }
+
+  deleteBreaks(id: string) {
+    console.log(id);
+    // todo: Call breaks service to delete part.
   }
 
 }

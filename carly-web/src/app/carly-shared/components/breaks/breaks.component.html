@@ -24,7 +24,8 @@
     <app-data-table
       *ngIf="breaks"
       [displayedColumns]="displayedColumns"
-      [data]="breaks">
+      [data]="breaks"
+      (deletePart)="deleteBreaks($event)">
     </app-data-table>
 
     <div class="no-records" *ngIf="noRecords">
