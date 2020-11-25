@@ -1,7 +1,11 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {DeletePartDialogComponent} from '../delete-part-dialog/delete-part-dialog.component';
+import {Roles} from '../../model/roles.model';
+import {UserManagementService} from '../../resources/user-management.service';
 
 @Component({
   selector: 'app-data-table',
@@ -12,6 +16,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   public filter: string;
   public datasource = new MatTableDataSource([]);
+  @Output() deletePart = new EventEmitter();
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -21,10 +26,20 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   @Input() displayedColumns: Array<string>;
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog,
+    private userManagementService: UserManagementService
+  ) {
   }
 
   ngOnInit(): void {
+    this.userManagementService.isUserHasRole(Roles.CARLY_FACTORY).subscribe(result => {
+      if (result) {
+        this.displayedColumns.push('action');
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   ngAfterViewInit() {
@@ -46,6 +61,20 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   clearFilter() {
     this.datasource.filter = '';
     this.filter = '';
+  }
+
+  openDeleteDialog(element: any) {
+    const dialogRef = this.dialog.open(DeletePartDialogComponent, {
+      data: {
+        partName: element.name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletePart.emit(element.id);
+      }
+    });
   }
 
 }

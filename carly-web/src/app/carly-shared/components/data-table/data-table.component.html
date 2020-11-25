@@ -88,10 +88,10 @@
     </ng-container>
 
     <!-- Delete element column -->
-    <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button mat-stroked-button color="warn">Delete</button>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="align-right">Action</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-right">
+        <button mat-stroked-button color="warn" (click)="openDeleteDialog(element)"><i class="far fa-trash-alt"></i></button>
       </mat-cell>
     </ng-container>
 
