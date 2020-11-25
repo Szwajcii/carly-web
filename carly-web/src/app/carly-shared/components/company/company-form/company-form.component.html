@@ -24,7 +24,7 @@
       [gridColumns]="gridColumns"></app-form-group>
   </div>
 
-  <div class="controls">
+  <div class="controls" *ngIf="!this.isDisabled">
     <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
   </div>
 
