@@ -25,7 +25,8 @@
       *ngIf="engines"
       [displayedColumns]="displayedColumns"
       [data]="engines"
-      [hidden]="noRecords">
+      [hidden]="noRecords"
+      (deletePart)="deleteEngine($event)">
     </app-data-table>
 
     <div class="no-records" *ngIf="noRecords">

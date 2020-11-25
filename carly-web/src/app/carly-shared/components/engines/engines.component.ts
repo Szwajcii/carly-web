@@ -47,4 +47,9 @@ export class EnginesComponent implements OnInit {
     this.dataTable.clearFilter();
   }
 
+  deleteEngine(id: string) {
+    console.log(id);
+    // todo: Call breaks service to delete part.
+  }
+
 }
