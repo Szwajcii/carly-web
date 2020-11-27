@@ -2,13 +2,13 @@
 
 .card {
   display: flex;
-  justify-content: space-between;
   padding: 2.6em;
   border-radius: 1em;
   background-color: #fff;
   box-shadow: $box-shadow__base;
   margin-bottom: 2em;
   min-height: 600px;
+  position: relative;
 
   .card-header {
     display: flex;

@@ -14,6 +14,7 @@
 @import "theme/molecules/auth-from.scss";
 @import "theme/molecules/card.scss";
 @import "theme/molecules/data-table.scss";
+@import "theme/molecules/dialog.scss";
 @import "theme/molecules/forms.scss";
 @import "theme/molecules/navbar.scss";
 @import "theme/molecules/slider.scss";
@@ -54,4 +55,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-slide-toggle {
   margin-bottom: 1em;
   font-size: 1.4em;
+}
+
+.vertical-divider {
+  margin: 30px;
+  color: $black;
 }
