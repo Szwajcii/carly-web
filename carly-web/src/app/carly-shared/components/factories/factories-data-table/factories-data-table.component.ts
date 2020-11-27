@@ -2,9 +2,9 @@ import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core'
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {MatDialog} from "@angular/material/dialog";
-import {Company} from "../../../model/company.model";
-import {FactoryMatchRequestDialogComponent} from "../factory-match-request-dialog/factory-match-request-dialog.component";
+import {MatDialog} from '@angular/material/dialog';
+import {Company} from '../../../model/company.model';
+import {MatchRequestDialogComponent} from '../match-request-dialog/match-request-dialog.component';
 
 @Component({
   selector: 'app-factories-data-table',
@@ -60,7 +60,7 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
 
   openRequestMatchingDialog(factory: Company.Model) {
     console.log(factory);
-    const dialogRef = this.dialog.open(FactoryMatchRequestDialogComponent, {
+    const dialogRef = this.dialog.open(MatchRequestDialogComponent, {
       data: {
         companyName: factory.companyName,
         companyId: factory.id
