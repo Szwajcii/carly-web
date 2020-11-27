@@ -1,0 +1,81 @@
+<div class="wrapper">
+  <div class="card">
+
+    <div class="factory--details">
+
+      <div class="factory--details__info">
+
+        <h2>Factory details</h2>
+        <div class="factory--details__grid">
+          <div class="factory--details__field">
+            <span>Name</span>
+            <h3>{{factory.company.companyName}}</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Phone number</span>
+            <h3>666 666 666</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Email</span>
+            <h3>test@test.com</h3>
+          </div>
+        </div>
+
+        <h2>Address details</h2>
+        <div class="factory--details__grid">
+          <div class="factory--details__field">
+            <span>Street</span>
+            <h3>Factories</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Number</span>
+            <h3>10</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Flat</span>
+            <h3> - </h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Town</span>
+            <h3>New Town</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Zip code</span>
+            <h3>123 456</h3>
+          </div>
+
+          <div class="factory--details__field">
+            <span>Country</span>
+            <h3>USA</h3>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button mat-stroked-button color="warn" [routerLink]="['/factories']">
+            Go back
+          </button>
+
+          <button mat-stroked-button color="warn" [routerLink]="['/factories']">
+            Cancel matching
+          </button>
+        </div>
+
+      </div>
+
+      <mat-divider [vertical]="true"></mat-divider>
+
+      <div class="factory--details__parts">
+        <app-factory-parts>
+        </app-factory-parts>
+      </div>
+
+    </div>
+
+  </div>
+</div>
