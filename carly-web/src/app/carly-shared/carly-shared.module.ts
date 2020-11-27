@@ -60,19 +60,25 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {RegistrationConfirmationComponent} from './components/registration/registration-confirmation/registration-confirmation.component';
 import {RegistrationCompanyComponent} from './components/registration/registration-company/registration-company.component';
 import {RegistrationCustomerComponent} from './components/registration/registration-customer/registration-customer.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { UserFormComponent } from './components/user/user-form/user-form.component';
+import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
+import {UserFormComponent} from './components/user/user-form/user-form.component';
 import {DatePipe, DateTimePipe} from './services/date.pipe';
-import { DataTableComponent } from './components/data-table/data-table.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { CarModelComponent } from './components/car-model/car-model.component';
-import { CarModelFormComponent } from './components/car-model/car-model-form/car-model-form.component';
-import { CarModelAddComponent } from './components/car-model/car-model-add/car-model-add.component';
-import { CarModelEditComponent } from './components/car-model/car-model-edit/car-model-edit.component';
-import { CarFormComponent } from './components/cars/car-form/car-form.component';
-import { CarEditComponent } from './components/cars/car-edit/car-edit.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { FactoriesComponent } from './components/factories/factories.component';
+import {DataTableComponent} from './components/data-table/data-table.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
+import {CarModelComponent} from './components/car-model/car-model.component';
+import {CarModelFormComponent} from './components/car-model/car-model-form/car-model-form.component';
+import {CarModelAddComponent} from './components/car-model/car-model-add/car-model-add.component';
+import {CarModelEditComponent} from './components/car-model/car-model-edit/car-model-edit.component';
+import {CarFormComponent} from './components/cars/car-form/car-form.component';
+import {CarEditComponent} from './components/cars/car-edit/car-edit.component';
+import {ConfirmationDialogComponent} from './components/confirmation-dialog/confirmation-dialog.component';
+import {FactoriesComponent} from './components/factories/factories.component';
+import {DeletePartDialogComponent} from './components/delete-part-dialog/delete-part-dialog.component';
+import {MatchRequestDialogComponent} from './components/factories/match-request-dialog/match-request-dialog.component';
+import {FactoryDetailsComponent} from './components/factories/factory-details/factory-details.component';
+import {FactoryPartsComponent} from './components/factories/factory-parts/factory-parts.component';
+import {FactoriesDataTableComponent} from './components/factories/factories-data-table/factories-data-table.component';
+import {PartDetailsDialogComponent} from './components/part-details-dialog/part-details-dialog.component';
 
 
 @NgModule({
@@ -145,7 +151,13 @@ import { FactoriesComponent } from './components/factories/factories.component';
     CarFormComponent,
     CarEditComponent,
     ConfirmationDialogComponent,
-    FactoriesComponent
+    FactoriesComponent,
+    DeletePartDialogComponent,
+    MatchRequestDialogComponent,
+    FactoryDetailsComponent,
+    FactoryPartsComponent,
+    FactoriesDataTableComponent,
+    PartDetailsDialogComponent
   ],
   exports: [
     LoadingSpinnerComponent,
@@ -167,4 +179,5 @@ import { FactoriesComponent } from './components/factories/factories.component';
     FormGroupHelperService
   ]
 })
-export class CarlySharedModule { }
+export class CarlySharedModule {
+}
