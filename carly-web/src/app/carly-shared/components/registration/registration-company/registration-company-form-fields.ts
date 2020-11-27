@@ -69,5 +69,13 @@ export const regCompanyFormFields: FormGroupHelper.Model[] = [
         validator: 'required'
       }
     ]
+  },
+  {
+    inputName: 'role',
+    label: 'Company type',
+    validators: [Validators.required],
+    type: 'checkbox',
+    cols: 2,
+    rows: 1
   }
 ];
