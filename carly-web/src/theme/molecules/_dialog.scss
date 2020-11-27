@@ -1,0 +1,30 @@
+@import '../../theme/atoms/variables.scss';
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    margin-bottom: 2em;
+  }
+
+  i {
+    color: $warningColor;
+    font-size: 4em;
+    margin-bottom: 0.4em;
+    margin-top: 0.2em;
+  }
+
+  p {
+    font-size: 2em;
+    margin-bottom: 1.4em;
+  }
+
+}
+
+.controls {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
