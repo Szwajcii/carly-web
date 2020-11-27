@@ -1,0 +1,5 @@
+export enum MatchStatus {
+  MATCHED = 'MATCHED',
+  PENDING_APPROVAL = 'PENDING_APPROVAL',
+  NOT_MATCHED = 'NOT_MATCHED'
+}
