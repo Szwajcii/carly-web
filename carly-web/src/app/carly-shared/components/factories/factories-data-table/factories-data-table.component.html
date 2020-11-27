@@ -1,0 +1,45 @@
+<div class="data-table" style="width: 100%">
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Filter</mat-label>
+    <input matInput [(ngModel)]="filter" #ctrl="ngModel" (keyup)="applyFilter($event.target.value)" placeholder="Type here to filter...">
+  </mat-form-field>
+
+  <mat-table mat-table #table [dataSource]="datasource" matSort>
+
+    <!-- Name column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a [routerLink]="['details', element.company.id]">{{element.company.companyName}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Contract status -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.matchStatus}}</mat-cell>
+    </ng-container>
+
+    <!-- Action column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="align-center">Action</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-center">
+        <button mat-stroked-button color="primary" (click)="openRequestMatchingDialog(element.company)">Request matching</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="datasource.data.length"
+                 [pageIndex]="0"
+                 [pageSize]="25"
+                 [pageSizeOptions]="[25, 50, 100]"
+                 [hidden]="datasource.data.length === 0">
+  </mat-paginator>
+
+</div>
