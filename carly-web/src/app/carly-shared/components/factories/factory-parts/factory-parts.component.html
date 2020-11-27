@@ -1,0 +1,23 @@
+<mat-tab-group mat-align-tabs="start">
+
+  <ng-container *ngFor="let partType of parts | keyvalue">
+
+    <mat-tab label="{{partType.key}}">
+
+      <ul class="part-list">
+
+        <ng-container *ngFor="let part of partType.value">
+
+          <li>
+            <a [routerLink]="" (click)="openPartDetails(part, partType.key)">{{part.name}}</a>
+          </li>
+
+        </ng-container>
+
+      </ul>
+
+    </mat-tab>
+
+  </ng-container>
+
+</mat-tab-group>

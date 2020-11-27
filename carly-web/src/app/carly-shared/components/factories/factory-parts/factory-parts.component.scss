@@ -1,0 +1,32 @@
+.part-list {
+  list-style: none;
+  padding: 0;
+  max-height: 550px;
+
+  li {
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    a {
+      width: 100%;
+      line-height: 3em;
+      display: block;
+      padding: 0.5em 2em;
+      color: #212121;
+      font-size: 16px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        font-weight: bold;
+        color: #eba200;
+        background: #eba20012;
+      }
+
+    }
+
+  }
+
+}
