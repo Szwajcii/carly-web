@@ -12,7 +12,7 @@ import {DataTableComponent} from '../data-table/data-table.component';
 })
 export class EnginesComponent implements OnInit {
 
-  CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyFactory = Roles.CARLY_FACTORY;
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
@@ -49,7 +49,7 @@ export class EnginesComponent implements OnInit {
 
   deleteEngine(id: string) {
     console.log(id);
-    // todo: Call breaks service to delete part.
+
   }
 
 }

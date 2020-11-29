@@ -8,7 +8,8 @@ import {Roles} from '../../model/roles.model';
 })
 export class CarModelComponent implements OnInit {
 
-  CarlyCompany = Roles.CARLY_COMPANY;
+  CarlyFactory = Roles.CARLY_FACTORY;
+  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
   constructor() { }
 

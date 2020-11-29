@@ -7,7 +7,7 @@
         <button mat-stroked-button color="primary">
           Clear all
         </button>
-        <button *appUserCanAccess="[CarlyCompany]" mat-flat-button color="accent" [routerLink]="['/models/add']">
+        <button *appUserCanAccess="[CarlyFactory, CarlyAdministrator]" mat-flat-button color="accent" [routerLink]="['/models/add']">
           Add model
         </button>
       </div>
