@@ -4,7 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {Company} from '../../../model/company.model';
-import {MatchRequestDialogComponent} from '../match-request-dialog/match-request-dialog.component';
+import {FactoryMatchDialogComponent} from '../factory-match-request-dialog/factory-match-dialog.component';
+import {MatchStatus} from '../../../model/match-status.enum';
 
 @Component({
   selector: 'app-factories-data-table',
@@ -12,6 +13,8 @@ import {MatchRequestDialogComponent} from '../match-request-dialog/match-request
   styleUrls: ['./factories-data-table.component.scss']
 })
 export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
+
+  Matched = MatchStatus.MATCHED;
 
   public filter: string;
   public datasource = new MatTableDataSource([]);
@@ -58,9 +61,9 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
   }
 
 
-  openRequestMatchingDialog(factory: Company.Model) {
+  openMatchDialog(factory: Company.Model) {
     console.log(factory);
-    const dialogRef = this.dialog.open(MatchRequestDialogComponent, {
+    const dialogRef = this.dialog.open(FactoryMatchDialogComponent, {
       data: {
         companyName: factory.companyName,
         companyId: factory.id

@@ -1,9 +1,14 @@
 <div class="data-table" style="width: 100%">
 
-  <mat-form-field style="width: 100%">
-    <mat-label>Filter</mat-label>
-    <input matInput [(ngModel)]="filter" #ctrl="ngModel" (keyup)="applyFilter($event.target.value)" placeholder="Type here to filter...">
-  </mat-form-field>
+  <div class="filter-bar">
+    <mat-form-field style="width: 100%; margin-top: 1em;">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="filter" #ctrl="ngModel"
+             (keyup)="applyFilter($event.target.value)"
+             placeholder="Type here to search...">
+    </mat-form-field>
+    <button mat-stroked-button color="primary">Clear</button>
+  </div>
 
   <mat-table mat-table #table [dataSource]="datasource" matSort>
 
@@ -17,15 +22,22 @@
 
     <!-- Contract status -->
     <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.matchStatus}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="align-center">Status</mat-header-cell>
+      <mat-cell *matCellDef="let element"
+                [ngStyle]="element.matchStatus === Matched ? {'color' : 'green'} : {'color' : 'red'}"
+                class="align-center">{{element.matchStatus | StatusPipe}}</mat-cell>
     </ng-container>
 
     <!-- Action column -->
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="align-center">Action</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="align-center">
-        <button mat-stroked-button color="primary" (click)="openRequestMatchingDialog(element.company)">Request matching</button>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="align-right">Action</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-right">
+        <ng-container *ngIf="element.matchStatus !== Matched">
+          <button mat-stroked-button color="primary" (click)="openMatchDialog(element.company)">Request matching</button>
+        </ng-container>
+        <ng-container *ngIf="element.matchStatus === Matched">
+          <button mat-stroked-button color="warn" (click)="openMatchDialog(element.company)">Cancel contact</button>
+        </ng-container>
       </mat-cell>
     </ng-container>
 
@@ -37,8 +49,8 @@
   <mat-paginator #paginator
                  [length]="datasource.data.length"
                  [pageIndex]="0"
-                 [pageSize]="25"
-                 [pageSizeOptions]="[25, 50, 100]"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 15]"
                  [hidden]="datasource.data.length === 0">
   </mat-paginator>
 
