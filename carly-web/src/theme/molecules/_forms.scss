@@ -112,3 +112,25 @@
   justify-content: space-between;
   margin-top: auto;
 }
+
+
+.details--field {
+
+  width: 100%;
+  margin-bottom: 1em;
+
+  span {
+    font-size: 10px;
+    color: $col-text;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    color: $col-text;
+    background-image: linear-gradient(to right, #333 40%, rgba(255, 255, 255, 0) 20%);
+    background-position: bottom;
+    background-size: 3px 1px;
+    background-repeat: repeat-x;
+  }
+
+}
