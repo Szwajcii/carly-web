@@ -2,10 +2,10 @@ import {Page} from './paginated.model';
 import {PreModel} from './premodel.model';
 
 
-export namespace Breaks {
+export namespace Brake {
 
   export interface Model extends PreModel {
-    breaksType: BreaksType;
+    brakeType: BrakeType;
   }
 
   export type PaginatedModel = Page<Model>;
@@ -14,7 +14,7 @@ export namespace Breaks {
 
   export type PUT = Model;
 
-  export enum BreaksType {
+  export enum BrakeType {
     HYDRAULIC = 'HYDRAULIC',
     MECHANIC = 'MECHANIC',
     PNEUMATIC = 'PNEUMATIC'

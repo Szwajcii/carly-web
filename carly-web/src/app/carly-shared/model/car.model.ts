@@ -2,7 +2,7 @@ import {PreModel} from './premodel.model';
 import {Page} from './paginated.model';
 import {Transmission} from './transmission.enum';
 import {Engine} from './engine.model';
-import {Breaks} from './breaks.model';
+import {Brake} from './brakes.model';
 import {Wheels} from './wheels.model';
 import {Tires} from './tires.model';
 import {Windows} from './windows.model';
@@ -16,7 +16,7 @@ export namespace Car {
     model: CarModel.Model;
     engine: Engine.Model;
     wheels: Wheels.Model;
-    breaks: Breaks.Model;
+    brakes: Brake.Model;
     tires: Tires.Model;
     windows: Windows.Model;
     bodyPainting: Painting.Model;
