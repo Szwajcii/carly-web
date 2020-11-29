@@ -1,5 +1,9 @@
 <div class="dialog-content">
-  <h3>Do you want to sign contract with this factory?</h3>
+  <ng-container *ngIf="cancelContract">
+    <i class="fas fa-exclamation-circle"></i>
+    <h3>Do you want to cancel contract with this factory?</h3>
+  </ng-container>
+  <h3 *ngIf="!cancelContract">Do you want to sign contract with this factory?</h3>
   <p>{{companyName}}</p>
   <div class="controls">
     <button mat-flat-button color="warn" (click)="onCancel()">Cancel</button>
