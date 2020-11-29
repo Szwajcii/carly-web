@@ -1,5 +1,6 @@
 import {FormGroupHelper} from '../../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
+import {Roles} from '../../../model/roles.model';
 
 export const regCompanyFormFields: FormGroupHelper.Model[] = [
   {
@@ -74,8 +75,12 @@ export const regCompanyFormFields: FormGroupHelper.Model[] = [
     inputName: 'role',
     label: 'Company type',
     validators: [Validators.required],
-    type: 'checkbox',
-    cols: 2,
-    rows: 1
+    type: 'select',
+    cols: 4,
+    rows: 1,
+    selectOptions: [
+      {label: 'Distributor', value: Roles.CARLY_COMPANY},
+      {label: 'Factory', value: Roles.CARLY_FACTORY}
+    ]
   }
 ];

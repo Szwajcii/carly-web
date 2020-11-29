@@ -17,6 +17,7 @@ export namespace Registration {
   }
 
   export interface CompanyModel {
+    role: string;
     companyName: string;
     address?: Address;
   }
