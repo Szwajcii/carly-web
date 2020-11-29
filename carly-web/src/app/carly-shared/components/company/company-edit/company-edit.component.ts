@@ -46,7 +46,7 @@ export class CompanyEditComponent implements OnInit {
   }
 
   findCompanyId(): Observable<string> {
-    return this.userManagementService.isUserHasRole(Roles.CARLY_COMPANY)
+    return this.userManagementService.isUserHasOneOfRoles([Roles.CARLY_COMPANY, Roles.CARLY_FACTORY])
       .pipe(
         mergeMap(hasRole => {
           if (hasRole) {
