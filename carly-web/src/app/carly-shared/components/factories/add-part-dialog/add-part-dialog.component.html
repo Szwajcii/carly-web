@@ -1,0 +1,27 @@
+<div class="dialog-content">
+  <h2>Add this part to cart:</h2>
+  <p>{{partName}}</p>
+
+  <div class="amount-controls">
+
+    <button mat-stroked-button type="button" (click)="removeAmount()">
+      <i class="fas fa-minus"></i>
+    </button>
+
+    <input type="number" [(ngModel)]="amount"
+           (ngModelChange)="changeTotalAmount()"
+           (change)="isValidAmount($event)">
+
+    <button mat-stroked-button (click)="addAmount()">
+      <i class="fas fa-plus"></i>
+    </button>
+
+  </div>
+
+  <h2>Total price: ${{totalPrice | PricePipe}}</h2>
+
+  <div class="controls">
+    <button mat-flat-button type="button" class="col-danger" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Add to cart</button>
+  </div>
+</div>
