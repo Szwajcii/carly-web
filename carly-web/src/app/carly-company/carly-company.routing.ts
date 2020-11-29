@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CarlyCompanyComponent} from './carly-company.component';
 import {PartsComponent} from '../carly-shared/components/parts/parts.component';
 import {CarsComponent} from '../carly-shared/components/cars/cars.component';
-import {BreaksComponent} from '../carly-shared/components/breaks/breaks.component';
+import {BrakesComponent} from '../carly-shared/components/brakes/brakes.component';
 import {EnginesComponent} from '../carly-shared/components/engines/engines.component';
 import {TiresComponent} from '../carly-shared/components/tires/tires.component';
 import {WheelsComponent} from '../carly-shared/components/wheels/wheels.component';
@@ -13,7 +13,7 @@ import {NewsComponent} from '../carly-shared/components/news/news.component';
 import {NewsEditComponent} from '../carly-shared/components/news/news-edit/news-edit.component';
 import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
 import {HomeComponent} from '../carly-shared/components/home/home.component';
-import {BreaksEditComponent} from '../carly-shared/components/breaks/breaks-edit/breaks-edit.component';
+import {BrakesEditComponent} from '../carly-shared/components/brakes/brakes-edit/brakes-edit.component';
 import {EngineEditComponent} from '../carly-shared/components/engines/engine-edit/engine-edit.component';
 import {EquipmentEditComponent} from '../carly-shared/components/equipment/equipment-edit/equipment-edit.component';
 import {TiresEditComponent} from '../carly-shared/components/tires/tires-edit/tires-edit.component';
@@ -26,6 +26,7 @@ import {CarModelComponent} from '../carly-shared/components/car-model/car-model.
 import {CarModelEditComponent} from '../carly-shared/components/car-model/car-model-edit/car-model-edit.component';
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {FactoryDetailsComponent} from '../carly-shared/components/factories/factory-details/factory-details.component';
+import {OrderDetailsComponent} from "../carly-shared/components/orders/order-details/order-details.component";
 
 
 export const ROUTES: Routes = [
@@ -42,7 +43,13 @@ export const ROUTES: Routes = [
           {path: ':id', component: NewsEditComponent}
         ]
       },
-      {path: 'orders', component: OrdersComponent},
+      {
+        path: 'orders',
+        children: [
+          {path: '', component: OrdersComponent},
+          {path: 'details/:id', component: OrderDetailsComponent}
+        ]
+      },
       {
         path: 'cars',
         children: [
@@ -58,10 +65,10 @@ export const ROUTES: Routes = [
       },
       {path: 'parts', component: PartsComponent},
       {
-        path: 'breaks',
+        path: 'brakes',
         children: [
-          {path: '', component: BreaksComponent},
-          {path: 'details/:id', component: BreaksEditComponent}
+          {path: '', component: BrakesComponent},
+          {path: 'details/:id', component: BrakesEditComponent}
         ]
       },
       {

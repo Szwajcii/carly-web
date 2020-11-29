@@ -7,9 +7,9 @@ import {OrdersComponent} from './components/orders/orders.component';
 import {EnginesComponent} from './components/engines/engines.component';
 import {EngineAddComponent} from './components/engines/engine-add/engine-add.component';
 import {EngineEditComponent} from './components/engines/engine-edit/engine-edit.component';
-import {BreaksComponent} from './components/breaks/breaks.component';
-import {BreaksFormComponent} from './components/breaks/breaks-form/breaks-form.component';
-import {BreaksEditComponent} from './components/breaks/breaks-edit/breaks-edit.component';
+import {BrakesComponent} from './components/brakes/brakes.component';
+import {BrakesFormComponent} from './components/brakes/brakes-form/brakes-form.component';
+import {BrakesEditComponent} from './components/brakes/brakes-edit/brakes-edit.component';
 import {CarlyMatModule} from './modules/carly-mat.module';
 import {RouterModule} from '@angular/router';
 import {EquipmentComponent} from './components/equipment/equipment.component';
@@ -30,7 +30,7 @@ import {PaintingEditComponent} from './components/painting/painting-edit/paintin
 import {FormGroupComponent} from './components/form-group/form-group.component';
 import {FilterBarComponent} from './components/filter-bar/filter-bar.component';
 import {PartsFormComponent} from './components/parts/parts-form/parts-form.component';
-import {BreaksAddComponent} from './components/breaks/breaks-add/breaks-add.component';
+import {BrakesAddComponent} from './components/brakes/brakes-add/brakes-add.component';
 import {EngineFormComponent} from './components/engines/engine-form/engine-form.component';
 import {WheelsFormComponent} from './components/wheels/wheels-form/wheels-form.component';
 import {WindowsFormComponent} from './components/windows/windows-form/windows-form.component';
@@ -74,11 +74,17 @@ import {CarEditComponent} from './components/cars/car-edit/car-edit.component';
 import {ConfirmationDialogComponent} from './components/confirmation-dialog/confirmation-dialog.component';
 import {FactoriesComponent} from './components/factories/factories.component';
 import {DeletePartDialogComponent} from './components/delete-part-dialog/delete-part-dialog.component';
-import {MatchRequestDialogComponent} from './components/factories/match-request-dialog/match-request-dialog.component';
+import {FactoryMatchDialogComponent} from './components/factories/factory-match-request-dialog/factory-match-dialog.component';
 import {FactoryDetailsComponent} from './components/factories/factory-details/factory-details.component';
 import {FactoryPartsComponent} from './components/factories/factory-parts/factory-parts.component';
 import {FactoriesDataTableComponent} from './components/factories/factories-data-table/factories-data-table.component';
 import {PartDetailsDialogComponent} from './components/part-details-dialog/part-details-dialog.component';
+import { AddPartDialogComponent } from './components/factories/add-part-dialog/add-part-dialog.component';
+import { OrderDataTableComponent } from './components/orders/order-data-table/order-data-table.component';
+import { CartDataComponent } from './components/orders/cart-data/cart-data.component';
+import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
+import {PricePipe} from './services/price.pipe';
+import {StatusPipe} from './services/status.pipe';
 
 
 @NgModule({
@@ -91,9 +97,9 @@ import {PartDetailsDialogComponent} from './components/part-details-dialog/part-
     EnginesComponent,
     EngineAddComponent,
     EngineEditComponent,
-    BreaksComponent,
-    BreaksFormComponent,
-    BreaksEditComponent,
+    BrakesComponent,
+    BrakesFormComponent,
+    BrakesEditComponent,
     EquipmentComponent,
     EquipmentAddComponent,
     EquipmentEditComponent,
@@ -112,7 +118,7 @@ import {PartDetailsDialogComponent} from './components/part-details-dialog/part-
     FormGroupComponent,
     FilterBarComponent,
     PartsFormComponent,
-    BreaksAddComponent,
+    BrakesAddComponent,
     EngineFormComponent,
     WheelsFormComponent,
     WindowsFormComponent,
@@ -153,11 +159,17 @@ import {PartDetailsDialogComponent} from './components/part-details-dialog/part-
     ConfirmationDialogComponent,
     FactoriesComponent,
     DeletePartDialogComponent,
-    MatchRequestDialogComponent,
+    FactoryMatchDialogComponent,
     FactoryDetailsComponent,
     FactoryPartsComponent,
     FactoriesDataTableComponent,
-    PartDetailsDialogComponent
+    PartDetailsDialogComponent,
+    AddPartDialogComponent,
+    OrderDataTableComponent,
+    CartDataComponent,
+    OrderDetailsComponent,
+    PricePipe,
+    StatusPipe
   ],
   exports: [
     LoadingSpinnerComponent,
@@ -165,7 +177,9 @@ import {PartDetailsDialogComponent} from './components/part-details-dialog/part-
     CarlyMatModule,
     FormGroupComponent,
     DatePipe,
-    DateTimePipe
+    DateTimePipe,
+    PricePipe,
+    StatusPipe
   ],
   imports: [
     CommonModule,

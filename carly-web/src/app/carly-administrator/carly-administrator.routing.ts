@@ -4,9 +4,9 @@ import {NewsComponent} from '../carly-shared/components/news/news.component';
 import {CarlyAdministratorComponent} from './carly-administrator.component';
 import {HomeComponent} from '../carly-shared/components/home/home.component';
 import {PartsComponent} from '../carly-shared/components/parts/parts.component';
-import {BreaksComponent} from '../carly-shared/components/breaks/breaks.component';
-import {BreaksAddComponent} from '../carly-shared/components/breaks/breaks-add/breaks-add.component';
-import {BreaksEditComponent} from '../carly-shared/components/breaks/breaks-edit/breaks-edit.component';
+import {BrakesComponent} from '../carly-shared/components/brakes/brakes.component';
+import {BrakesAddComponent} from '../carly-shared/components/brakes/brakes-add/brakes-add.component';
+import {BrakesEditComponent} from '../carly-shared/components/brakes/brakes-edit/brakes-edit.component';
 import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
 import {EnginesComponent} from '../carly-shared/components/engines/engines.component';
 import {EngineAddComponent} from '../carly-shared/components/engines/engine-add/engine-add.component';
@@ -75,11 +75,11 @@ export const ROUTES: Routes = [
       },
       {path: 'parts', component: PartsComponent},
       {
-        path: 'breaks',
+        path: 'brakes',
         children: [
-          {path: '', component: BreaksComponent},
-          {path: 'add', component: BreaksAddComponent},
-          {path: 'details/:id', component: BreaksEditComponent}
+          {path: '', component: BrakesComponent},
+          {path: 'add', component: BrakesAddComponent},
+          {path: 'details/:id', component: BrakesEditComponent}
         ]
       },
       {

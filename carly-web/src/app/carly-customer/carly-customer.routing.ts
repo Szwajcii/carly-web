@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {CarlyCustomerComponent} from './carly-customer.component';
 import {HomeComponent} from '../carly-shared/components/home/home.component';
 import {PartsComponent} from '../carly-shared/components/parts/parts.component';
-import {BreaksComponent} from '../carly-shared/components/breaks/breaks.component';
-import {BreaksEditComponent} from '../carly-shared/components/breaks/breaks-edit/breaks-edit.component';
+import {BrakesComponent} from '../carly-shared/components/brakes/brakes.component';
+import {BrakesEditComponent} from '../carly-shared/components/brakes/brakes-edit/brakes-edit.component';
 import {EnginesComponent} from '../carly-shared/components/engines/engines.component';
 import {EngineEditComponent} from '../carly-shared/components/engines/engine-edit/engine-edit.component';
 import {TiresComponent} from '../carly-shared/components/tires/tires.component';
@@ -36,10 +36,10 @@ export const ROUTES: Routes = [
       },
       {path: 'parts', component: PartsComponent},
       {
-        path: 'breaks',
+        path: 'brakes',
         children: [
-          {path: '', component: BreaksComponent},
-          {path: 'details/:id', component: BreaksEditComponent}
+          {path: '', component: BrakesComponent},
+          {path: 'details/:id', component: BrakesEditComponent}
         ]
       },
       {
