@@ -1,14 +1,24 @@
 .modal-content {
 
-  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   border: none;
 
-  .flex-container__content--image {
+  .part-details {
+    width: 200px;
+  }
+
+  .part-image {
 
     img {
-      width: 360px;
+      width: 300px;
     }
 
+  }
+
+  mat-divider {
+    margin: 0 2em;
   }
 
 }
