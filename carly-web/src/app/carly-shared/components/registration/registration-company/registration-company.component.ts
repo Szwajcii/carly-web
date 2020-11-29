@@ -6,6 +6,8 @@ import {regCompanyFormFields} from './registration-company-form-fields';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {AuthService} from '../../auth/auth.service';
 import {addressFormFields} from '../../../model/address-form-fields';
+import {MatDialogRef} from '@angular/material/dialog';
+import {RegistrationComponent} from '../registration.component';
 
 @Component({
   selector: 'app-registration-company',
@@ -26,7 +28,8 @@ export class RegistrationCompanyComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private formGroupService: FormGroupHelperService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialogRef: MatDialogRef<RegistrationComponent>
   ) {
   }
 
@@ -52,18 +55,40 @@ export class RegistrationCompanyComponent implements OnInit {
       return;
     }
 
+    // Because we have nested component in dialog component
+    // we need to set property by using reference to this dialog
+    this.dialogRef.componentInstance.loading = true;
+
     const registration: Registration.Model = {
       ...this.regCompanyDetailsForm.value
     };
 
     this.authService.signUpCompany(registration).subscribe(
       data => {
+        this.onRegistrationSuccess();
         console.log(100, data);
       }, error => {
+        this.onRegistrationFailure();
         console.log(error);
       }
     );
 
+  }
+
+  onRegistrationSuccess() {
+    this.dialogRef.componentInstance.title = 'Success! Welcome on board!';
+    this.dialogRef.componentInstance.message = 'Please check your email to continue.';
+    this.dialogRef.componentInstance.isSuccess = true;
+    this.dialogRef.componentInstance.isRegistration = false;
+    this.dialogRef.componentInstance.loading = false;
+  }
+
+  onRegistrationFailure() {
+    this.dialogRef.componentInstance.title = 'Success! Welcome on board!';
+    this.dialogRef.componentInstance.message = 'Unexpected error occurred! Please try later!';
+    this.dialogRef.componentInstance.isSuccess = false;
+    this.dialogRef.componentInstance.isRegistration = false;
+    this.dialogRef.componentInstance.loading = false;
   }
 
 }
