@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormAction} from '../../../model/form-action.model';
 
 @Component({
-  selector: 'app-breaks-add',
-  templateUrl: './breaks-add.component.html',
-  styleUrls: ['./breaks-add.component.scss']
+  selector: 'app-brakes-add',
+  templateUrl: './brakes-add.component.html',
+  styleUrls: ['./brakes-add.component.scss']
 })
-export class BreaksAddComponent implements OnInit {
+export class BrakesAddComponent implements OnInit {
 
   formAction = FormAction.CREATE;
 

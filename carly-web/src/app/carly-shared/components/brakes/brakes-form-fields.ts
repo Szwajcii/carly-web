@@ -1,10 +1,10 @@
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
 import {ValueLabel} from '../../model/value-label';
-import {Breaks} from '../../model/breaks.model';
+import {Brake} from '../../model/brakes.model';
 
 
-export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
+export const brakesDetailsFormFields: FormGroupHelper.Model[] = [
   {
     inputName: 'name',
     label: 'Name',
@@ -32,13 +32,13 @@ export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
     selectOptions: []
   },
   {
-    inputName: 'breaksType',
-    label: 'Breaks type',
+    inputName: 'brakeType',
+    label: 'Brake type',
     validators: [Validators.required],
     type: 'select',
     cols: 4,
     rows: 1,
-    selectOptions: [...Object.values(Breaks.BreaksType).map(value => ({label: value, value}))]
+    selectOptions: [...Object.values(Brake.BrakeType).map(value => ({label: value, value}))]
   },
   {
     inputName: 'price',
@@ -50,17 +50,17 @@ export const breaksDetailsFormFields: FormGroupHelper.Model[] = [
   }
 ];
 
-export const breaksPreviews: Array<ValueLabel> = [
+export const brakes: Array<ValueLabel> = [
   {
-    value: 'breaks_1.png',
+    value: 'brakes_1.png',
     label: 'Preview 1'
   },
   {
-    value: 'breaks_2.png',
+    value: 'brakes_2.png',
     label: 'Preview 2'
   },
   {
-    value: 'breaks_3.png',
+    value: 'brakes_3.png',
     label: 'Preview 3'
   }
 ];

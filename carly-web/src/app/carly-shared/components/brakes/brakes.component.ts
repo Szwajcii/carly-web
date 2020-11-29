@@ -5,32 +5,32 @@ import {Roles} from '../../model/roles.model';
 import {FilterBarComponent} from '../filter-bar/filter-bar.component';
 import {FormGroupHelperService} from '../../services/form-group-helper.service';
 import {MessageService} from '../../services/message.service';
-import {BreaksManagementService} from '../../resources/breaks-management.service';
+import {BrakesManagementService} from '../../resources/brakes-management.service';
 import {partsFilterFormFields} from '../../model/parts-filter-form';
-import {Breaks} from '../../model/breaks.model';
+import {Brake} from '../../model/brakes.model';
 import {DataTableComponent} from '../data-table/data-table.component';
 
 @Component({
-  selector: 'app-breaks',
-  templateUrl: './breaks.component.html',
-  styleUrls: ['./breaks.component.scss']
+  selector: 'app-brakes',
+  templateUrl: './brakes.component.html',
+  styleUrls: ['./brakes.component.scss']
 })
-export class BreaksComponent implements OnInit {
+export class BrakesComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
   CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
 
   @ViewChild('filterBar') filterBar: FilterBarComponent;
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
-  breaks: Breaks.Model[];
+  brakes: Brake.Model[];
   loading = true;
   noRecords = false;
 
-  public breaksFilterFormControls = this.formGroupService.addControlToModel(partsFilterFormFields);
-  public breaksFilterForm = this.formBuilder.group(this.formGroupService.getControlsFromModel(this.breaksFilterFormControls));
+  public brakesFilterFormControls = this.formGroupService.addControlToModel(partsFilterFormFields);
+  public brakesFilterForm = this.formBuilder.group(this.formGroupService.getControlsFromModel(this.brakesFilterFormControls));
 
   public generalForm = this.formBuilder.group({
-    breaksFilterForm: this.breaksFilterForm
+    brakesFilterForm: this.brakesFilterForm
   });
 
   public displayedColumns: Array<string> = [
@@ -44,15 +44,15 @@ export class BreaksComponent implements OnInit {
     private formGroupService: FormGroupHelperService,
     private messageService: MessageService,
     private formBuilder: FormBuilder,
-    private breaksService: BreaksManagementService
+    private brakesService: BrakesManagementService
   ) {
   }
 
   ngOnInit(): void {
-    this.breaksService.findAllBreaks().subscribe(resData => {
-      this.breaks = resData;
+    this.brakesService.findAllBrakes().subscribe(resData => {
+      this.brakes = resData;
       this.loading = false;
-      this.noRecords = this.breaks.length === 0;
+      this.noRecords = this.brakes.length === 0;
     }, error => {
       this.messageService.showMessage('Connection problem', 3000);
       this.loading = false;
@@ -64,9 +64,9 @@ export class BreaksComponent implements OnInit {
     this.dataTable.clearFilter();
   }
 
-  deleteBreaks(id: string) {
+  deleteBrakes(id: string) {
     console.log(id);
-    // todo: Call breaks service to delete part.
+    this.brakesService.delete(id);
   }
 
 }

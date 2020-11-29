@@ -3,46 +3,46 @@ import {ActivatedRoute} from '@angular/router';
 import {map, mergeMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
-import {Breaks} from '../../../model/breaks.model';
+import {Brake} from '../../../model/brakes.model';
 import {FormAction} from '../../../model/form-action.model';
-import {BreaksManagementService} from '../../../resources/breaks-management.service';
+import {BrakesManagementService} from '../../../resources/brakes-management.service';
 import {MessageService} from '../../../services/message.service';
 
 @Component({
-  selector: 'app-breaks-edit',
-  templateUrl: './breaks-edit.component.html',
-  styleUrls: ['./breaks-edit.component.scss']
+  selector: 'app-brakes-edit',
+  templateUrl: './brakes-edit.component.html',
+  styleUrls: ['./brakes-edit.component.scss']
 })
-export class BreaksEditComponent implements OnInit {
+export class BrakesEditComponent implements OnInit {
 
-  breaksModel: Breaks.Model;
+  brakesModel: Brake.Model;
   formAction = FormAction.EDIT;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private breaksManagementService: BreaksManagementService,
+    private brakesManagementService: BrakesManagementService,
     private messageService: MessageService
   ) {
   }
 
   ngOnInit(): void {
 
-    this.findBreaksById()
+    this.findBrakesById()
       .pipe(
-        mergeMap(id => this.breaksManagementService.findById(id)),
+        mergeMap(id => this.brakesManagementService.findById(id)),
         map(model => {
           console.log(200, model);
           return model;
         })
       ).subscribe(model => {
-      this.breaksModel = model;
+      this.brakesModel = model;
     }, error => {
         this.messageService.showMessage('Unexpected error occurred!');
         console.log(error);
     });
   }
 
-  private findBreaksById(): Observable<string> {
+  private findBrakesById(): Observable<string> {
     return this.activatedRoute.params.pipe(map(params => params.id));
   }
 

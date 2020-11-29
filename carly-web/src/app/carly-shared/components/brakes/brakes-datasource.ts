@@ -1,16 +1,16 @@
 import {AbstractDatasource} from '../../utils/table/abstract-datasource';
-import {Breaks} from '../../model/breaks.model';
+import {Brake} from '../../model/brakes.model';
 import {MatPaginator} from '@angular/material/paginator';
 import {HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Page} from '../../model/paginated.model';
 import {MessageService} from '../../services/message.service';
-import {BreaksManagementService} from '../../resources/breaks-management.service';
+import {BrakesManagementService} from '../../resources/brakes-management.service';
 
-export class BreaksDatasource extends AbstractDatasource<Breaks.Model> {
+export class BrakesDatasource extends AbstractDatasource<Brake.Model> {
 
   constructor(
-    private breaksService: BreaksManagementService,
+    private brakesService: BrakesManagementService,
     private matPaginator: MatPaginator,
     messageService: MessageService
   ) {
@@ -18,11 +18,11 @@ export class BreaksDatasource extends AbstractDatasource<Breaks.Model> {
     this.paginator = matPaginator;
   }
 
-  protected loadPage(params: HttpParams): Observable<Page<Breaks.Model>> {
-    return this.breaksService.findAll(params);
+  protected loadPage(params: HttpParams): Observable<Page<Brake.Model>> {
+    return this.brakesService.findAll(params);
   }
 
-  connect(): Observable<Breaks.Model[]> {
+  connect(): Observable<Brake.Model[]> {
     return this.observePage();
   }
 
