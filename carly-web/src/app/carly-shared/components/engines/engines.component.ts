@@ -13,7 +13,7 @@ import {DataTableComponent} from '../data-table/data-table.component';
 export class EnginesComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
 
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   engines: Engine.Model[];

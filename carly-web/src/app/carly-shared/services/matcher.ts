@@ -12,7 +12,7 @@ export class CarlyMatcher {
   ) {
     const user = JSON.parse(localStorage.getItem(USER_CONTEXT));
 
-    const isMatch = user ? user.roles.includes(Roles.CARLY_ADMINISTRATOR) : false;
+    const isMatch = user ? user.roles.includes(Roles.ADMINISTRATOR) : false;
     if (isMatch) {
       return {consumed: []};
     } else {

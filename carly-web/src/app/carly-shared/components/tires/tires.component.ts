@@ -13,7 +13,7 @@ import {MessageService} from '../../services/message.service';
 export class TiresComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
 
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   tires: Tires.Model[];

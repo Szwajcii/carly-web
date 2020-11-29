@@ -18,7 +18,7 @@ import {DataTableComponent} from '../data-table/data-table.component';
 export class BrakesComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
 
   @ViewChild('filterBar') filterBar: FilterBarComponent;
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;

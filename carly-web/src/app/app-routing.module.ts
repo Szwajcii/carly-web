@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         canActivate: [CarlyRoleGuard],
-        data: {roles: [Roles.CARLY_ADMINISTRATOR]},
+        data: {roles: [Roles.ADMINISTRATOR]},
         matcher: CarlyMatcher.carlyAdministratorMatcher,
         loadChildren: () => import('./carly-administrator/carly-administrator.module').then(module => module.CarlyAdministratorModule)
       },

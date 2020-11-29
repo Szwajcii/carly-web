@@ -13,7 +13,7 @@ import {PaintingManagementService} from '../../resources/painting-management.ser
 export class PaintingComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
 
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   paintings: Painting.Model[];

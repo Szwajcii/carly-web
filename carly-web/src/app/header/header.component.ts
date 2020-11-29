@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   isAuthenticated = false;
 
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
   CarlyCompany = Roles.CARLY_COMPANY;
   CarlyCustomer = Roles.CARLY_CUSTOMER;
   CarlyFactory = Roles.CARLY_FACTORY;

@@ -11,7 +11,7 @@ import {DataTableComponent} from '../data-table/data-table.component';
 export class WheelsComponent implements OnInit {
 
   CarlyFactory = Roles.CARLY_FACTORY;
-  CarlyAdministrator = Roles.CARLY_ADMINISTRATOR;
+  CarlyAdministrator = Roles.ADMINISTRATOR;
 
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
   wheels: Wheels.Model[];
