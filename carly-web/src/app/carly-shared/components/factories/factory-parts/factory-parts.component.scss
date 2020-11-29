@@ -5,9 +5,26 @@
 
   li {
 
+    display: flex;
+    align-items: center;
+
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     }
+
+    &:hover {
+      color: #eba200;
+      background: #fff8e7;
+
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #eba200;
+        background: #fff8e7;
+      }
+
+    }
+
 
     a {
       width: 100%;
@@ -17,14 +34,10 @@
       color: #212121;
       font-size: 16px;
       text-decoration: none;
+    }
 
-      &:hover {
-        text-decoration: none;
-        font-weight: bold;
-        color: #eba200;
-        background: #eba20012;
-      }
-
+    button {
+      margin-right: 1em;
     }
 
   }

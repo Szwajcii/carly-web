@@ -10,6 +10,11 @@
 
           <li>
             <a [routerLink]="" (click)="openPartDetails(part, partType.key)">{{part.name}}</a>
+            <ng-container *ngIf="isMatched">
+              <button mat-stroked-button color="accent" (click)="openAddToCartDialog(part)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </ng-container>
           </li>
 
         </ng-container>

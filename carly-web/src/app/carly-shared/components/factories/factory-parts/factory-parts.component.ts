@@ -1,66 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {PartDetailsDialogComponent} from '../../part-details-dialog/part-details-dialog.component';
+import {AddPartDialogComponent} from '../add-part-dialog/add-part-dialog.component';
 
 export const TEST_DATA = [
   {
-    name: 'Breaks One',
-    preview: 'breaks_1.png',
+    name: 'Brakes One',
+    preview: 'brakes_1.png',
     price: 300
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   },
   {
-    name: 'Breaks Two',
-    preview: 'breaks_2.png',
+    name: 'Brakes Two',
+    preview: 'brakes_2.png',
     price: 150
   }
 ];
@@ -73,6 +74,7 @@ export const TEST_DATA = [
 })
 export class FactoryPartsComponent implements OnInit {
 
+  @Input() isMatched: boolean;
   parts = new Map();
 
   constructor(
@@ -82,7 +84,7 @@ export class FactoryPartsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.parts.set('Breaks', TEST_DATA);
+    this.parts.set('Brakes', TEST_DATA);
     this.parts.set('Wheels', TEST_DATA);
     this.parts.set('Engines', TEST_DATA);
     this.parts.set('Equipment', TEST_DATA);
@@ -97,6 +99,15 @@ export class FactoryPartsComponent implements OnInit {
       data: {
         partPreview: part.preview,
         partType: type
+      }
+    });
+  }
+
+  openAddToCartDialog(part: any) {
+    this.dialog.open(AddPartDialogComponent, {
+      data: {
+        partName: part.name,
+        partPrice: part.price
       }
     });
   }
