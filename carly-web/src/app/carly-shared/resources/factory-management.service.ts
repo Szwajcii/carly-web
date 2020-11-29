@@ -19,6 +19,10 @@ export class FactoryManagementService {
   }
 
   requestMatching(factoryId: string) {
-    return null;
+    console.log('Request matching for id: ', factoryId);
+  }
+
+  cancelMatching(factoryId: string) {
+    console.log(factoryId);
   }
 }
