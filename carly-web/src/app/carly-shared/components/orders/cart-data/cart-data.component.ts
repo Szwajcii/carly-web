@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CartElement} from '../../../model/cart-element.model';
 
 @Component({
   selector: 'app-cart-data',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartDataComponent implements OnInit {
 
+  @Input() cartElements: CartElement[];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick($event: any) {
+    $event.preventDefault();
+  }
+
+  removeItem() {
+
   }
 
 }
