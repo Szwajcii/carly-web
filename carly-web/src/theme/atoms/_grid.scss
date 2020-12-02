@@ -29,12 +29,14 @@
       background-size: 200px 200px;
       background-position-x: center;
       background-position-y: 1.4em;
+      box-shadow: $box-shadow__grid-card;
+      transition: $transition;
 
       &:hover {
         cursor: pointer;
-        transition: $transition;
         transform: scale(1.05);
-        box-shadow: $box-shadow__grid-card;
+        box-shadow: $box-shadow__grid-card--hover;
+        border: 1px solid #fff;
         text-decoration: none;
         color: $col-primary;
       }

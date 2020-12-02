@@ -9,7 +9,7 @@ $bodyBg: #9E9E9E;
 $bodyBgLighten: #ABABAB;
 $bodyBgDarken: #393939;
 
-$col-primary: #FFB300;
+$col-primary: #ffb300;
 $col-primary-hover: #eba200;
 
 $col-secondary: #616161;
@@ -31,9 +31,9 @@ $alert-color__border: #741212;
 $wrapper-width: 1200px;
 
 /* ANIMATION */
-$transition: all .3s ease;
+$transition: all .3s ease-in-out;
 
 /* BOX SHADOWS */
 $box-shadow__base: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
-$box-shadow__grid-card: -5px 5px 15px 0 rgba(0, 0, 0, 0.3),
-                        5px -5px 15px 0 rgba(0, 0, 0, 0.3);;
+$box-shadow__grid-card: 0 15px 40px 0 #F6F6F8;
+$box-shadow__grid-card--hover: 0 0 55px -15px #b8b8b8;
