@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 import {Company} from '../../../model/company.model';
 import {MessageService} from '../../../services/message.service';
@@ -8,8 +9,7 @@ import {CompanyManagementService} from '../../../resources/company-management.se
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {companyDetailsFormFields} from './company-form-fields';
 import {addressFormFields} from '../../../model/address-form-fields';
-import {MatDialog} from "@angular/material/dialog";
-import {ChangePasswordComponent} from "../../change-password/change-password.component";
+import {ChangePasswordComponent} from '../../change-password/change-password.component';
 
 @Component({
   selector: 'app-company-form',
