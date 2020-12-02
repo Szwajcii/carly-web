@@ -8,7 +8,7 @@ export const companyDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Company name',
     validators: [Validators.required],
     type: 'text',
-    cols: 4,
+    cols: 2,
     rows: 1
   },
   {
@@ -16,7 +16,7 @@ export const companyDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Phone number',
     validators: [Validators.required],
     type: 'text',
-    cols: 4,
+    cols: 2,
     rows: 1,
     selectOptions: [{value: 'One', label: 'One'}]
   },
@@ -25,7 +25,7 @@ export const companyDetailsFormFields: FormGroupHelper.Model[] = [
     label: 'Email',
     validators: [Validators.required],
     type: 'text',
-    cols: 4,
+    cols: 2,
     rows: 1,
     isDisabled: true
   }
