@@ -42,7 +42,10 @@ export class UserManagementService {
   }
 
   isUserHasOneOfRoles(roles: Roles[]): Observable<boolean> {
-    return this.getUserContext().pipe(map(user => !!roles.some(role => user.roles.includes(role))));
+    return this.getUserContext().pipe(map(user => !!roles.some(role => {
+      console.log(user);
+      return user.roles.includes(role);
+    })));
   }
 
 }
