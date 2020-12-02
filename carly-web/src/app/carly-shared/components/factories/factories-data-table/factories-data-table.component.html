@@ -7,7 +7,7 @@
              (keyup)="applyFilter($event.target.value)"
              placeholder="Type here to search...">
     </mat-form-field>
-    <button mat-stroked-button color="primary">Clear</button>
+    <button mat-stroked-button color="primary" (click)="clearFilter()">Clear</button>
   </div>
 
   <mat-table mat-table #table [dataSource]="datasource" matSort>
@@ -36,7 +36,7 @@
           <button mat-stroked-button color="primary" (click)="openMatchDialog(element.company)">Request matching</button>
         </ng-container>
         <ng-container *ngIf="element.matchStatus === Matched">
-          <button mat-stroked-button color="warn" (click)="openMatchDialog(element.company)">Cancel contact</button>
+          <button mat-stroked-button color="warn" (click)="openMatchDialog(element.company, cancelMatch)">Cancel contact</button>
         </ng-container>
       </mat-cell>
     </ng-container>

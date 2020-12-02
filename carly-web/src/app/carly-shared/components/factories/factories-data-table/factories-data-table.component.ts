@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -6,6 +6,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {Company} from '../../../model/company.model';
 import {FactoryMatchDialogComponent} from '../factory-match-request-dialog/factory-match-dialog.component';
 import {MatchStatus} from '../../../model/match-status.enum';
+import {MessageService} from '../../../services/message.service';
+import {CompanyMatchingRequest} from '../../../model/company-matching-request.model';
 
 @Component({
   selector: 'app-factories-data-table',
@@ -18,8 +20,10 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
 
   public filter: string;
   public datasource = new MatTableDataSource([]);
+  public cancelMatch = true;
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @Output() matchRequest = new EventEmitter();
 
   @Input() set data(data: any[]) {
     this.setDatasource(data);
@@ -32,7 +36,8 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private messageService: MessageService
   ) {
   }
 
@@ -61,22 +66,25 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
   }
 
 
-  openMatchDialog(factory: Company.Model) {
-    console.log(factory);
+  openMatchDialog(factory: Company.Model, isCancel = false) {
     const dialogRef = this.dialog.open(FactoryMatchDialogComponent, {
       data: {
         companyName: factory.companyName,
-        companyId: factory.id
+        companyId: factory.id,
+        cancelContract: isCancel
       }
     });
 
     // todo: Emmit event to make matching request
-    // dialogRef.afterClosed().subscribe(id => {
-    //   this.factoryManagementService.requestMatching(id);
-    // }, error => {
-    //   this.messageService.showMessage('Unexpected error occurred!');
-    //   console.log(error);
-    // });
+    dialogRef.afterClosed().subscribe(id => {
+      const companyMatchingRequest = new CompanyMatchingRequest();
+      companyMatchingRequest.factoryId = id;
+      companyMatchingRequest.isCancelRequest = isCancel;
+      this.matchRequest.emit(companyMatchingRequest);
+    }, error => {
+      this.messageService.showMessage('Unexpected error occurred!');
+      console.log(error);
+    });
 
   }
 }
