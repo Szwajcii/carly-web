@@ -1,0 +1,85 @@
+.grid-container {
+  margin: 2.6em;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 3em;
+
+  .grid-card {
+
+    a {
+      width: 280px;
+      height: 180px;
+      padding-bottom: 0;
+      align-items: center;
+      text-transform: none;
+
+      &:hover {
+
+        div {
+          color: #FFB300;
+        }
+
+      }
+
+      &:focus {
+        text-decoration: none;
+      }
+
+      &.payment-card {
+        padding: 0.4em;
+        align-items: normal;
+
+        div {
+          justify-content: space-between;
+        }
+
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgba(0, 0, 0, 0.3);
+
+        h3 {
+          margin: 0;
+        }
+
+        i {
+          margin-bottom: 0.2em;
+        }
+
+        .payment-card--logo {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-content: center;
+          flex-direction: row;
+
+          i {
+            margin-bottom: 0;
+          }
+
+          img {
+            width: 80px;
+          }
+        }
+
+        .payment-card--info {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+
+          h3, h4 {
+            margin-bottom: 0;
+          }
+
+        }
+
+      }
+    }
+
+  }
+
+}

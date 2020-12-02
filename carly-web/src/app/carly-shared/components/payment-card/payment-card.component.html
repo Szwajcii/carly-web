@@ -1,0 +1,33 @@
+<div class="grid-container">
+
+  <div class="grid-card">
+    <a [routerLink]="" class="payment-card">
+      <div>
+        <div class="payment-card--logo">
+          <img src="../../../../assets/payment-card/Visa_Logo.png" alt="Payment card provider logo">
+          <!-- todo: Toggle icon on isActiveCard property -->
+          <!--<i class="far fa-circle"></i>-->
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="payment-card--number">
+          <h2>{{paymentCardTest.paymentCardNumber | CardNumberPipe}}</h2>
+        </div>
+        <div class="payment-card--info">
+          <h4>{{paymentCardTest.paymentCardHolder}}</h4>
+          <h4>{{paymentCardTest.expiryDate}}</h4>
+        </div>
+        <button mat-stroked-button color="primary" (click)="viewPaymentCardDetails()">View details</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="grid-card">
+    <a [routerLink]="" (click)="addNewPaymentCard()">
+      <div>
+        <i class="fas fa-plus"></i>
+        <h3>Add new payment card</h3>
+      </div>
+    </a>
+  </div>
+
+</div>
