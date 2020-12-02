@@ -11,7 +11,8 @@ const PAYMENT_CARD_TEST_DATA: PaymentCard.Model = {
   paymentCardProvider: '',
   paymentCardHolder: 'Ford Gmbh',
   expiryDate: '08/22',
-  cvvCode: '666'
+  cvvCode: '666',
+  isActive: true
 };
 
 @Component({

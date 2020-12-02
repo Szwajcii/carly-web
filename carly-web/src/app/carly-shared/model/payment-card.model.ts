@@ -7,6 +7,7 @@ export namespace PaymentCard {
     paymentCardHolder: string;
     expiryDate: Date | string;
     cvvCode: string;
+    isActive: boolean;
   }
 
   export type POST = Model;
