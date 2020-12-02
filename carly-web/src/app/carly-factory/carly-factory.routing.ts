@@ -34,6 +34,7 @@ import {WindowsEditComponent} from '../carly-shared/components/windows/windows-e
 import {CompanyEditComponent} from '../carly-shared/components/company/company-edit/company-edit.component';
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {CarlyFactoryComponent} from './carly-factory.component';
+import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
 
 export const ROUTES: Routes = [
   {
@@ -50,7 +51,13 @@ export const ROUTES: Routes = [
           {path: ':id', component: NewsEditComponent}
         ]
       },
-      {path: 'orders', component: OrdersComponent},
+      {
+        path: 'orders',
+        children: [
+          {path: '', component: OrdersComponent},
+          {path: 'details/:id', component: OrderDetailsComponent}
+        ]
+      },
       {
         path: 'cars',
         children: [

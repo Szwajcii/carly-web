@@ -26,7 +26,8 @@ import {CarModelComponent} from '../carly-shared/components/car-model/car-model.
 import {CarModelEditComponent} from '../carly-shared/components/car-model/car-model-edit/car-model-edit.component';
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {FactoryDetailsComponent} from '../carly-shared/components/factories/factory-details/factory-details.component';
-import {OrderDetailsComponent} from "../carly-shared/components/orders/order-details/order-details.component";
+import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
+import {CompanyComponent} from '../carly-shared/components/company/company.component';
 
 
 export const ROUTES: Routes = [
@@ -116,7 +117,7 @@ export const ROUTES: Routes = [
       {
         path: 'profile',
         children: [
-          {path: '', component: CompanyEditComponent}
+          {path: '', component: CompanyComponent}
         ]
       },
       {
