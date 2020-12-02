@@ -5,17 +5,17 @@
     </div>
 
     <mat-tab-group mat-align-tabs="start">
-      <mat-tab label="My cart">
-
-        <app-cart-data>
-        </app-cart-data>
-
-      </mat-tab>
-      <mat-tab label="Current orders">
-        <app-order-data-table
-          [data]="orders">
-        </app-order-data-table>
-      </mat-tab>
+      <ng-container *appUserCanAccess="[CarlyCustomer, CarlyCompany, CarlyAdministrator]">
+        <mat-tab label="My cart">
+          <app-cart-data>
+          </app-cart-data>
+        </mat-tab>
+        <mat-tab label="Current orders">
+          <app-order-data-table
+            [data]="orders">
+          </app-order-data-table>
+        </mat-tab>
+      </ng-container>
       <mat-tab label="Order history">
         <app-order-data-table
           [data]="orders">

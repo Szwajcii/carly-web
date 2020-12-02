@@ -20,14 +20,14 @@ export class OrderDataTableComponent implements OnInit, AfterViewInit {
 
   public displayedColumns: Array<string> = [
     'id',
-    'status'
+    'status',
+    'action'
   ];
 
   constructor() {
   }
 
   ngOnInit(): void {
-    console.log('Orders data table');
   }
 
   ngAfterViewInit() {

@@ -28,6 +28,15 @@
       <mat-cell *matCellDef="let element">{{element.createdDate | DateTimePipe}}</mat-cell>
     </ng-container>
 
+    <!-- Action column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="align-right">Action</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-right">
+        <button mat-stroked-button color="primary">Continue payment</button>
+        <button mat-stroked-button color="warn"><i class="far fa-trash-alt"></i></button>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
