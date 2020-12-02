@@ -8,6 +8,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {FactoryMatchDialogComponent} from '../factory-match-request-dialog/factory-match-dialog.component';
 import {FactoryManagementService} from '../../../resources/factory-management.service';
 import {MessageService} from '../../../services/message.service';
+import {CompanyMatchingRequest} from '../../../model/company-matching-request.model';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-factory-details',
@@ -24,12 +26,14 @@ export class FactoryDetailsComponent implements OnInit {
   factory: FactoryMatch;
   cancelMatch = true;
   isMatched = false;
+  companyId: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,
     private messageService: MessageService,
-    private factoryManagementService: FactoryManagementService
+    private factoryManagementService: FactoryManagementService,
+    private authService: AuthService
   ) {
   }
 
@@ -44,6 +48,15 @@ export class FactoryDetailsComponent implements OnInit {
     this.isMatched = this.factory.matchStatus === MatchStatus.MATCHED;
 
     console.log(this.factory);
+
+    this.authService.getUserContext().subscribe(resData => {
+      if (resData != null) {
+        this.companyId = resData.id;
+      }
+    }, error => {
+      this.messageService.showMessage('Unexpected error occurred!');
+      console.log(error);
+    });
   }
 
   findFactoryId() {
@@ -60,16 +73,35 @@ export class FactoryDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(id => {
-      if (cancel) {
-        this.factoryManagementService.cancelMatching(id);
-      } else {
-        this.factoryManagementService.requestMatching(id);
-      }
+      const matchRequest: CompanyMatchingRequest = {
+        factoryId: this.factory.company.id,
+        companyId: this.companyId,
+        isCancelRequest: cancel,
+        message: ''
+      };
+      this.requestOrCancelMatching(matchRequest);
     }, error => {
-        this.messageService.showMessage('Unexpected error occurred!');
-        console.log(error);
+      this.messageService.showMessage('Unexpected error occurred!');
+      console.log(error);
     });
+  }
 
+  requestOrCancelMatching(request: CompanyMatchingRequest) {
+    let requestAction;
+
+    if (request.isCancelRequest) {
+      requestAction = this.factoryManagementService.cancelMatching(request);
+    } else {
+      requestAction = this.factoryManagementService.requestMatching(request);
+    }
+
+    requestAction.subscribe(resData => {
+      console.log(resData);
+      this.messageService.showMessage('Match request sent successfully!');
+    }, error => {
+      console.log(error);
+      this.messageService.showMessage('Unexpected error occurred!');
+    });
   }
 
 
