@@ -31,10 +31,10 @@ import {WheelsEditComponent} from '../carly-shared/components/wheels/wheels-edit
 import {WindowsComponent} from '../carly-shared/components/windows/windows.component';
 import {WindowsAddComponent} from '../carly-shared/components/windows/windows-add/windows-add.component';
 import {WindowsEditComponent} from '../carly-shared/components/windows/windows-edit/windows-edit.component';
-import {CompanyEditComponent} from '../carly-shared/components/company/company-edit/company-edit.component';
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {CarlyFactoryComponent} from './carly-factory.component';
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
+import {CompanyComponent} from '../carly-shared/components/company/company.component';
 
 export const ROUTES: Routes = [
   {
@@ -132,7 +132,7 @@ export const ROUTES: Routes = [
       {
         path: 'profile',
         children: [
-          {path: '', component: CompanyEditComponent}
+          {path: '', component: CompanyComponent}
         ]
       },
       {
