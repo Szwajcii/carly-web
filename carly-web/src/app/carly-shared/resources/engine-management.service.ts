@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {Engine} from '../model/engine.model';
+import {MessageResponse} from '../model/message-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class EngineManagementService {
     return this.http.put<Engine.Model>(`${this.engineManagementApi}`, model);
   }
 
-  delete(id: string) {
-    this.http.delete(`${this.engineManagementApi}/delete/${id}`);
+  delete(id: string): Observable<MessageResponse> {
+    return this.http.delete<MessageResponse>(`${this.engineManagementApi}/delete/${id}`);
   }
 
 }
