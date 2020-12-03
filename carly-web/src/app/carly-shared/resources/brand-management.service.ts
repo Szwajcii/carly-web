@@ -24,15 +24,16 @@ export class BrandManagementService {
 
   }
 
-  findBrandFromContext(action: Observable<string>) {
-    let brand = null;
+  findBrandFromContext(action: Observable<string>): Brand {
+    const brand = new Brand();
     action.pipe(
       mergeMap(id => this.companyManagementService.findById(id)),
       map(model => {
         return model;
       })
     ).subscribe(data => {
-      brand = new Brand(data.id, data.companyName);
+      brand.carlyFactoryId = data.id;
+      brand.name = data.companyName;
       console.log(400, brand);
     }, error => {
       this.messageService.showMessage('Unexpected error has occurred!');
