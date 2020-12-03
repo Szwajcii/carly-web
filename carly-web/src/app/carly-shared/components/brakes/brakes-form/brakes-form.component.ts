@@ -68,7 +68,6 @@ export class BrakesFormComponent implements OnInit {
     };
 
     if (this.isCompanyContext) {
-      debugger;
       brakes.brand = this.brakesBrand;
     }
 
@@ -81,13 +80,15 @@ export class BrakesFormComponent implements OnInit {
     if (this.formAction === FormAction.CREATE) {
       partAction = this.brakesManagementService.create(brakes);
     } else {
+      brakes.id = this.brakesModel.id;
       partAction = this.brakesManagementService.update(brakes);
     }
 
     partAction.subscribe(data => {
-      this.messageService.showMessage('Brakes created!');
+      const action = this.formAction === FormAction.CREATE ? 'created!' : 'updated!';
+      this.messageService.showMessage('Brakes ' + action);
       this.submitEvent.emit(brakes);
-      this.router.navigate(['/brakes', 'details', data.id, 'edit']);
+      this.router.navigate(['/brakes', 'details', data.id]);
     }, error => {
       this.messageService.showMessage('Create brakes failed!');
       console.log(error);

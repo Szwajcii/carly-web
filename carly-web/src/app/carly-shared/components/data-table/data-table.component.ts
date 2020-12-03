@@ -20,6 +20,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+  @Input() partType: string;
   @Input() set data(data: any[]) {
     this.setDatasource(data);
   }

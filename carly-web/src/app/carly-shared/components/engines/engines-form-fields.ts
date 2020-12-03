@@ -47,7 +47,7 @@ export const engineDetailsFormFields: FormGroupHelper.Model[] = [
     rows: 1
   },
   {
-    inputName: 'numberOfCylinders',
+    inputName: 'cylinderType',
     label: 'Number of cylinders',
     validators: [Validators.required],
     type: 'select',

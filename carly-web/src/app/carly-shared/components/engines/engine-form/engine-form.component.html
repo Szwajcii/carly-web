@@ -10,6 +10,7 @@
         [partFormDetailsControls]="engineDetailsFormControls"
         [partType]="'engines'"
         [partPreviews]="enginePreviews"
+        [isCompanyContext]="isCompanyContext"
         (submitEvent)="onSubmit($event)">
       </app-parts-form>
 
@@ -27,6 +28,7 @@
         [partPreviews]="enginePreviews"
         [isDisabled]="true"
         [details]="details"
+        [isCompanyContext]="isCompanyContext"
         (submitEvent)="onSubmit($event)">
       </app-parts-form>
 

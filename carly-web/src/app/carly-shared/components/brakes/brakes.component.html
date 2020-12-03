@@ -25,6 +25,7 @@
       *ngIf="brakes"
       [displayedColumns]="displayedColumns"
       [data]="brakes"
+      [partType]="'brakes'"
       (deletePart)="deleteBrakes($event)"
       [hidden]="noRecords">
     </app-data-table>

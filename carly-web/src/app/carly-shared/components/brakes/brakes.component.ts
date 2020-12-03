@@ -35,7 +35,8 @@ export class BrakesComponent implements OnInit {
 
   public displayedColumns: Array<string> = [
     'name',
-    'price'
+    'price',
+    'brakeType'
   ];
 
   public columnsToFilter: Array<string> = [];

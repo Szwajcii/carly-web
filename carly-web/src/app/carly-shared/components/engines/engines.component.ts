@@ -48,8 +48,13 @@ export class EnginesComponent implements OnInit {
   }
 
   deleteEngine(id: string) {
-    console.log(id);
-
+    this.engineManagementService.delete(id)
+      .subscribe(resData => {
+        this.messageService.showMessage(resData.message);
+      }, error => {
+        this.messageService.showMessage('Unexpected error occurred!');
+        console.log(error);
+      });
   }
 
 }

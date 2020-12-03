@@ -56,6 +56,7 @@ export class EngineFormComponent implements OnInit {
       this.isCompanyContext = true;
       this.engineBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
     }
+    console.log(this.engineModel);
   }
 
   onSubmit($event) {
@@ -78,13 +79,14 @@ export class EngineFormComponent implements OnInit {
     if (this.formAction === FormAction.CREATE) {
       partAction = this.engineManagementService.create(engine);
     } else {
+      engine.id = this.engineModel.id;
       partAction = this.engineManagementService.update(engine);
     }
 
     partAction.subscribe(data => {
       this.messageService.showMessage('Engine created!');
       this.submitEvent.emit(engine);
-      this.router.navigate(['/parts/engine', 'details', data.id, 'edit']);
+      this.router.navigate(['/engines', 'details', data.id]);
     }, error => {
       this.messageService.showMessage('Create engine failed!');
       console.log(error);
