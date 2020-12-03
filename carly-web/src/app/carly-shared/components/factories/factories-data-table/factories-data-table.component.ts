@@ -75,12 +75,14 @@ export class FactoriesDataTableComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // todo: Emmit event to make matching request
     dialogRef.afterClosed().subscribe(id => {
-      const companyMatchingRequest = new CompanyMatchingRequest();
-      companyMatchingRequest.factoryId = id;
-      companyMatchingRequest.isCancelRequest = isCancel;
-      this.matchRequest.emit(companyMatchingRequest);
+      // This won't emit event when we just close modal
+      if (id !== null) {
+        const companyMatchingRequest = new CompanyMatchingRequest();
+        companyMatchingRequest.factoryId = id;
+        companyMatchingRequest.isCancelRequest = isCancel;
+        this.matchRequest.emit(companyMatchingRequest);
+      }
     }, error => {
       this.messageService.showMessage('Unexpected error occurred!');
       console.log(error);

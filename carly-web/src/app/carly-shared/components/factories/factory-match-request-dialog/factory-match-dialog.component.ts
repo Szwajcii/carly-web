@@ -29,7 +29,7 @@ export class FactoryMatchDialogComponent implements OnInit {
   }
 
   onCancel() {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 
 }
