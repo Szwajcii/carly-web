@@ -8,7 +8,8 @@ export const TEST_DATA: Order[] = [
   {
     id: 'jh312k2331',
     name: 'Order one',
-    status: OrderStatus.PENDING
+    status: OrderStatus.PENDING,
+    price: 2500
   }
 ];
 

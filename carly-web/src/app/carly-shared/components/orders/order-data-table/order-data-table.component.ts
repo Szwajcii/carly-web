@@ -21,6 +21,7 @@ export class OrderDataTableComponent implements OnInit, AfterViewInit {
   public displayedColumns: Array<string> = [
     'id',
     'status',
+    'price',
     'action'
   ];
 
