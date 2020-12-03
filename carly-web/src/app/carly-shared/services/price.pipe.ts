@@ -20,6 +20,6 @@ export class PricePipe implements PipeTransform {
       formattedPrice = priceStr;
     }
 
-    return formattedPrice;
+    return '$ ' + formattedPrice;
   }
 }

@@ -29,7 +29,7 @@
     <!-- Price column -->
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.price | PricePipe}}</mat-cell>
     </ng-container>
 
     <!-- Create date column -->
@@ -108,8 +108,8 @@
   <mat-paginator #paginator
     [length]="datasource.data.length"
     [pageIndex]="0"
-    [pageSize]="25"
-    [pageSizeOptions]="[25, 50, 100]"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
     [hidden]="datasource.data.length === 0">
   </mat-paginator>
 
