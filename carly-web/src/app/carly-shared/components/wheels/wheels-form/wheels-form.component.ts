@@ -9,6 +9,8 @@ import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {WheelsManagementService} from '../../../resources/wheels-management.service';
 import {wheelsDetailsFormFields, wheelsPreviews} from '../wheels-form-fields';
+import {BrandManagementService} from '../../../resources/brand-management.service';
+import {Brand} from '../../../model/brand.model';
 
 @Component({
   selector: 'app-wheels-form',
@@ -25,6 +27,9 @@ export class WheelsFormComponent implements OnInit {
   @Input() submitEvent: EventEmitter<Wheels.Model> = new EventEmitter<Wheels.Model>();
   @Input() details = false;
 
+  isCompanyContext = false;
+  brands: Array<Brand>;
+  wheelsBrand: Brand;
   wheelsPreview: Array<ValueLabel>;
   wheelsDetailsForm: FormGroup;
   wheelsDetailsFormControls = this.formGroupService.addControlToModel(wheelsDetailsFormFields)
@@ -39,12 +44,18 @@ export class WheelsFormComponent implements OnInit {
     private messageService: MessageService,
     private formGroupService: FormGroupHelperService,
     private router: Router,
-    private wheelsManagementService: WheelsManagementService
+    private wheelsManagementService: WheelsManagementService,
+    private brandManagementService: BrandManagementService
   ) {
   }
 
   ngOnInit(): void {
     this.wheelsPreview = wheelsPreviews;
+    const companyContextIdObservable = this.brandManagementService.findCompanyContextId();
+    if (companyContextIdObservable != null) {
+      this.isCompanyContext = true;
+      this.wheelsBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
+    }
   }
 
   onSubmit($event) {
@@ -53,6 +64,10 @@ export class WheelsFormComponent implements OnInit {
     const wheels: Wheels.Model = {
       ...this.wheelsDetailsForm.value
     };
+
+    if (this.isCompanyContext) {
+      wheels.brand = this.wheelsBrand;
+    }
 
     this.createOrUpdate(wheels);
   }
@@ -63,13 +78,15 @@ export class WheelsFormComponent implements OnInit {
     if (this.formAction === FormAction.CREATE) {
       partAction = this.wheelsManagementService.create(wheels);
     } else {
+      wheels.id = this.wheelsModel.id;
       partAction = this.wheelsManagementService.update(wheels);
     }
 
     partAction.subscribe(data => {
-      this.messageService.showMessage('Wheels created!');
+      const action = this.formAction === FormAction.CREATE ? 'created!' : 'updated!';
+      this.messageService.showMessage('Wheels ' + action);
       this.submitEvent.emit(wheels);
-      this.router.navigate(['/parts/wheels', 'details', data.id, 'edit']);
+      this.router.navigate(['/wheels', 'details', data.id]);
     }, error => {
       this.messageService.showMessage('Create wheels failed!');
       console.log(error);
