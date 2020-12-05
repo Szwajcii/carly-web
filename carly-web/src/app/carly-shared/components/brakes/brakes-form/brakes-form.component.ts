@@ -8,9 +8,8 @@ import {FormAction} from '../../../model/form-action.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {BrakesManagementService} from '../../../resources/brakes-management.service';
-import {brakesDetailsFormFields, brakes} from '../brakes-form-fields';
+import {brakesDetailsFormFields, brakesPreviews} from '../brakes-form-fields';
 import {Brand} from '../../../model/brand.model';
-import {BrandManagementService} from '../../../resources/brand-management.service';
 
 @Component({
   selector: 'app-brakes-form',
@@ -27,15 +26,12 @@ export class BrakesFormComponent implements OnInit {
   @Input() submitEvent: EventEmitter<Brake.Model> = new EventEmitter<Brake.Model>();
   @Input() details = false;
 
-  isCompanyContext = false;
-  brands: Array<Brand>;
-  brakesBrand: Brand;
   brakesPreviews: Array<ValueLabel>;
   brakesDetailsForm: FormGroup;
   brakesDetailsFormControls = this.formGroupService.addControlToModel(brakesDetailsFormFields)
     .map(controlModel => {
       if (controlModel.inputName === BrakesFormComponent.PREVIEW) {
-        controlModel.selectOptions = brakes;
+        controlModel.selectOptions = brakesPreviews;
       }
       return controlModel;
     });
@@ -45,49 +41,41 @@ export class BrakesFormComponent implements OnInit {
     private messageService: MessageService,
     private formGroupService: FormGroupHelperService,
     private router: Router,
-    private brakesManagementService: BrakesManagementService,
-    private brandManagementService: BrandManagementService
+    private brakesManagementService: BrakesManagementService
   ) {
   }
 
   ngOnInit(): void {
-    this.brakesPreviews = brakes;
-    const companyContextIdObservable = this.brandManagementService.findCompanyContextId();
-    if (companyContextIdObservable != null) {
-      this.isCompanyContext = true;
-      this.brakesBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
-    }
+    this.brakesPreviews = brakesPreviews;
   }
 
   // Take event from PartForm component
   onSubmit($event) {
-    this.brakesDetailsForm = $event;
+    this.brakesDetailsForm = $event.formValue;
+    const partBrand: Brand = $event.partBrand;
 
-    const brakes: Brake.Model = {
+    const model: Brake.Model = {
       ...this.brakesDetailsForm.value
     };
+    model.brand = partBrand;
 
-    if (this.isCompanyContext) {
-      brakes.brand = this.brakesBrand;
-    }
-
-    this.createOrUpdate(brakes);
+    this.createOrUpdate(model);
   }
 
-  createOrUpdate(brakes: Brake.Model) {
+  createOrUpdate(model: Brake.Model) {
     let partAction;
 
     if (this.formAction === FormAction.CREATE) {
-      partAction = this.brakesManagementService.create(brakes);
+      partAction = this.brakesManagementService.create(model);
     } else {
-      brakes.id = this.brakesModel.id;
-      partAction = this.brakesManagementService.update(brakes);
+      model.id = this.brakesModel.id;
+      partAction = this.brakesManagementService.update(model);
     }
 
     partAction.subscribe(data => {
       const action = this.formAction === FormAction.CREATE ? 'created!' : 'updated!';
       this.messageService.showMessage('Brakes ' + action);
-      this.submitEvent.emit(brakes);
+      this.submitEvent.emit(model);
       this.router.navigate(['/brakes', 'details', data.id]);
     }, error => {
       this.messageService.showMessage('Create brakes failed!');
