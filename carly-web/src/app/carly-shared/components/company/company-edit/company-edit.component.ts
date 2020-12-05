@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {map, mergeMap} from 'rxjs/operators';
@@ -17,6 +17,7 @@ import {MessageService} from '../../../services/message.service';
 })
 export class CompanyEditComponent implements OnInit {
 
+  @Input() role: Roles;
   isDisabled = true;
   company: Company.Model;
   formAction: FormAction.EDIT;
@@ -31,7 +32,7 @@ export class CompanyEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findCompanyId()
+    this.findCompanyId(this.role)
       .pipe(
         mergeMap(id => this.companyManagementService.findById(id)),
         map(model => {
@@ -45,8 +46,8 @@ export class CompanyEditComponent implements OnInit {
     });
   }
 
-  findCompanyId(): Observable<string> {
-    return this.userManagementService.isUserHasOneOfRoles([Roles.CARLY_COMPANY, Roles.CARLY_FACTORY])
+  findCompanyId(role: Roles): Observable<string> {
+    return this.userManagementService.isUserHasRole(role)
       .pipe(
         mergeMap(hasRole => {
           if (hasRole) {
