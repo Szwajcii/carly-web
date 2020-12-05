@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {FormGroupHelper} from '../../../model/form-group-helper.model';
 import {ValueLabel} from '../../../model/value-label';
+import {BrandManagementService} from '../../../resources/brand-management.service';
+import {Brand} from '../../../model/brand.model';
 
 @Component({
   selector: 'app-parts-form',
@@ -16,7 +18,6 @@ export class PartsFormComponent implements OnInit {
   private static PREVIEW = 'preview';
   private static BRAND = 'brand';
 
-  @Input() isCompanyContext = false;
   @Input() partModel: any;
   @Input() partInputFields: FormGroupHelper.Model[];
   @Input() partFormDetailsControls: FormGroupHelper.ModelControl[];
@@ -27,24 +28,31 @@ export class PartsFormComponent implements OnInit {
   @Input() details = false;
   @Output() submitEvent = new EventEmitter();
 
+  isFactoryContext = false;
   generalForm: FormGroup;
   partDetailsForm: FormGroup;
   gridColumns = 4;
+  partBrand: Brand;
 
   // todo: Consider adding breakpointService
   constructor(
     private formBuilder: FormBuilder,
     private formGroupService: FormGroupHelperService,
-    private router: Router
+    private router: Router,
+    private brandManagementService: BrandManagementService
   ) {
   }
 
   ngOnInit(): void {
-
-    if (this.isCompanyContext) {
+    this.isFactoryContext = this.brandManagementService.isFactoryContext();
+    if (this.isFactoryContext) {
+      const factoryContextId = this.brandManagementService.findFactoryContextId();
+      this.partBrand = this.brandManagementService.findBrandFromContext(factoryContextId);
       // If we are logged as Company user - brand is set from context.
       this.partFormDetailsControls = this.partFormDetailsControls
         .filter(control => control.inputName !== PartsFormComponent.BRAND);
+    } else {
+      this.partBrand = this.partModel.brand;
     }
 
     this.partDetailsForm = this.formBuilder.group(
@@ -77,6 +85,14 @@ export class PartsFormComponent implements OnInit {
       .forEach(control => this.partDetailsForm
         .get(control.inputName)
         .setValue(partModel[control.inputName]));
+
+    if (!this.isFactoryContext) {
+      this.partDetailsForm.get(PartsFormComponent.BRAND).setValue(this.partModel.brand.name);
+    }
+  }
+
+  mapBrandsToValueLabel(brands: Brand[]): ValueLabel[] {
+    return brands.map(brand => ({label: brand.name, value: brand.carlyFactoryId}));
   }
 
   getPartPreview(): string {
@@ -87,7 +103,10 @@ export class PartsFormComponent implements OnInit {
     if (this.partDetailsForm.invalid) {
       return;
     }
-    this.submitEvent.emit(this.partDetailsForm);
+    this.submitEvent.emit({
+      formValue: this.partDetailsForm,
+      partBrand: this.partBrand
+    });
   }
 
   goBack() {
@@ -102,6 +121,11 @@ export class PartsFormComponent implements OnInit {
     } else {
       this.isDisabled = false;
       this.partDetailsForm.enable();
+
+      if (!this.isFactoryContext) {
+        this.partDetailsForm.get(PartsFormComponent.BRAND).disable();
+      }
+
     }
   }
 
