@@ -6,21 +6,20 @@ import {Brake} from '../../model/brakes.model';
 
 export const brakesDetailsFormFields: FormGroupHelper.Model[] = [
   {
-    inputName: 'name',
-    label: 'Name',
+    inputName: 'brand',
+    label: 'Brand',
     validators: [Validators.required],
     type: 'text',
     cols: 4,
     rows: 1
   },
   {
-    inputName: 'brand',
-    label: 'Brand',
+    inputName: 'name',
+    label: 'Name',
     validators: [Validators.required],
-    type: 'select',
+    type: 'text',
     cols: 4,
-    rows: 1,
-    selectOptions: []
+    rows: 1
   },
   {
     inputName: 'preview',
@@ -50,7 +49,7 @@ export const brakesDetailsFormFields: FormGroupHelper.Model[] = [
   }
 ];
 
-export const brakes: Array<ValueLabel> = [
+export const brakesPreviews: Array<ValueLabel> = [
   {
     value: 'brakes_1.png',
     label: 'Preview 1'

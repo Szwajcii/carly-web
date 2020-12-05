@@ -8,8 +8,7 @@ export const wheelsDetailsFormFields: FormGroupHelper.Model[] = [
     inputName: 'brand',
     label: 'Brand',
     validators: [Validators.required],
-    type: 'select',
-    selectOptions: [],
+    type: 'text',
     cols: 4,
     rows: 1
   },

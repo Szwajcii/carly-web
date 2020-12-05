@@ -1,41 +1,50 @@
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 import {Validators} from '@angular/forms';
 import {ValueLabel} from '../../model/value-label';
-import {Tires} from "../../model/tires.model";
+import {Tires} from '../../model/tires.model';
 
 export const tiresDetailsFormFields: FormGroupHelper.Model[] = [
   {
     inputName: 'brand',
     label: 'Brand',
     validators: [Validators.required],
-    type: 'select',
-    selectOptions: []
+    type: 'text',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'name',
     label: 'Name',
     validators: [Validators.required],
-    type: 'text'
+    type: 'text',
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'preview',
     label: 'Preview',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: []
+    selectOptions: [],
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'type',
     label: 'Type',
     validators: [Validators.required],
     type: 'select',
-    selectOptions: [...Object.values(Tires.TireType).map(value => ({label: value, value}))]
+    selectOptions: [...Object.values(Tires.TireType).map(value => ({label: value, value}))],
+    cols: 4,
+    rows: 1
   },
   {
     inputName: 'price',
     label: 'Price',
     validators: [Validators.required],
-    type: 'number'
+    type: 'number',
+    cols: 4,
+    rows: 1
   }
 ];
 

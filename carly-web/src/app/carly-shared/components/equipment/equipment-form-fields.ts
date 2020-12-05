@@ -5,21 +5,20 @@ import {Equipment} from '../../model/equipment.model';
 
 export const equipmentDetailsFormFields: FormGroupHelper.Model[] = [
   {
-    inputName: 'partName',
-    label: 'Name',
+    inputName: 'brand',
+    label: 'Brand',
     validators: [Validators.required],
     type: 'text',
     cols: 4,
     rows: 1
   },
   {
-    inputName: 'partBrand',
-    label: 'Brand',
+    inputName: 'name',
+    label: 'Name',
     validators: [Validators.required],
-    type: 'select',
+    type: 'text',
     cols: 4,
-    rows: 1,
-    selectOptions: []
+    rows: 1
   },
   {
     inputName: 'type',

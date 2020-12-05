@@ -56,7 +56,6 @@ export class EngineFormComponent implements OnInit {
       this.isCompanyContext = true;
       this.engineBrand = this.brandManagementService.findBrandFromContext(companyContextIdObservable);
     }
-    console.log(this.engineModel);
   }
 
   onSubmit($event) {
