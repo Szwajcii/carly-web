@@ -34,7 +34,7 @@ import {WindowsEditComponent} from '../carly-shared/components/windows/windows-e
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {CarlyFactoryComponent} from './carly-factory.component';
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
-import {CompanyComponent} from '../carly-shared/components/company/company.component';
+import {FactoryComponent} from '../carly-shared/components/factory/factory.component';
 
 export const ROUTES: Routes = [
   {
@@ -132,7 +132,7 @@ export const ROUTES: Routes = [
       {
         path: 'profile',
         children: [
-          {path: '', component: CompanyComponent}
+          {path: '', component: FactoryComponent}
         ]
       },
       {
