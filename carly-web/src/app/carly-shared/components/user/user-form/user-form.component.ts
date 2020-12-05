@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {UserManagementService} from '../../../resources/user-management.service';
-import {userFormFields} from './user-form-fields';
+import {userFormFields} from '../user-form-fields';
 import {addressFormFields} from '../../../model/address-form-fields';
 import {User} from '../../../model/user.model';
 

@@ -1,5 +1,5 @@
 import {Validators} from '@angular/forms';
-import {FormGroupHelper} from '../../../model/form-group-helper.model';
+import {FormGroupHelper} from '../../model/form-group-helper.model';
 
 export const userFormFields: FormGroupHelper.Model[] = [
   {
