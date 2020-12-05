@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 import {AuthService} from '../components/auth/auth.service';
@@ -38,7 +38,11 @@ export class UserManagementService {
   }
 
   isUserHasRole(role: Roles): Observable<boolean> {
-    return this.getUserContext().pipe(map(user => user.roles.includes(role)));
+    return this.getUserContext()
+      .pipe(
+        filter(user => !!user),
+        map(user => user.roles.includes(role))
+      );
   }
 
   isUserHasOneOfRoles(roles: Roles[]): Observable<boolean> {
