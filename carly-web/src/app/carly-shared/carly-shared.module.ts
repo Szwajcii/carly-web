@@ -47,8 +47,6 @@ import {NewsAddComponent} from './components/news/news-add/news-add.component';
 import {NewsEditComponent} from './components/news/news-edit/news-edit.component';
 import {NewsFormComponent} from './components/news/news-form/news-form.component';
 import {CompanyComponent} from './components/company/company.component';
-import {CompanyAddComponent} from './components/company/company-add/company-add.component';
-import {CompanyFormComponent} from './components/company/company-form/company-form.component';
 import {CompanyEditComponent} from './components/company/company-edit/company-edit.component';
 import {UserComponent} from './components/user/user.component';
 import {UserEditComponent} from './components/user/user-edit/user-edit.component';
@@ -91,6 +89,9 @@ import { PaymentCardAddComponent } from './components/payment-card/payment-card-
 import { PaymentCardEditComponent } from './components/payment-card/payment-card-edit/payment-card-edit.component';
 import { PaymentProcessComponent } from './components/payment-process/payment-process.component';
 import {CardNumberPipe} from './services/card-number.pipe';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { FactoryComponent } from './components/factory/factory.component';
+import { FactoryEditComponent } from './components/factory/factory-edit/factory-edit.component';
 
 
 @NgModule({
@@ -140,8 +141,6 @@ import {CardNumberPipe} from './services/card-number.pipe';
     NewsEditComponent,
     NewsFormComponent,
     CompanyComponent,
-    CompanyAddComponent,
-    CompanyFormComponent,
     CompanyEditComponent,
     UserComponent,
     UserEditComponent,
@@ -181,7 +180,10 @@ import {CardNumberPipe} from './services/card-number.pipe';
     PaymentCardFormComponent,
     PaymentCardAddComponent,
     PaymentCardEditComponent,
-    PaymentProcessComponent
+    PaymentProcessComponent,
+    ProfileFormComponent,
+    FactoryComponent,
+    FactoryEditComponent
   ],
   exports: [
     LoadingSpinnerComponent,

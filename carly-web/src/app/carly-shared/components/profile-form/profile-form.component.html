@@ -5,14 +5,16 @@
   </div>
 
   <div>
-    <h2>Company information</h2>
+    <h2>Profile details</h2>
 
     <app-form-group
-      *ngIf="companyDetailsForm"
+      *ngIf="userProfileDetailsForm"
       [fg]="generalForm"
-      [name]="'companyDetailsForm'"
-      [controls]="companyDetailsFormControls"
-      [gridColumns]="gridColumns"></app-form-group>
+      [name]="'userProfileDetailsForm'"
+      [controls]="userProfileDetailsFormControls"
+      [gridColumns]="gridColumns">
+    </app-form-group>
+
 
     <h2>Address information</h2>
 
@@ -21,7 +23,8 @@
       [fg]="generalForm"
       [name]="'addressDetailsForm'"
       [controls]="addressDetailsFormControls"
-      [gridColumns]="gridColumns"></app-form-group>
+      [gridColumns]="gridColumns">
+    </app-form-group>
   </div>
 
   <div class="controls" *ngIf="!this.isDisabled">
