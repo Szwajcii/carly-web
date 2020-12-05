@@ -1,0 +1,7 @@
+<app-profile-form
+  *ngIf="company"
+  [userProfile]="company"
+  [userProfileFormFields]="factoryDetailsFormFields"
+  [isDisabled]="isDisabled"
+  (submitEvent)="onSubmit($event)">
+</app-profile-form>
