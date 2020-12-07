@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
 import {PaymentCard} from '../../../model/payment-card.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MessageService} from '../../../services/message.service';
@@ -17,6 +17,7 @@ export class PaymentCardFormComponent implements OnInit {
   @Input() paymentCard: PaymentCard.Model;
   @Input() formAction;
   @Input() editCard = false;
+  @Output() closeDialog = new EventEmitter();
 
   gridColumns = 4;
 
@@ -76,6 +77,10 @@ export class PaymentCardFormComponent implements OnInit {
     };
 
     this.createOrUpdate(paymentCard);
+  }
+
+  onCancel() {
+    this.closeDialog.emit();
   }
 
   createOrUpdate(paymentCard: PaymentCard.Model) {

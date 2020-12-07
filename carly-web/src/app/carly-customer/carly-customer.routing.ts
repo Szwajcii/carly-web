@@ -18,7 +18,7 @@ import {WindowsComponent} from '../carly-shared/components/windows/windows.compo
 import {WindowsEditComponent} from '../carly-shared/components/windows/windows-edit/windows-edit.component';
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
-import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
+import {CustomerEditComponent} from '../carly-shared/components/customer/customer-edit/customer-edit.component';
 import {OrdersComponent} from '../carly-shared/components/orders/orders.component';
 import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
@@ -95,7 +95,7 @@ export const ROUTES: Routes = [
       {
         path: 'profile',
         children: [
-          {path: '', component: UserEditComponent}
+          {path: '', component: CustomerEditComponent}
         ]
       }
     ]

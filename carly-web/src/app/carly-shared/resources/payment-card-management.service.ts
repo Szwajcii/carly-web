@@ -14,7 +14,7 @@ export class PaymentCardManagementService {
   }
 
   findAllUserPaymentCards(userId: string): Observable<PaymentCard.Model[]> {
-    return this.http.get<PaymentCard.Model[]>(`${this.paymentCardManagementApi}/all/${userId}`);
+    return this.http.get<PaymentCard.Model[]>(`${this.paymentCardManagementApi}/all-payment-cards/${userId}`);
   }
 
   findPaymentCardById(id: string): Observable<PaymentCard.Model> {

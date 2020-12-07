@@ -26,6 +26,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   @Input() displayedColumns: Array<string>;
+  private ACTION_COLUMN = 'action';
 
   constructor(
     private dialog: MatDialog,
@@ -35,8 +36,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.userManagementService.isUserHasRole(Roles.CARLY_FACTORY).subscribe(result => {
-      if (result) {
-        this.displayedColumns.push('action');
+      if (result && !this.displayedColumns.includes(this.ACTION_COLUMN)) {
+        this.displayedColumns.push(this.ACTION_COLUMN);
       }
     }, error => {
       console.log(error);

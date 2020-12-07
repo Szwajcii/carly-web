@@ -3,14 +3,14 @@
 
     <mat-tab-group mat-align-tabs="start">
       <mat-tab label="Basic information">
-        <app-factory-edit
-          [factory]="factory">
-        </app-factory-edit>
+        <app-customer-edit
+          [customer]="user">
+        </app-customer-edit>
       </mat-tab>
       <mat-tab label="Payment cards">
         <app-payment-card
-          *ngIf="factory"
-          [user]="factory">
+          *ngIf="user"
+          [user]="user">
         </app-payment-card>
       </mat-tab>
       <mat-tab label="Settings">

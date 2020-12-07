@@ -1,7 +1,7 @@
 import {Validators} from '@angular/forms';
 import {FormGroupHelper} from '../../model/form-group-helper.model';
 
-export const userFormFields: FormGroupHelper.Model[] = [
+export const customerFormFields: FormGroupHelper.Model[] = [
   {
     inputName: 'firstName',
     label: 'First name',

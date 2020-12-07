@@ -1,19 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {UserManagementService} from '../../resources/user-management.service';
 import {map, mergeMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-
-import {UserManagementService} from '../../../resources/user-management.service';
-import {User} from '../../../model/user.model';
+import {User} from '../../model/user.model';
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.scss']
+  selector: 'app-user',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.scss']
 })
-export class UserEditComponent implements OnInit {
+export class CustomerComponent implements OnInit {
 
-  isDisabled = true;
   user: User;
 
   constructor(
@@ -23,7 +21,6 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.findUserById()
       .pipe(
         mergeMap(id => this.userManagementService.findById(id)),
@@ -34,7 +31,6 @@ export class UserEditComponent implements OnInit {
       ).subscribe(userModel => {
       this.user = userModel;
     });
-
   }
 
   findUserById(): Observable<string> {
@@ -45,6 +41,5 @@ export class UserEditComponent implements OnInit {
     }
     return this.activatedRoute.params.pipe(map(params => params.id));
   }
-
 
 }

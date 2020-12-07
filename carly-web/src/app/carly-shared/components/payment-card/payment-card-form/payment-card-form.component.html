@@ -11,11 +11,8 @@
     [controls]="paymentCardDetailsFormControls"
     [gridColumns]="gridColumns"></app-form-group>
 
-  <mat-checkbox class="example-margin" style="padding: 0 10px">
-    Set payment card as active
-  </mat-checkbox>
-
   <div class="controls" *ngIf="!this.isDisabled">
+    <button mat-flat-button type="button" class="col-danger" (click)="onCancel()">Cancel</button>
     <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
   </div>
 

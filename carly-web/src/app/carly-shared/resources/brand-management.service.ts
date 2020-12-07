@@ -50,13 +50,17 @@ export class BrandManagementService {
     return brand;
   }
 
+  // todo: Delete this method after all parts forms refactor
   findCompanyContextId(): Observable<string> {
     return this.userManagementService.isUserHasRole(Roles.CARLY_FACTORY)
       .pipe(
         mergeMap(hasRole => {
           if (hasRole) {
             return this.userManagementService.getUserContext()
-              .pipe(map(data => data.id));
+              .pipe(
+                filter(data => !!data),
+                map(data => data.id)
+              );
           }
         })
       );

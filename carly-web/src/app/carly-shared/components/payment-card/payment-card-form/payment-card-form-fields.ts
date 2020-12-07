@@ -3,16 +3,25 @@ import {FormGroupHelper} from '../../../model/form-group-helper.model';
 
 export const paymentCardFormFields: FormGroupHelper.Model[] = [
   {
-    inputName: 'creditCardProvider',
-    label: 'Credit card provider',
+    inputName: 'paymentCardProvider',
+    label: 'Payment card provider',
     validators: [Validators.required],
     type: 'select',
+    selectOptions: [{label: 'Visa', value: 'Visa'}, {label: 'MasterCard', value: 'MasterCard'}],
     cols: 4,
     rows: 1
   },
   {
-    inputName: 'creditCardNumber',
-    label: 'Credit card number',
+    inputName: 'paymentCardNumber',
+    label: 'Payment card number',
+    validators: [Validators.required, Validators.min(16)],
+    type: 'text',
+    cols: 4,
+    rows: 1
+  },
+  {
+    inputName: 'paymentCardHolder',
+    label: 'Payment card holder',
     validators: [Validators.required],
     type: 'text',
     cols: 4,
@@ -32,6 +41,14 @@ export const paymentCardFormFields: FormGroupHelper.Model[] = [
     validators: [Validators.required],
     type: 'text',
     cols: 4,
+    rows: 1
+  },
+  {
+    inputName: 'isActive',
+    label: 'Set payment card as active',
+    validators: [Validators.required],
+    type: 'checkbox',
+    cols: 3,
     rows: 1
   }
 ];

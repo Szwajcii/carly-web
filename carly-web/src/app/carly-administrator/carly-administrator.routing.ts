@@ -27,8 +27,8 @@ import {CarsComponent} from '../carly-shared/components/cars/cars.component';
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
 import {PaintingAddComponent} from '../carly-shared/components/painting/painting-add/painting-add.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
-import {UserComponent} from '../carly-shared/components/user/user.component';
-import {UserEditComponent} from '../carly-shared/components/user/user-edit/user-edit.component';
+import {CustomerComponent} from '../carly-shared/components/customer/customer.component';
+import {CustomerEditComponent} from '../carly-shared/components/customer/customer-edit/customer-edit.component';
 import {NewsAddComponent} from '../carly-shared/components/news/news-add/news-add.component';
 import {NewsEditComponent} from '../carly-shared/components/news/news-edit/news-edit.component';
 import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
@@ -54,9 +54,9 @@ export const ROUTES: Routes = [
       {path: 'orders', component: OrdersComponent},
       {
         path: 'users',
-        component: UserComponent,
+        component: CustomerComponent,
         children: [
-          {path: 'details/:id', component: UserEditComponent}
+          {path: 'details/:id', component: CustomerEditComponent}
         ]
       },
       {

@@ -8,7 +8,7 @@ import {AbstractDatasource} from '../../utils/table/abstract-datasource';
 import {UserManagementService} from '../../resources/user-management.service';
 import {MessageService} from '../../services/message.service';
 
-export class UserDatasource extends AbstractDatasource<User> {
+export class CustomerDatasource extends AbstractDatasource<User> {
 
   constructor(
     private userManagementService: UserManagementService,

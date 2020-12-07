@@ -17,48 +17,18 @@ import {factoryDetailsFormFields} from '../factory-form-fields';
 export class FactoryEditComponent implements OnInit {
 
   @Input() submitEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Input() factory: Company.Model;
   isDisabled = true;
-  company: Company.Model;
   factoryDetailsFormFields = factoryDetailsFormFields;
 
   // todo: Replace all company occurrences with factory
   constructor(
     private companyManagementService: CompanyManagementService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
-    private userManagementService: UserManagementService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
-    this.findCompanyId()
-      .pipe(
-        mergeMap(id => this.companyManagementService.findById(id)),
-        map(model => {
-          return model;
-        })
-      ).subscribe(model => {
-      this.company = model;
-    }, error => {
-      this.messageService.showMessage('Unexpected error has occurred!');
-      console.log(error);
-    });
-  }
-
-  findCompanyId(): Observable<string> {
-    return this.userManagementService.isUserHasRole(Roles.CARLY_FACTORY)
-      .pipe(
-        mergeMap(hasRole => {
-          if (hasRole) {
-            return this.userManagementService.getUserContext()
-              .pipe(
-                filter(data => !!data),
-                map(data => data.id)
-              );
-          }
-          return this.activatedRoute.parent.params.pipe(map(params => params.id));
-        })
-      );
   }
 
   onSubmit($event) {
@@ -71,7 +41,7 @@ export class FactoryEditComponent implements OnInit {
   }
 
   updateCompany(model: Company.Model) {
-    model.id = this.company.id;
+    model.id = this.factory.id;
     const action = this.companyManagementService.update(model);
 
     action.subscribe(data => {

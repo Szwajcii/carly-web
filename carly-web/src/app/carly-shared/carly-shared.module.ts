@@ -48,8 +48,8 @@ import {NewsEditComponent} from './components/news/news-edit/news-edit.component
 import {NewsFormComponent} from './components/news/news-form/news-form.component';
 import {CompanyComponent} from './components/company/company.component';
 import {CompanyEditComponent} from './components/company/company-edit/company-edit.component';
-import {UserComponent} from './components/user/user.component';
-import {UserEditComponent} from './components/user/user-edit/user-edit.component';
+import {CustomerComponent} from './components/customer/customer.component';
+import {CustomerEditComponent} from './components/customer/customer-edit/customer-edit.component';
 import {NotificationsBadgeComponent} from './components/notifications/notifications-badge/notifications-badge.component';
 import {FormGroupHelperService} from './services/form-group-helper.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -59,7 +59,6 @@ import {RegistrationConfirmationComponent} from './components/registration/regis
 import {RegistrationCompanyComponent} from './components/registration/registration-company/registration-company.component';
 import {RegistrationCustomerComponent} from './components/registration/registration-customer/registration-customer.component';
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
-import {UserFormComponent} from './components/user/user-form/user-form.component';
 import {DatePipe, DateTimePipe} from './services/date.pipe';
 import {DataTableComponent} from './components/data-table/data-table.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
@@ -77,21 +76,21 @@ import {FactoryDetailsComponent} from './components/factories/factory-details/fa
 import {FactoryPartsComponent} from './components/factories/factory-parts/factory-parts.component';
 import {FactoriesDataTableComponent} from './components/factories/factories-data-table/factories-data-table.component';
 import {PartDetailsDialogComponent} from './components/part-details-dialog/part-details-dialog.component';
-import { AddPartDialogComponent } from './components/factories/add-part-dialog/add-part-dialog.component';
-import { OrderDataTableComponent } from './components/orders/order-data-table/order-data-table.component';
-import { CartDataComponent } from './components/orders/cart-data/cart-data.component';
-import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
+import {AddPartDialogComponent} from './components/factories/add-part-dialog/add-part-dialog.component';
+import {OrderDataTableComponent} from './components/orders/order-data-table/order-data-table.component';
+import {CartDataComponent} from './components/orders/cart-data/cart-data.component';
+import {OrderDetailsComponent} from './components/orders/order-details/order-details.component';
 import {PricePipe} from './services/price.pipe';
 import {StatusPipe} from './services/status.pipe';
-import { PaymentCardComponent } from './components/payment-card/payment-card.component';
-import { PaymentCardFormComponent } from './components/payment-card/payment-card-form/payment-card-form.component';
-import { PaymentCardAddComponent } from './components/payment-card/payment-card-add/payment-card-add.component';
-import { PaymentCardEditComponent } from './components/payment-card/payment-card-edit/payment-card-edit.component';
-import { PaymentProcessComponent } from './components/payment-process/payment-process.component';
+import {PaymentCardComponent} from './components/payment-card/payment-card.component';
+import {PaymentCardFormComponent} from './components/payment-card/payment-card-form/payment-card-form.component';
+import {PaymentCardAddComponent} from './components/payment-card/payment-card-add/payment-card-add.component';
+import {PaymentCardEditComponent} from './components/payment-card/payment-card-edit/payment-card-edit.component';
+import {PaymentProcessComponent} from './components/payment-process/payment-process.component';
 import {CardNumberPipe} from './services/card-number.pipe';
-import { ProfileFormComponent } from './components/profile-form/profile-form.component';
-import { FactoryComponent } from './components/factory/factory.component';
-import { FactoryEditComponent } from './components/factory/factory-edit/factory-edit.component';
+import {ProfileFormComponent} from './components/profile-form/profile-form.component';
+import {FactoryComponent} from './components/factory/factory.component';
+import {FactoryEditComponent} from './components/factory/factory-edit/factory-edit.component';
 
 
 @NgModule({
@@ -142,15 +141,14 @@ import { FactoryEditComponent } from './components/factory/factory-edit/factory-
     NewsFormComponent,
     CompanyComponent,
     CompanyEditComponent,
-    UserComponent,
-    UserEditComponent,
+    CustomerComponent,
+    CustomerEditComponent,
     NotificationsBadgeComponent,
     RegistrationComponent,
     RegistrationConfirmationComponent,
     RegistrationCompanyComponent,
     RegistrationCustomerComponent,
     ResetPasswordComponent,
-    UserFormComponent,
     DatePipe,
     DateTimePipe,
     DataTableComponent,
