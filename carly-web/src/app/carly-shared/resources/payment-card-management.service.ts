@@ -21,6 +21,10 @@ export class PaymentCardManagementService {
     return this.http.get<PaymentCard.Model>(`${this.paymentCardManagementApi}/${id}`);
   }
 
+  activateCard(paymentCardId: string): Observable<PaymentCard.Model> {
+    return this.http.post<PaymentCard.Model>(`${this.paymentCardManagementApi}/activate-card/${paymentCardId}`, {});
+  }
+
   create(paymentCard: PaymentCard.POST): Observable<PaymentCard.Model> {
     return this.http.post<PaymentCard.Model>(`${this.paymentCardManagementApi}`, paymentCard);
   }
