@@ -59,7 +59,7 @@ import {RegistrationConfirmationComponent} from './components/registration/regis
 import {RegistrationCompanyComponent} from './components/registration/registration-company/registration-company.component';
 import {RegistrationCustomerComponent} from './components/registration/registration-customer/registration-customer.component';
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
-import {DatePipe, DateTimePipe} from './services/date.pipe';
+import {DatePipe, DateTimePipe, PaymentCardDatePipe} from './services/date.pipe';
 import {DataTableComponent} from './components/data-table/data-table.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
 import {CarModelComponent} from './components/car-model/car-model.component';
@@ -174,6 +174,7 @@ import {FactoryEditComponent} from './components/factory/factory-edit/factory-ed
     PricePipe,
     StatusPipe,
     CardNumberPipe,
+    PaymentCardDatePipe,
     PaymentCardComponent,
     PaymentCardFormComponent,
     PaymentCardAddComponent,
@@ -192,7 +193,8 @@ import {FactoryEditComponent} from './components/factory/factory-edit/factory-ed
     DateTimePipe,
     PricePipe,
     StatusPipe,
-    CardNumberPipe
+    CardNumberPipe,
+    PaymentCardDatePipe
   ],
   imports: [
     CommonModule,
