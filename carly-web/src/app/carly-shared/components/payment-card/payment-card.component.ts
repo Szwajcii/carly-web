@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {PaymentCardAddComponent} from './payment-card-add/payment-card-add.component';
-import {PaymentCardEditComponent} from './payment-card-edit/payment-card-edit.component';
 import {PaymentCard} from '../../model/payment-card.model';
 import {PaymentCardManagementService} from '../../resources/payment-card-management.service';
 import {Company} from '../../model/company.model';
 import {User} from '../../model/user.model';
 import {MessageService} from '../../services/message.service';
+import {PaymentCardFormComponent} from './payment-card-form/payment-card-form.component';
+import {FormAction} from '../../model/form-action.model';
 
 
 @Component({
@@ -46,16 +46,27 @@ export class PaymentCardComponent implements OnInit {
   viewPaymentCardDetails(cardIndex: number, $event: any) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.dialog.open(PaymentCardEditComponent, {
+    const dialogRef = this.dialog.open(PaymentCardFormComponent, {
+      width: this.DIALOG_WIDTH,
       data: {
-        card: this.userPaymentCards[cardIndex]
-      },
-      width: this.DIALOG_WIDTH
+        card: this.userPaymentCards[cardIndex],
+        isDisabled: true,
+        formAction: FormAction.EDIT
+      }
     });
+
+    dialogRef.afterClosed().subscribe(response => {
+        if (response) {
+          this.fetchPaymentCardData();
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   addNewPaymentCard() {
-    const dialogRef = this.dialog.open(PaymentCardAddComponent, {
+    const dialogRef = this.dialog.open(PaymentCardFormComponent, {
       width: this.DIALOG_WIDTH,
       data: {
         paymentCardHolder: this.userName
@@ -63,7 +74,9 @@ export class PaymentCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(response => {
-        this.fetchPaymentCardData();
+        if (response) {
+          this.fetchPaymentCardData();
+        }
       }, error => {
         console.log(error);
       }

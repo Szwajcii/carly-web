@@ -1,5 +1,7 @@
 <form [formGroup]="generalForm" *ngIf="generalForm">
 
+  <h1 *ngIf="!editCard">Add new payment card</h1>
+
   <div *ngIf="editCard">
     <mat-slide-toggle (change)="toggleEdit()">Edit</mat-slide-toggle>
   </div>

@@ -84,8 +84,6 @@ import {PricePipe} from './services/price.pipe';
 import {StatusPipe} from './services/status.pipe';
 import {PaymentCardComponent} from './components/payment-card/payment-card.component';
 import {PaymentCardFormComponent} from './components/payment-card/payment-card-form/payment-card-form.component';
-import {PaymentCardAddComponent} from './components/payment-card/payment-card-add/payment-card-add.component';
-import {PaymentCardEditComponent} from './components/payment-card/payment-card-edit/payment-card-edit.component';
 import {PaymentProcessComponent} from './components/payment-process/payment-process.component';
 import {CardNumberPipe} from './services/card-number.pipe';
 import {ProfileFormComponent} from './components/profile-form/profile-form.component';
@@ -177,8 +175,6 @@ import {FactoryEditComponent} from './components/factory/factory-edit/factory-ed
     PaymentCardDatePipe,
     PaymentCardComponent,
     PaymentCardFormComponent,
-    PaymentCardAddComponent,
-    PaymentCardEditComponent,
     PaymentProcessComponent,
     ProfileFormComponent,
     FactoryComponent,

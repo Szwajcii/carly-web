@@ -1,6 +1,7 @@
-import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
-import {PaymentCard} from '../../../model/payment-card.model';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {PaymentCard} from '../../../model/payment-card.model';
 import {MessageService} from '../../../services/message.service';
 import {FormGroupHelperService} from '../../../services/form-group-helper.service';
 import {paymentCardFormFields} from './payment-card-form-fields';
@@ -13,11 +14,11 @@ import {PaymentCardManagementService} from '../../../resources/payment-card-mana
 })
 export class PaymentCardFormComponent implements OnInit {
 
-  @Input() isDisabled: boolean;
-  @Input() paymentCard: PaymentCard.Model;
-  @Input() paymentCardHolder: string;
-  @Input() formAction;
-  @Input() editCard = false;
+  isDisabled: boolean;
+  paymentCard: PaymentCard.Model;
+  paymentCardHolder: string;
+  formAction;
+  editCard = false;
   @Output() closeDialog = new EventEmitter();
 
   gridColumns = 4;
@@ -28,6 +29,8 @@ export class PaymentCardFormComponent implements OnInit {
   paymentCardDetailsFormControls = this.formGroupService.addControlToModel(paymentCardFormFields);
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<PaymentCardFormComponent>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private formGroupService: FormGroupHelperService,
@@ -36,6 +39,12 @@ export class PaymentCardFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.data.card) {
+      this.paymentCard = this.data.card;
+      this.isDisabled = this.data.isDisabled;
+      this.formAction = this.data.formAction;
+      this.editCard = true;
+    }
 
     this.paymentCardDetailsForm = this.formBuilder.group({
       ...this.formGroupService.getControlsFromModel(this.paymentCardDetailsFormControls)
@@ -80,17 +89,20 @@ export class PaymentCardFormComponent implements OnInit {
     };
 
     this.createOrUpdate(paymentCard);
-    this.closeDialog.emit();
   }
 
   onCancel() {
-    this.closeDialog.emit();
+    this.dialogRef.close(false);
   }
 
   createOrUpdate(paymentCard: PaymentCard.Model) {
     let action;
 
     if (this.editCard) {
+      paymentCard.id = this.paymentCard.id;
+      paymentCard.userId = this.paymentCard.userId;
+      paymentCard.createdDate = this.paymentCard.createdDate;
+      paymentCard.modifiedDate = this.paymentCard.modifiedDate;
       action = this.paymentCardService.update(paymentCard);
     } else {
       action = this.paymentCardService.create(paymentCard);
@@ -98,9 +110,11 @@ export class PaymentCardFormComponent implements OnInit {
 
     action.subscribe(data => {
       this.messageService.showMessage('Added new payment card!');
+      this.dialogRef.close(true);
     }, error => {
       this.messageService.showMessage('Adding new payment card failed!');
       console.log(error);
+      this.dialogRef.close(false);
     });
 
   }
