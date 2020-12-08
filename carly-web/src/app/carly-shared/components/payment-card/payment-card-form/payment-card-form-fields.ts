@@ -44,7 +44,7 @@ export const paymentCardFormFields: FormGroupHelper.Model[] = [
     rows: 1
   },
   {
-    inputName: 'isActive',
+    inputName: 'cardActive',
     label: 'Set payment card as active',
     validators: [Validators.required],
     type: 'checkbox',

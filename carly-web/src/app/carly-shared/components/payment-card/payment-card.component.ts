@@ -4,18 +4,10 @@ import {PaymentCardAddComponent} from './payment-card-add/payment-card-add.compo
 import {PaymentCardEditComponent} from './payment-card-edit/payment-card-edit.component';
 import {PaymentCard} from '../../model/payment-card.model';
 import {PaymentCardManagementService} from '../../resources/payment-card-management.service';
-import {Company} from "../../model/company.model";
-import {User} from "../../model/user.model";
+import {Company} from '../../model/company.model';
+import {User} from '../../model/user.model';
+import {MessageService} from '../../services/message.service';
 
-const PAYMENT_CARD_TEST_DATA: PaymentCard.Model = {
-  id: '2364938',
-  paymentCardProvider: '',
-  paymentCardNumber: '1234-5678-1234-5678',
-  paymentCardHolder: 'Ford Gmbh',
-  expiryDate: '08/22',
-  cvvCode: '666',
-  isActive: true
-};
 
 @Component({
   selector: 'app-payment-card',
@@ -25,18 +17,23 @@ const PAYMENT_CARD_TEST_DATA: PaymentCard.Model = {
 export class PaymentCardComponent implements OnInit {
 
   private DIALOG_WIDTH = '400px';
-  public paymentCardTest = PAYMENT_CARD_TEST_DATA;
 
   @Input() user: User | Company.Model;
   userPaymentCards: PaymentCard.Model[];
+  userName: string;
 
   constructor(
     private dialog: MatDialog,
-    private paymentCardService: PaymentCardManagementService
+    private paymentCardService: PaymentCardManagementService,
+    private messageService: MessageService
   ) {
   }
 
   ngOnInit(): void {
+    this.fetchPaymentCardData();
+  }
+
+  fetchPaymentCardData() {
     this.paymentCardService.findAllUserPaymentCards(this.user.id)
       .subscribe(resData => {
         console.log(resData);
@@ -46,18 +43,43 @@ export class PaymentCardComponent implements OnInit {
       });
   }
 
-  viewPaymentCardDetails() {
+  viewPaymentCardDetails(cardIndex: number, $event: any) {
+    $event.preventDefault();
+    $event.stopPropagation();
     this.dialog.open(PaymentCardEditComponent, {
       data: {
-        card: PAYMENT_CARD_TEST_DATA
+        card: this.userPaymentCards[cardIndex]
       },
       width: this.DIALOG_WIDTH
     });
   }
 
   addNewPaymentCard() {
-    this.dialog.open(PaymentCardAddComponent, {
-      width: this.DIALOG_WIDTH
+    const dialogRef = this.dialog.open(PaymentCardAddComponent, {
+      width: this.DIALOG_WIDTH,
+      data: {
+        paymentCardHolder: this.userName
+      }
     });
+
+    dialogRef.afterClosed().subscribe(response => {
+        this.fetchPaymentCardData();
+      }, error => {
+        console.log(error);
+      }
+    );
   }
+
+  activateCard(card: PaymentCard.Model) {
+    if (!card.cardActive) {
+      this.paymentCardService.activateCard(card.id).subscribe(resData => {
+        this.messageService.showMessage('Card activated!');
+        this.fetchPaymentCardData();
+      }, error => {
+        console.log(error);
+        this.messageService.showMessage('Unexpected error occurred!');
+      });
+    }
+  }
+
 }

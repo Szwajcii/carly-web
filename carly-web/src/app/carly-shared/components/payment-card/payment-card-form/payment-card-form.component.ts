@@ -15,6 +15,7 @@ export class PaymentCardFormComponent implements OnInit {
 
   @Input() isDisabled: boolean;
   @Input() paymentCard: PaymentCard.Model;
+  @Input() paymentCardHolder: string;
   @Input() formAction;
   @Input() editCard = false;
   @Output() closeDialog = new EventEmitter();
@@ -43,6 +44,8 @@ export class PaymentCardFormComponent implements OnInit {
     this.generalForm = this.formBuilder.group({
       paymentCardDetailsForm: this.paymentCardDetailsForm
     });
+
+    this.paymentCardDetailsForm.get('paymentCardHolder').setValue('Ford');
 
     if (this.paymentCard) {
       this.setFormValue(this.paymentCard);
@@ -77,6 +80,7 @@ export class PaymentCardFormComponent implements OnInit {
     };
 
     this.createOrUpdate(paymentCard);
+    this.closeDialog.emit();
   }
 
   onCancel() {

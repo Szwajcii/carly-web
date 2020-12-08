@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-payment-card-add',
@@ -9,8 +9,10 @@ import {MatDialogRef} from '@angular/material/dialog';
 export class PaymentCardAddComponent implements OnInit {
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) data: any,
     private dialogRef: MatDialogRef<PaymentCardAddComponent>
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
