@@ -1,1 +1,20 @@
-<p>payment-process works!</p>
+<div class="wrapper">
+  <div class="card">
+
+    <mat-horizontal-stepper linear #stepper>
+      <mat-step>
+        <form [formGroup]="">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+  </div>
+</div>
