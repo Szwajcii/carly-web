@@ -1,9 +1,7 @@
-<div class="wrapper">
-  <div class="card">
-
-    <app-user-form
-      [isDisabled]="isDisabled">
-    </app-user-form>
-
-  </div>
-</div>
+<app-profile-form
+  *ngIf="customer"
+  [userProfile]="customer"
+  [userProfileFormFields]="customerDetailsFormFields"
+  [isDisabled]="isDisabled"
+  >
+</app-profile-form>
