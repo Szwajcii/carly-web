@@ -21,13 +21,13 @@ import {WheelsEditComponent} from '../carly-shared/components/wheels/wheels-edit
 import {WindowsEditComponent} from '../carly-shared/components/windows/windows-edit/windows-edit.component';
 import {PaintingComponent} from '../carly-shared/components/painting/painting.component';
 import {PaintingEditComponent} from '../carly-shared/components/painting/painting-edit/painting-edit.component';
-import {CompanyEditComponent} from '../carly-shared/components/company/company-edit/company-edit.component';
 import {CarModelComponent} from '../carly-shared/components/car-model/car-model.component';
 import {CarModelEditComponent} from '../carly-shared/components/car-model/car-model-edit/car-model-edit.component';
 import {FactoriesComponent} from '../carly-shared/components/factories/factories.component';
 import {FactoryDetailsComponent} from '../carly-shared/components/factories/factory-details/factory-details.component';
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
 import {CompanyComponent} from '../carly-shared/components/company/company.component';
+import {PaymentProcessComponent} from '../carly-shared/components/payment-process/payment-process.component';
 
 
 export const ROUTES: Routes = [
@@ -125,6 +125,12 @@ export const ROUTES: Routes = [
         children: [
           {path: '', component: FactoriesComponent},
           {path: 'details/:id', component: FactoryDetailsComponent}
+        ]
+      },
+      {
+        path: 'payment',
+        children: [
+          {path: '', component: PaymentProcessComponent}
         ]
       }
     ]
