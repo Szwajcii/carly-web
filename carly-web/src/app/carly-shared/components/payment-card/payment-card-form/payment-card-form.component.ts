@@ -54,7 +54,7 @@ export class PaymentCardFormComponent implements OnInit {
       paymentCardDetailsForm: this.paymentCardDetailsForm
     });
 
-    this.paymentCardDetailsForm.get('paymentCardHolder').setValue('Ford');
+    this.paymentCardDetailsForm.get('paymentCardHolder').setValue(this.paymentCardHolder);
 
     if (this.paymentCard) {
       this.setFormValue(this.paymentCard);
