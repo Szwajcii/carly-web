@@ -26,7 +26,7 @@ export class UserManagementService {
   }
 
   findById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.userManagementApi}/id`);
+    return this.http.get<User>(`${this.userManagementApi}/${id}`);
   }
 
   update(user: User): Observable<User> {
