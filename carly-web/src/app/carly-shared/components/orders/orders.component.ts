@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Order} from '../../model/order-model';
 import {OrderStatus} from '../../model/order-status';
 import {Roles} from '../../model/roles.model';
-import {CartElement} from '../../model/cart-element.model';
+import {OrderManagementService} from '../../resources/order-management.service';
 
 export const TEST_DATA: Order[] = [
   {
@@ -13,12 +13,6 @@ export const TEST_DATA: Order[] = [
   }
 ];
 
-export const CART_TEST_DATA: CartElement[] = [
-  {
-    companyName: '',
-    parts: new Map()
-  }
-];
 
 @Component({
   selector: 'app-orders',
@@ -33,7 +27,10 @@ export class OrdersComponent implements OnInit {
 
   orders: Order[];
 
-  constructor() { }
+  constructor(
+    private orderManagementService: OrderManagementService
+  ) {
+  }
 
   ngOnInit(): void {
     this.orders = TEST_DATA;

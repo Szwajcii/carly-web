@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core'
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {OrderManagementService} from '../../../resources/order-management.service';
 
 @Component({
   selector: 'app-order-data-table',
@@ -25,7 +26,9 @@ export class OrderDataTableComponent implements OnInit, AfterViewInit {
     'action'
   ];
 
-  constructor() {
+  constructor(
+    private orderManagementService: OrderManagementService
+  ) {
   }
 
   ngOnInit(): void {
@@ -41,6 +44,10 @@ export class OrderDataTableComponent implements OnInit, AfterViewInit {
     this.datasource.data = data;
     this.datasource.paginator = this.paginator;
     this.datasource.sort = this.sort;
+  }
+
+  onDelete(orderId: string) {
+    this.orderManagementService.deleteOrder(orderId);
   }
 
 }
