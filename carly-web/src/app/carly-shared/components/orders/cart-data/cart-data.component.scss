@@ -8,6 +8,10 @@
 
 }
 
+.mat-expansion-panel-header-title {
+  width: 240px;
+}
+
 .mat-expansion-panel-spacing {
   margin: 0;
 }
@@ -43,6 +47,20 @@
 
 .list--item__name {
   width: 250px;
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    div {
+      img {
+        width: 45px;
+        margin-right: 1em;
+      }
+    }
+  }
+
 }
 
 .controls {
@@ -67,4 +85,17 @@
     }
   }
 
+}
+
+.amount-controls {
+  margin-bottom: 0;
+}
+
+.mat-list-item {
+  margin-bottom: 1.2em;
+}
+
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0 !important;
 }

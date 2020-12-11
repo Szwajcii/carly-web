@@ -1,111 +1,69 @@
 <mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Factory one
-      </mat-panel-title>
-      <mat-panel-description>
-        <p>Amount: 1</p>
-        <p>Price: $150</p>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div class="cart--element">
-      <div class="cart--element__items">
+
+  <ng-container *ngFor="let cartElement of cartElements; let cartElementIndex=index">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         <mat-panel-title>
-          Factory one
+          {{cartElement.factoryName}}
         </mat-panel-title>
         <mat-panel-description>
-          <p>Amount: 1</p>
-          <p>$150</p>
+          <p>Amount: {{cartElement.totalQuantityOfFactory}}</p>
+          <p>Price: {{cartElement.totalAmountOfFactory | PricePipe}}</p>
         </mat-panel-description>
-        <button mat-stroked-button color="warn"><i class="far fa-trash-alt"></i></button>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <ng-container *ngFor="let element of cartElement.parts | keyvalue">
+
+          <div mat-subheader>{{element.key}}</div>
+
+            <ng-container *ngFor="let part of element.value; let partIndex=index">
+              <mat-list-item>
+                <div mat-line>
+                  <div class="list--item">
+                    <div class="list--item__name">
+                      <a [routerLink]="" (click)="openPartDetails(part)">
+                        <div>
+                          <!-- todo: Add part preview to model -->
+                          <img src="../../../../assets/brakes/brakes_1.png" alt="">
+                        </div>
+                        <p>{{part.partName}}</p>
+                      </a>
+                    </div>
+                    <div class="amount-controls">
+
+                      <button mat-stroked-button type="button" (click)="removeAmount()">
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <input type="number" [(ngModel)]="part.quantity"
+                             (ngModelChange)="changeTotalAmount()"
+                             (change)="isValidAmount($event)">
+
+                      <button mat-stroked-button (click)="addAmount()">
+                        <i class="fas fa-plus"></i>
+                      </button>
+
+                    </div>
+                    <div class="list--item__price">
+                      <p>{{part.amountPerItem * part.quantity | PricePipe}}</p>
+                    </div>
+                    <button mat-stroked-button color="warn"
+                            (click)="removePartFromCart(cartElementIndex, element.key, partIndex)">
+                      <i class="far fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </mat-list-item>
+            </ng-container>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
+      <div class="cart--element__controls">
+        <button mat-flat-button color="accent" (click)="makeOrder(cartElement)">Make order</button>
+        <button mat-flat-button color="warn" (click)="removeElementFromCart(cartElement)">Remove from cart</button>
       </div>
-    </div>
-    <div class="cart--element__controls">
-      <button mat-flat-button color="accent" (click)="onClick($event)">Make order</button>
-      <button mat-flat-button color="warn" (click)="onClick($event)">Remove from cart</button>
-    </div>
-  </mat-expansion-panel>
-
-
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Factory one
-      </mat-panel-title>
-      <mat-panel-description>
-        <p>Amount: 1</p>
-        <p>Price: $150</p>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-
-      <!-- fixme: BRAKES -->
-
-      <div mat-subheader>Brakes</div>
-      <mat-list-item>
-        <div mat-line>
-          <div class="list--item">
-            <div class="list--item__name">
-              <p>Brakes one</p>
-            </div>
-            <div class="list--item__value">
-              <input type="number">
-            </div>
-            <div class="list--item__price">
-              <p>$150</p>
-            </div>
-            <button mat-stroked-button color="warn"><i class="far fa-trash-alt"></i></button>
-          </div>
-        </div>
-      </mat-list-item>
-
-      <mat-list-item>
-        <div mat-line>
-          <div class="list--item">
-            <div class="list--item__name">
-              <p>Brakes one</p>
-            </div>
-            <div class="list--item__value">
-              <input type="number">
-            </div>
-            <div class="list--item__price">
-              <p>$150</p>
-            </div>
-            <button mat-stroked-button color="warn"><i class="far fa-trash-alt"></i></button>
-          </div>
-        </div>
-      </mat-list-item>
-
-      <mat-divider></mat-divider>
-
-      <!-- fixme: Tires -->
-
-      <div mat-subheader>Tires</div>
-      <mat-list-item>
-        <div mat-line>
-          <div class="list--item">
-            <div class="list--item__name">
-              <a [routerLink]="">Tires one</a>
-            </div>
-            <div class="list--item__value">
-              <input type="number">
-            </div>
-            <div class="list--item__price">
-              <p>$150</p>
-            </div>
-            <button mat-stroked-button color="warn" (click)="removeItem()"><i class="far fa-trash-alt"></i></button>
-          </div>
-        </div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </mat-list>
-    <div class="cart--element__controls">
-      <button mat-flat-button color="accent" (click)="onClick($event)">Make order</button>
-      <button mat-flat-button color="warn" (click)="onClick($event)">Remove from cart</button>
-    </div>
-  </mat-expansion-panel>
-
+    </mat-expansion-panel>
+  </ng-container>
 
 </mat-accordion>
 
