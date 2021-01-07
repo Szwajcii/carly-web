@@ -4,13 +4,140 @@
     <mat-horizontal-stepper linear #stepper>
       <mat-step>
         <form [formGroup]="">
-          <ng-template matStepLabel>Fill out your name</ng-template>
-          <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Next</button>
+          <ng-template matStepLabel>Order details</ng-template>
+
+          <app-order-process-details></app-order-process-details>
+
+          <div class="controls">
+            <button mat-stroked-button color="warn" matStepperPrevious [routerLink]="['/orders']">Go to orders</button>
+            <button mat-flat-button color="accent"  matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <form [formGroup]="">
+          <ng-template matStepLabel>Choose payment method</ng-template>
+
+          <div class="flex-container">
+            <div class="flex-container__content">
+
+              <mat-radio-button #paymentCard
+                            (click)="choosePaymentCard()" [checked]="true">
+                Choose payment card
+              </mat-radio-button>
+
+              <!-- Payment cards should be here -->
+
+              <div class="payment-cards" #paymentCards [ngClass]="{'payment-cards__disabled' : paymentCardsDisabled}">
+                <div class="grid-container">
+                  <div class="grid-card">
+                    <a [routerLink]="" class="payment-card" (click)="openVerifyPaymentCardDialog()">
+                      <div class="payment-card--details">
+                        <div class="payment-card--logo">
+                          <img src="../../../../assets/payment-card/Visa-logo.png" alt="Payment card provider logo">
+                              <i class="far fa-circle"></i>
+<!--                              <i class="fas fa-check-circle" *ngIf="card.cardActive"></i>-->
+                        </div>
+                        <div>
+                          <div class="payment-card--number">
+                            <h2>{{'1111222233334444' | CardNumberPipe}}</h2>
+                          </div>
+                          <div class="payment-card--info">
+                            <h4>Ford Gmbh</h4>
+                            <h4>08/22</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="grid-card">
+                    <a [routerLink]="" class="payment-card">
+                      <div class="payment-card--details">
+                        <div class="payment-card--logo">
+                          <img src="../../../../assets/payment-card/MasterCard-logo.png" alt="Payment card provider logo">
+                          <!--                    <i class="far fa-circle" *ngIf="!card.cardActive"></i>-->
+                          <!--                    <i class="fas fa-check-circle" *ngIf="card.cardActive"></i>-->
+                        </div>
+                        <div>
+                          <div class="payment-card--number">
+                            <h2>{{'1111222233334444' | CardNumberPipe}}</h2>
+                          </div>
+                          <div class="payment-card--info">
+                            <h4>Ford Gmbh</h4>
+                            <h4>08/22</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="grid-card">
+                    <a [routerLink]="" class="payment-card">
+                      <div class="payment-card--details">
+                        <div class="payment-card--logo">
+                          <img src="../../../../assets/payment-card/MasterCard-logo.png" alt="Payment card provider logo">
+                          <!--                    <i class="far fa-circle" *ngIf="!card.cardActive"></i>-->
+                          <!--                    <i class="fas fa-check-circle" *ngIf="card.cardActive"></i>-->
+                        </div>
+                        <div>
+                          <div class="payment-card--number">
+                            <h2>{{'1111222233334444' | CardNumberPipe}}</h2>
+                          </div>
+                          <div class="payment-card--info">
+                            <h4>Ford Gmbh</h4>
+                            <h4>08/22</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+
+            <mat-divider [vertical]="true"></mat-divider>
+
+            <div class="flex-container__content">
+
+              <mat-radio-button #newPaymentCard
+                            (click)="addNewPaymentCard()">
+                Use different payment card
+              </mat-radio-button>
+
+              <app-form-group
+                *ngIf="paymentCardDetailsForm"
+                [fg]="generalForm"
+                [name]="'paymentCardDetailsForm'"
+                [controls]="paymentCardDetailsFormControls"
+                [gridColumns]="gridColumns">
+              </app-form-group>
+
+            </div>
+
+          </div>
+
+
+          <div class="controls">
+            <button mat-stroked-button color="warn" matStepperPrevious>Back</button>
+            <button mat-flat-button color="accent"  matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <form [formGroup]="">
+          <ng-template matStepLabel>Done</ng-template>
+
+          <!-- Confirmation view -->
+
+          <div class="controls">
+            <button mat-stroked-button color="warn" matStepperPrevious>Back</button>
+            <button mat-flat-button color="accent"  matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>

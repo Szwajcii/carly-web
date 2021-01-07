@@ -1,0 +1,14 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.payment-cards {
+  max-height: 480px;
+  overflow: overlay;
+}
+
+.flex-container__content {
+  padding-top: 1em;
+}

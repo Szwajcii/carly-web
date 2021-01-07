@@ -1,0 +1,18 @@
+<form [formGroup]="generalForm" *ngIf="generalForm">
+
+  <h1>Enter CVV code</h1>
+
+  <app-form-group
+    *ngIf="cvvCodeDetailsForm"
+    [fg]="generalForm"
+    [name]="'cvvCodeDetailsForm'"
+    [controls]="cvvCodeDetailsFormControls"
+    [gridColumns]="gridColumns">
+  </app-form-group>
+
+  <div class="controls">
+    <button mat-flat-button type="button" class="col-danger" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button type="submit" class="col-primary" (click)="onSubmit()">Save</button>
+  </div>
+
+</form>

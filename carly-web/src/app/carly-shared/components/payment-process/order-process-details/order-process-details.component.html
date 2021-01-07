@@ -1,0 +1,61 @@
+<div class="flex-container">
+  <div class="flex-container__content">
+
+    <ng-container *ngFor="let element of parts | keyvalue">
+      <h2>{{element.key}}</h2>
+      <ng-container *ngFor="let part of element.value; let i=index">
+        <div class="part--details">
+          <div class="part--details__name">
+            <a [routerLink]="" (click)="openPartDetails(part)">
+              <div>
+                <!-- todo: Add part preview to model -->
+                <img src="../../../../assets/brakes/brakes_1.png" alt="">
+              </div>
+              <p>{{part.partName}}</p>
+            </a>
+          </div>
+          <div class="part--details__amount">
+            <button mat-stroked-button type="button">
+              <i class="fas fa-minus"></i>
+            </button>
+
+            <input type="number" [(ngModel)]="part.quantity">
+
+            <button mat-stroked-button>
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="part--details__price">
+            <p>{{part.amountPerItem * part.quantity | PricePipe}}</p>
+          </div>
+          <div class="part--details__action">
+            <button mat-stroked-button color="warn">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+
+      </ng-container>
+    </ng-container>
+
+  </div>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <div class="flex-container__content">
+    <h2>Shipping details</h2>
+    <mat-checkbox (change)="toggleEdit()">
+      Use different shipping address
+    </mat-checkbox>
+
+    <app-form-group
+      *ngIf="shippingDetailsForm"
+      [fg]="generalForm"
+      [name]="'shippingDetailsForm'"
+      [controls]="shippingDetailsFormControls"
+      [gridColumns]="gridColumns">
+    </app-form-group>
+
+  </div>
+
+</div>
