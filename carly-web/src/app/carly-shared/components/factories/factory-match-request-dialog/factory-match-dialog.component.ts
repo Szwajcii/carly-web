@@ -11,6 +11,7 @@ export class FactoryMatchDialogComponent implements OnInit {
   companyName: string;
   companyId: string;
   cancelContract = false;
+  factoryMatchId: string;
 
   constructor(
     private dialogRef: MatDialogRef<FactoryMatchDialogComponent>,
@@ -22,10 +23,15 @@ export class FactoryMatchDialogComponent implements OnInit {
     this.companyName = this.data.companyName;
     this.companyId = this.data.companyId;
     this.cancelContract = this.data.cancelContract;
+    this.factoryMatchId = this.data.matchId;
   }
 
   onConfirm() {
-    this.dialogRef.close(this.companyId);
+    if (this.factoryMatchId) {
+      this.dialogRef.close(this.factoryMatchId);
+    } else {
+      this.dialogRef.close(this.companyId);
+    }
   }
 
   onCancel() {
