@@ -28,6 +28,7 @@ import {FactoryDetailsComponent} from '../carly-shared/components/factories/fact
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
 import {CompanyComponent} from '../carly-shared/components/company/company.component';
 import {PaymentProcessComponent} from '../carly-shared/components/payment-process/payment-process.component';
+import {CarFormComponent} from '../carly-shared/components/cars/car-form/car-form.component';
 
 
 export const ROUTES: Routes = [
@@ -54,7 +55,8 @@ export const ROUTES: Routes = [
       {
         path: 'cars',
         children: [
-          {path: '', component: CarsComponent}
+          {path: '', component: CarsComponent},
+          {path: 'add', component: CarFormComponent}
         ]
       },
       {
