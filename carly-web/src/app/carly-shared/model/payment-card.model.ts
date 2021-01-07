@@ -13,6 +13,11 @@ export namespace PaymentCard {
     modifiedDate: Date | string;
   }
 
+  export interface VerifyModel {
+    id: string;
+    cvvCode: string;
+  }
+
   export type POST = Model;
 
   export type PUT = Model;
