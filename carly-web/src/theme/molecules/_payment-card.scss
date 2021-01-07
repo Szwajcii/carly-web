@@ -98,3 +98,39 @@
   }
 
 }
+
+.payment-cards {
+
+  &.payment-cards__disabled {
+
+    .grid-card {
+
+      a {
+        color: rgba(0, 0, 0, 0.3);
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.3);
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          text-decoration: none;
+        }
+
+        .payment-card--logo {
+
+          img {
+            filter: grayscale(1);
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+

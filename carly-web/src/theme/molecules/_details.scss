@@ -1,0 +1,41 @@
+.details {
+  display: flex;
+  justify-content: space-between;
+  height: 600px;
+
+  .details--info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  .details--grid {
+    width: 100%;
+    display: grid;
+    align-items: flex-end;
+    justify-items: end;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2em;
+    grid-row-gap: 1em;
+    margin-bottom: 2em;
+
+    .details--field {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .details--parts {
+    width: 50%;
+  }
+
+}
+
+.request-button {
+
+}
