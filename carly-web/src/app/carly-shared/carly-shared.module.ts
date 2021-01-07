@@ -89,6 +89,12 @@ import {CardNumberPipe} from './services/card-number.pipe';
 import {ProfileFormComponent} from './components/profile-form/profile-form.component';
 import {FactoryComponent} from './components/factory/factory.component';
 import {FactoryEditComponent} from './components/factory/factory-edit/factory-edit.component';
+import {OrderProcessDetailsComponent} from './components/payment-process/order-process-details/order-process-details.component';
+import {FindFactoriesDataTableComponent} from './components/factories/find-factories-data-table/find-factories-data-table.component';
+import {PhoneNumberPipe} from './services/phone-number.pipe';
+import {DetailsFormGroupComponent} from './components/details-form-group/details-form-group.component';
+import {PaymentMethodDetailsComponent} from './components/payment-process/payment-method-details/payment-method-details.component';
+import {VerifyPaymentCardDialogComponent} from './components/payment-process/payment-method-details/verify-payment-card-dialog/verify-payment-card-dialog.component';
 
 
 @NgModule({
@@ -173,12 +179,18 @@ import {FactoryEditComponent} from './components/factory/factory-edit/factory-ed
     StatusPipe,
     CardNumberPipe,
     PaymentCardDatePipe,
+    PhoneNumberPipe,
     PaymentCardComponent,
     PaymentCardFormComponent,
     PaymentProcessComponent,
     ProfileFormComponent,
     FactoryComponent,
-    FactoryEditComponent
+    FactoryEditComponent,
+    OrderProcessDetailsComponent,
+    FindFactoriesDataTableComponent,
+    DetailsFormGroupComponent,
+    PaymentMethodDetailsComponent,
+    VerifyPaymentCardDialogComponent
   ],
   exports: [
     LoadingSpinnerComponent,
@@ -190,7 +202,8 @@ import {FactoryEditComponent} from './components/factory/factory-edit/factory-ed
     PricePipe,
     StatusPipe,
     CardNumberPipe,
-    PaymentCardDatePipe
+    PaymentCardDatePipe,
+    PhoneNumberPipe
   ],
   imports: [
     CommonModule,
