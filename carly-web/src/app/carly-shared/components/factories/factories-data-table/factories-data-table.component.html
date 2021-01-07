@@ -16,7 +16,7 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <a [routerLink]="['details', element.company.id]">{{element.company.companyName}}</a>
+        <a [routerLink]="['details', element.factoryId]">{{element.factoryName}}</a>
       </mat-cell>
     </ng-container>
 
@@ -32,12 +32,7 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="align-right">Action</mat-header-cell>
       <mat-cell *matCellDef="let element" class="align-right">
-        <ng-container *ngIf="element.matchStatus !== Matched">
-          <button mat-stroked-button color="primary" (click)="openMatchDialog(element.company)">Request matching</button>
-        </ng-container>
-        <ng-container *ngIf="element.matchStatus === Matched">
-          <button mat-stroked-button color="warn" (click)="openMatchDialog(element.company, cancelMatch)">Cancel contact</button>
-        </ng-container>
+          <button mat-stroked-button color="warn" (click)="openMatchDialog(element)">Cancel contact</button>
       </mat-cell>
     </ng-container>
 
