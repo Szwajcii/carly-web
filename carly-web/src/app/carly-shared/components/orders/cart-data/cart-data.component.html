@@ -47,10 +47,12 @@
                     <div class="list--item__price">
                       <p>{{part.amountPerItem * part.quantity | PricePipe}}</p>
                     </div>
-                    <button mat-stroked-button color="warn"
-                            (click)="removePartFromCart(cartElementIndex, element.key, partIndex)">
-                      <i class="far fa-trash-alt"></i>
-                    </button>
+                    <div>
+                      <button mat-stroked-button color="warn"
+                              (click)="removePartFromCart(cartElementIndex, element.key, partIndex)">
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </mat-list-item>
