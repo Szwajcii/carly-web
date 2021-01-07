@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'PricePipe'})
 export class PricePipe implements PipeTransform {
-  transform(price: number): string {
+  transform(price: number | string): string {
     const priceStr = price.toString();
     const reversedCharArray = priceStr.split('').reverse();
     let formattedPrice = '';

@@ -9,7 +9,7 @@ export class MessageService {
   constructor(private snackBar: MatSnackBar) {
   }
 
-  showMessage(message: string, timeout: number = 8000) {
+  showMessage(message: string, timeout: number = 4000) {
     this.snackBar.open(message, 'close', {
       duration: timeout,
       horizontalPosition: 'left',
