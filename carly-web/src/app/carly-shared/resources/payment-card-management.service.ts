@@ -33,5 +33,8 @@ export class PaymentCardManagementService {
     return this.http.put<PaymentCard.Model>(`${this.paymentCardManagementApi}`, paymentCard);
   }
 
+  verifyPaymentCard(verifyModel: PaymentCard.VerifyModel) {
+    return this.http.post<boolean>(`${this.paymentCardManagementApi}/verify-payment-card`, verifyModel);
+  }
 
 }

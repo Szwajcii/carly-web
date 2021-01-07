@@ -52,4 +52,12 @@ export class UserManagementService {
     })));
   }
 
+  findUserContextId(): Observable<string> {
+    return this.getUserContext()
+      .pipe(
+        filter(data => !!data),
+        map(data => data.id)
+      );
+  }
+
 }
