@@ -6,7 +6,9 @@ import {FactoryMatch} from '../../model/factory-match.model';
 import {FactoryManagementService} from '../../resources/factory-management.service';
 import {TEST_DATA} from './test-factories-data';
 import {AuthService} from '../auth/auth.service';
-import {CompanyMatchingRequest} from '../../model/company-matching-request.model';
+import {BrandManagementService} from '../../resources/brand-management.service';
+import {CompanyResponse} from '../../model/company-response.model';
+import {CompanyMatchResponse} from '../../model/company-match-response.model';
 
 @Component({
   selector: 'app-factories',
@@ -19,6 +21,8 @@ export class FactoriesComponent implements OnInit {
   public datasource = new MatTableDataSource([]);
   contextCompanyId: string;
   factories: FactoryMatch[];
+  factoriesToMatch: CompanyResponse[] = [];
+  matchedFactories: CompanyMatchResponse[] = [];
   loading = true;
   noRecords = false;
 
@@ -31,22 +35,12 @@ export class FactoriesComponent implements OnInit {
   constructor(
     private messageService: MessageService,
     private factoryManagementService: FactoryManagementService,
-    private authService: AuthService,
-    private dialog: MatDialog
+    private brandManagementService: BrandManagementService,
+    private authService: AuthService
   ) {
   }
 
   ngOnInit(): void {
-    // fixme: Uncomment this when backend will be ready
-    // this.factoryManagementService.findFactoryMatching()
-    //   .subscribe(resData => {
-    //     this.factories = resData;
-    //     this.loading = false;
-    //     this.noRecords = this.factories.length === 0;
-    //   }, error => {
-    //     this.messageService.showMessage('Connection problem', 3000);
-    //     console.log(error);
-    //   });
     this.factories = TEST_DATA;
     this.loading = false;
     this.noRecords = this.factories.length === 0;
@@ -59,30 +53,6 @@ export class FactoriesComponent implements OnInit {
     }, error => {
       this.messageService.showMessage('Unexpected error occurred!');
       console.log(error);
-    });
-
-  }
-
-  matchRequest($event: CompanyMatchingRequest) {
-    let requestAction;
-    const companyMatchingRequest = new CompanyMatchingRequest();
-    companyMatchingRequest.factoryId = $event.factoryId;
-    companyMatchingRequest.isCancelRequest = $event.isCancelRequest;
-    companyMatchingRequest.companyId = this.contextCompanyId;
-    companyMatchingRequest.message = '';
-
-    if ($event.isCancelRequest) {
-      requestAction = this.factoryManagementService.cancelMatching(companyMatchingRequest);
-    } else {
-      requestAction = this.factoryManagementService.requestMatching(companyMatchingRequest);
-    }
-
-    requestAction.subscribe(resData => {
-      console.log(resData);
-      this.messageService.showMessage('Match request sent successfully!');
-    }, error => {
-      console.log(error);
-      this.messageService.showMessage('Unexpected error occurred!');
     });
   }
 }

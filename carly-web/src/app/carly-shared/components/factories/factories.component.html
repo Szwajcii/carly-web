@@ -7,15 +7,15 @@
     <mat-tab-group mat-align-tabs="start">
       <mat-tab label="Signed contracts">
         <app-factories-data-table
-          [data]="factories"
-          (matchRequest)="matchRequest($event)">
+          *ngIf="contextCompanyId"
+          [contextCompanyId]="contextCompanyId">
         </app-factories-data-table>
       </mat-tab>
       <mat-tab label="Find factory">
-        <app-factories-data-table
-          [data]="factories"
-          (matchRequest)="matchRequest($event)">
-        </app-factories-data-table>
+        <app-find-factories-data-table
+          *ngIf="contextCompanyId"
+          [contextCompanyId]="contextCompanyId">
+        </app-find-factories-data-table>
       </mat-tab>
     </mat-tab-group>
 
