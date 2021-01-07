@@ -1,62 +1,27 @@
 <div class="wrapper">
   <div class="card">
 
-    <div class="factory--details">
+    <div class="details" *ngIf="factory">
 
-      <div class="factory--details__info">
+      <div class="details--info">
 
-        <h2>Factory details</h2>
-        <div class="factory--details__grid">
-          <div class="details--field">
-            <span>Name</span>
-            <h3>{{factory.company.companyName}}</h3>
-          </div>
+        <!-- Factory details -->
+        <app-details-form-group
+          *ngIf="factory"
+          [detailsModel]="factory"
+          [details]="factoryDetails"
+          [sectionName]="'Factory details'">
+        </app-details-form-group>
 
-          <div class="details--field">
-            <span>Phone number</span>
-            <h3>666 666 666</h3>
-          </div>
+        <!-- Address details -->
+        <app-details-form-group
+          *ngIf="factory"
+          [detailsModel]="factory"
+          [details]="addressDetails"
+          [sectionName]="'Address details'">
+        </app-details-form-group>
 
-          <div class="details--field">
-            <span>Email</span>
-            <h3>test@test.com</h3>
-          </div>
-        </div>
-
-        <h2>Address details</h2>
-        <div class="factory--details__grid">
-          <div class="details--field">
-            <span>Street</span>
-            <h3>Factories</h3>
-          </div>
-
-          <div class="details--field">
-            <span>Number</span>
-            <h3>10</h3>
-          </div>
-
-          <div class="details--field">
-            <span>Flat</span>
-            <h3> - </h3>
-          </div>
-
-          <div class="details--field">
-            <span>Town</span>
-            <h3>New Town</h3>
-          </div>
-
-          <div class="details--field">
-            <span>Zip code</span>
-            <h3>123 456</h3>
-          </div>
-
-          <div class="details--field">
-            <span>Country</span>
-            <h3>USA</h3>
-          </div>
-        </div>
-
-        <div class="factory--details__grid">
+        <div class="details--grid">
           <div class="details--field">
             <span>Match status</span>
             <h3>{{factory.matchStatus | StatusPipe}}</h3>
@@ -69,7 +34,7 @@
             </button>
 
             <button mat-flat-button color="accent" (click)="openRequestDialog()"
-                    *ngIf="factory.matchStatus === NotMatched">
+                    *ngIf="factory.matchStatus === NotMatched || factory.matchStatus === null">
               Request matching
             </button>
 
@@ -80,13 +45,11 @@
           </div>
         </div>
 
-
-
       </div>
 
       <mat-divider [vertical]="true"></mat-divider>
 
-      <div class="factory--details__parts">
+      <div class="details--parts">
         <app-factory-parts
           [isMatched]="isMatched">
         </app-factory-parts>
