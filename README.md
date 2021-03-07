@@ -8,5 +8,10 @@ Web application which allows user
 
 ## Build with:
 
+1. Angular
+
 ## Tools:
+
+1. Intellij IDEA
+2. Visual Studio Code
 
