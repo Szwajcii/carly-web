@@ -15,3 +15,5 @@ https://github.com/mryba/carly
 1. Intellij IDEA
 2. Visual Studio Code
 
+## License:
+
