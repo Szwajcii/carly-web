@@ -9,11 +9,14 @@ https://github.com/mryba/carly
 ## Build with:
 
 1. Angular
+2. Intellij IDEA
+3. Visual Studio Code
 
-## Tools:
+## Authors
+[mryba](https://github.com/mryba) &&
+[Szwajcii](https://github.com/Szwajcii)
+who participated in this project.
 
-1. Intellij IDEA
-2. Visual Studio Code
+## License
 
-## License:
-
+This project is under the MIT License
