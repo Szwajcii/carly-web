@@ -13,9 +13,9 @@ https://github.com/mryba/carly
 3. Visual Studio Code
 
 ## Authors
-[mryba](https://github.com/mryba) &&
-[Szwajcii](https://github.com/Szwajcii)
-who participated in this project.
+
+- Damian Szwajkos [Github profile](https://github.com/Szwajcii)
+- Marcin Ryba [Github profile](https://github.com/mryba)
 
 ## License
 
