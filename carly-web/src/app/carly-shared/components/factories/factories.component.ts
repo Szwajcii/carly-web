@@ -1,14 +1,13 @@
-import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from '@angular/material/dialog';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from '../../services/message.service';
-import {FactoryMatch} from '../../model/factory-match.model';
 import {FactoryManagementService} from '../../resources/factory-management.service';
-import {TEST_DATA} from './test-factories-data';
 import {AuthService} from '../auth/auth.service';
 import {BrandManagementService} from '../../resources/brand-management.service';
 import {CompanyResponse} from '../../model/company-response.model';
 import {CompanyMatchResponse} from '../../model/company-match-response.model';
+import {UNEXPECTED_ERROR} from '../../utils/error-messages';
+import {FactoriesDataTableComponent} from './factories-data-table/factories-data-table.component';
+import {FindFactoriesDataTableComponent} from './find-factories-data-table/find-factories-data-table.component';
 
 @Component({
   selector: 'app-factories',
@@ -17,18 +16,15 @@ import {CompanyMatchResponse} from '../../model/company-match-response.model';
 })
 export class FactoriesComponent implements OnInit {
 
+  @ViewChild(FactoriesDataTableComponent) factoriesDataTable: FactoriesDataTableComponent;
+  @ViewChild(FindFactoriesDataTableComponent) findFactoriesDataTable: FindFactoriesDataTableComponent;
 
-  public datasource = new MatTableDataSource([]);
   contextCompanyId: string;
-  factories: FactoryMatch[];
   factoriesToMatch: CompanyResponse[] = [];
   matchedFactories: CompanyMatchResponse[] = [];
-  loading = true;
-  noRecords = false;
 
   public displayedColumns: Array<string> = [
     'name',
-    'status',
     'action'
   ];
 
@@ -41,18 +37,22 @@ export class FactoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.factories = TEST_DATA;
-    this.loading = false;
-    this.noRecords = this.factories.length === 0;
-    this.datasource = new MatTableDataSource<any>(this.factories);
-
     this.authService.getUserContext().subscribe(resData => {
       if (resData != null) {
         this.contextCompanyId = resData.id;
       }
     }, error => {
-      this.messageService.showMessage('Unexpected error occurred!');
+      this.messageService.showMessage(UNEXPECTED_ERROR);
       console.log(error);
     });
   }
+
+  fetchPendingMatching() {
+    this.factoriesDataTable.fetchAllAcceptedPendingMatching();
+  }
+
+  fetchPotentialFactoriesToMatch() {
+    this.findFactoriesDataTable.findFactoriesToMatch();
+  }
+
 }

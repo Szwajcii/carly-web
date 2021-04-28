@@ -71,7 +71,6 @@ export class AuthService {
 
   logout() {
     this.http.get<MessageResponse>(`${AuthService.AUTH_API}/logout`).subscribe(resData => {
-      this.messageService.showMessage(resData.message);
       this.userContext.next(null);
       this.router.navigate(['/auth']);
       localStorage.removeItem(AuthService.USER_CONTEXT);

@@ -29,7 +29,7 @@
 
           <div class="request-button">
             <button mat-flat-button color="warn" (click)="openRequestDialog(cancelMatch)"
-                    *ngIf="factory.matchStatus === Matched">
+                    *ngIf="factory.matchStatus === Accepted">
               Cancel matching
             </button>
 
@@ -51,7 +51,9 @@
 
       <div class="details--parts">
         <app-factory-parts
-          [isMatched]="isMatched">
+          *ngIf="factory"
+          [isMatched]="isMatched"
+          [brakes]="factory.parts">
         </app-factory-parts>
       </div>
 

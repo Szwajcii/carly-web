@@ -59,15 +59,13 @@ export class EngineFormComponent implements OnInit {
   }
 
   onSubmit($event) {
-    this.engineDetailsForm = $event;
+    this.engineDetailsForm = $event.formValue;
+    const partBrand: Brand = $event.partBrand;
 
     const engine: Engine.Model = {
       ...this.engineDetailsForm.value
     };
-
-    if (this.isCompanyContext) {
-      engine.brand = this.engineBrand;
-    }
+    engine.brand = partBrand;
 
     this.createOrUpdate(engine);
   }

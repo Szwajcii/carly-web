@@ -6,4 +6,5 @@ export class CompanyMatchResponse {
   factoryId: string;
   factoryName: string;
   status: MatchStatus;
+  createDate: Date | string;
 }

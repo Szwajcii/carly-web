@@ -95,6 +95,7 @@ import {PhoneNumberPipe} from './services/phone-number.pipe';
 import {DetailsFormGroupComponent} from './components/details-form-group/details-form-group.component';
 import {PaymentMethodDetailsComponent} from './components/payment-process/payment-method-details/payment-method-details.component';
 import {VerifyPaymentCardDialogComponent} from './components/payment-process/payment-method-details/verify-payment-card-dialog/verify-payment-card-dialog.component';
+import { PartsNavBarComponent } from './components/parts-nav-bar/parts-nav-bar.component';
 
 
 @NgModule({
@@ -190,7 +191,8 @@ import {VerifyPaymentCardDialogComponent} from './components/payment-process/pay
     FindFactoriesDataTableComponent,
     DetailsFormGroupComponent,
     PaymentMethodDetailsComponent,
-    VerifyPaymentCardDialogComponent
+    VerifyPaymentCardDialogComponent,
+    PartsNavBarComponent
   ],
   exports: [
     LoadingSpinnerComponent,

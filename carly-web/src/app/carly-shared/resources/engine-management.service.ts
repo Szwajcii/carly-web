@@ -23,6 +23,10 @@ export class EngineManagementService {
     return this.http.get<Engine.Model[]>(`${this.engineManagementApi}/all`);
   }
 
+  findAllEnginesForCompany(companyId: string): Observable<Engine.Model[]> {
+    return this.http.get<Engine.Model[]>(`${this.engineManagementApi}/all-engines-for-company/${companyId}`);
+  }
+
   findById(id: string): Observable<Engine.Model> {
     return this.http.get<Engine.Model>(`${this.engineManagementApi}/${id}`);
   }

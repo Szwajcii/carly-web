@@ -35,6 +35,7 @@ import {FactoriesComponent} from '../carly-shared/components/factories/factories
 import {CarlyFactoryComponent} from './carly-factory.component';
 import {OrderDetailsComponent} from '../carly-shared/components/orders/order-details/order-details.component';
 import {FactoryComponent} from '../carly-shared/components/factory/factory.component';
+import {ContractsComponent} from "./contracts/contracts.component";
 
 export const ROUTES: Routes = [
   {
@@ -49,6 +50,12 @@ export const ROUTES: Routes = [
           {path: '', component: NewsComponent},
           {path: 'add', component: NewsAddComponent},
           {path: ':id', component: NewsEditComponent}
+        ]
+      },
+      {
+        path: 'contracts',
+        children: [
+          {path: '', component: ContractsComponent}
         ]
       },
       {

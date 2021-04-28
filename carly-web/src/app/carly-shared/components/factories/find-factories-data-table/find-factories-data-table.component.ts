@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -8,6 +8,8 @@ import {FactoryManagementService} from '../../../resources/factory-management.se
 import {CompanyResponse} from '../../../model/company-response.model';
 import {FactoryMatchDialogComponent} from '../factory-match-request-dialog/factory-match-dialog.component';
 import {CompanyMatchingRequest} from '../../../model/company-matching-request.model';
+import {UNEXPECTED_ERROR} from '../../../utils/error-messages';
+import {CompanyMatchManagementService} from '../../../resources/company-match-management.service';
 
 @Component({
   selector: 'app-find-factories-data-table',
@@ -21,6 +23,7 @@ export class FindFactoriesDataTableComponent implements OnInit, AfterViewInit {
   public cancelMatch = true;
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @Output() requestEvent = new EventEmitter();
   @Input() contextCompanyId: string;
   factoriesToMatch: CompanyResponse[] = [];
 
@@ -32,20 +35,13 @@ export class FindFactoriesDataTableComponent implements OnInit, AfterViewInit {
   constructor(
     private dialog: MatDialog,
     private messageService: MessageService,
-    private factoryManagementService: FactoryManagementService
+    private factoryManagementService: FactoryManagementService,
+    private companyMatchManagementService: CompanyMatchManagementService
   ) {
   }
 
   ngOnInit(): void {
-    this.factoryManagementService.findFactoriesToMatch(this.contextCompanyId)
-      .subscribe(resData => {
-        this.factoriesToMatch = resData;
-        this.setDatasource(this.factoriesToMatch);
-        console.log(this.factoriesToMatch);
-      }, error => {
-        this.messageService.showMessage('Unexpected error occurred!');
-        console.log(error);
-      });
+    this.findFactoriesToMatch();
   }
 
   ngAfterViewInit() {
@@ -69,6 +65,18 @@ export class FindFactoriesDataTableComponent implements OnInit, AfterViewInit {
     this.filter = '';
   }
 
+  findFactoriesToMatch() {
+    this.companyMatchManagementService.findFactoriesToMatch(this.contextCompanyId)
+      .subscribe(resData => {
+        this.factoriesToMatch = resData;
+        this.setDatasource(this.factoriesToMatch);
+        console.log(this.factoriesToMatch);
+      }, error => {
+        this.messageService.showMessage(UNEXPECTED_ERROR);
+        console.log(error);
+      });
+  }
+
   openMatchDialog(factoryId: string, factoryName: string) {
     const dialogRef = this.dialog.open(FactoryMatchDialogComponent, {
       data: {
@@ -83,20 +91,20 @@ export class FindFactoriesDataTableComponent implements OnInit, AfterViewInit {
         const companyMatchingRequest = new CompanyMatchingRequest();
         companyMatchingRequest.factoryId = id;
         companyMatchingRequest.companyId = this.contextCompanyId;
-        // todo: Add message
-        companyMatchingRequest.message = '';
         this.sendMatchRequest(companyMatchingRequest);
       }
     }, error => {
-      this.messageService.showMessage('Unexpected error occurred!');
+      this.messageService.showMessage(UNEXPECTED_ERROR);
       console.log(error);
     });
   }
 
   sendMatchRequest(companyMatchingRequest: CompanyMatchingRequest) {
-    this.factoryManagementService.requestMatching(companyMatchingRequest)
+    this.companyMatchManagementService.requestMatchingWithFactory(companyMatchingRequest)
       .subscribe(resData => {
         console.log(resData);
+        this.findFactoriesToMatch();
+        this.requestEvent.emit();
         this.messageService.showMessage('Match request sent successfully!');
       }, error => {
         console.log(error);

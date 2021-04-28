@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
-import {FactoryMatch} from '../../../model/factory-match.model';
 import {MatchStatus} from '../../../model/match-status.enum';
 import {MatDialog} from '@angular/material/dialog';
 import {FactoryMatchDialogComponent} from '../factory-match-request-dialog/factory-match-dialog.component';
@@ -12,6 +11,9 @@ import {AuthService} from '../../auth/auth.service';
 import {FactoryRequest} from '../../../model/factory-request.model';
 import {FactoryDetailsResponse} from '../../../model/factory-details-response.model';
 import {addressDetails, factoryDetails} from './factory-form-detail';
+import {CompanyMatchManagementService} from '../../../resources/company-match-management.service';
+import {UNEXPECTED_ERROR} from '../../../utils/error-messages';
+import {MatchResponse} from '../../../model/match-response.model';
 
 @Component({
   selector: 'app-factory-details',
@@ -20,8 +22,8 @@ import {addressDetails, factoryDetails} from './factory-form-detail';
 })
 export class FactoryDetailsComponent implements OnInit {
 
-  Matched = MatchStatus.MATCHED;
-  Pending = MatchStatus.PENDING_APPROVAL;
+  Accepted = MatchStatus.ACCEPTED;
+  Pending = MatchStatus.PENDING;
   NotMatched = MatchStatus.NOT_MATCHED;
 
 
@@ -38,6 +40,7 @@ export class FactoryDetailsComponent implements OnInit {
     private dialog: MatDialog,
     private messageService: MessageService,
     private factoryManagementService: FactoryManagementService,
+    private companyMatchManagementService: CompanyMatchManagementService,
     private authService: AuthService
   ) {
   }
@@ -47,9 +50,6 @@ export class FactoryDetailsComponent implements OnInit {
       this.factoryId = data;
     });
 
-    // this.factory = this.factories.find(factory => factory.company.id === this.factoryId);
-    // this.isMatched = this.factory.matchStatus === MatchStatus.MATCHED;
-
     this.fetchFactoryDetails();
 
     this.authService.getUserContext().subscribe(resData => {
@@ -57,7 +57,7 @@ export class FactoryDetailsComponent implements OnInit {
         this.companyId = resData.id;
       }
     }, error => {
-      this.messageService.showMessage('Unexpected error occurred!');
+      this.messageService.showMessage(UNEXPECTED_ERROR);
       console.log(error);
     });
   }
@@ -67,9 +67,10 @@ export class FactoryDetailsComponent implements OnInit {
       factoryId: this.factoryId,
       partType: 'BRAKES'
     };
-    this.factoryManagementService.getFactoryDetails(factoryRequest)
+    this.factoryManagementService.getFactoryDetailsForCompany(factoryRequest)
       .subscribe(resData => {
         this.factory = resData;
+        this.isMatched = this.factory.matchStatus === MatchStatus.ACCEPTED;
         console.log(resData);
       }, error => {
         console.log(error);
@@ -93,14 +94,13 @@ export class FactoryDetailsComponent implements OnInit {
       const matchRequest: CompanyMatchingRequest = {
         factoryId: this.factoryId,
         companyId: this.companyId,
-        isCancelRequest: cancel,
-        message: ''
+        isCancelRequest: cancel
       };
       if (id) {
         this.requestOrCancelMatching(matchRequest);
       }
     }, error => {
-      this.messageService.showMessage('Unexpected error occurred!');
+      this.messageService.showMessage(UNEXPECTED_ERROR);
       console.log(error);
     });
   }
@@ -109,10 +109,13 @@ export class FactoryDetailsComponent implements OnInit {
     let requestAction;
 
     if (request.isCancelRequest) {
-      // todo: Here we should pass matchId
-      requestAction = this.factoryManagementService.cancelMatching('');
+      // todo: Change this company id for matchId somehow
+      const matchResponse: MatchResponse.Model = {
+        matchId: request.companyId
+      };
+      requestAction = this.companyMatchManagementService.cancelMatchingWithFactory(matchResponse);
     } else {
-      requestAction = this.factoryManagementService.requestMatching(request);
+      requestAction = this.companyMatchManagementService.requestMatchingWithFactory(request);
     }
 
     requestAction.subscribe(resData => {
@@ -120,7 +123,7 @@ export class FactoryDetailsComponent implements OnInit {
       this.messageService.showMessage('Match request sent successfully!');
     }, error => {
       console.log(error);
-      this.messageService.showMessage('Unexpected error occurred!');
+      this.messageService.showMessage(UNEXPECTED_ERROR);
     });
   }
 

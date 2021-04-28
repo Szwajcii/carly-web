@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <div class="card">
+    <div class="card-header">
+      <h1>Contracts</h1>
+    </div>
+
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Pending contracts">
+        <app-contracts-datatable
+          *ngIf="pendingContracts"
+          [data]="pendingContracts"
+          (confirmMatching)="confirmMatchingWithCompany($event)"
+          (cancelMatching)="cancelMatchingWithCompany($event)">
+        </app-contracts-datatable>
+      </mat-tab>
+      <mat-tab label="Signed contracts">
+        <app-contracts-datatable
+          *ngIf="signedContracts"
+          [data]="signedContracts"
+          (cancelMatching)="cancelMatchingWithCompany($event)">
+        </app-contracts-datatable>
+      </mat-tab>
+    </mat-tab-group>
+
+    <div class="searching" *ngIf="loading">
+      Searching, please wait
+    </div>
+
+    <div class="" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+
+    <div class="no-records" *ngIf="noRecords">
+      No records found
+    </div>
+
+  </div>
+</div>

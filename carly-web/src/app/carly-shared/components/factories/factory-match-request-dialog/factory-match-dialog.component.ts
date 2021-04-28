@@ -23,7 +23,7 @@ export class FactoryMatchDialogComponent implements OnInit {
     this.companyName = this.data.companyName;
     this.companyId = this.data.companyId;
     this.cancelContract = this.data.cancelContract;
-    this.factoryMatchId = this.data.matchId;
+    this.factoryMatchId = this.data.factoryMatchId;
   }
 
   onConfirm() {

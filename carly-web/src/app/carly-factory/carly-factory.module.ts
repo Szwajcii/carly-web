@@ -5,9 +5,11 @@ import {CarlyMatModule} from '../carly-shared/modules/carly-mat.module';
 import {RouterModule} from '@angular/router';
 import {CarlyFactoryComponent} from './carly-factory.component';
 import {CarlyFactoryRouting} from './carly-factory.routing';
+import { ContractsComponent } from './contracts/contracts.component';
+import { ContractsDatatableComponent } from './contracts/contracts-datatable/contracts-datatable.component';
 
 @NgModule({
-  declarations: [CarlyFactoryComponent],
+  declarations: [CarlyFactoryComponent, ContractsComponent, ContractsDatatableComponent],
   imports: [
     CommonModule,
     CarlyFactoryRouting,

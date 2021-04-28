@@ -21,6 +21,9 @@
         <li *appUserCanAccess="[CarlyAdministrator, CarlyCompany]">
           <a routerLinkActive="active-link" [routerLink]="['/factories']">Factories</a>
         </li>
+        <li *appUserCanAccess="[CarlyFactory]">
+          <a routerLinkActive="active-link" [routerLink]="['/contracts']">Contracts</a>
+        </li>
         <li *appUserCanAccess="[CarlyAdministrator, CarlyCustomer, CarlyCompany, CarlyFactory]">
           <a routerLinkActive="active-link" [routerLink]="['/orders']">Orders</a>
         </li>

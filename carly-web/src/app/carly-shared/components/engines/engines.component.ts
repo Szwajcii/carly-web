@@ -22,7 +22,9 @@ export class EnginesComponent implements OnInit {
 
   public displayedColumns: Array<string> = [
     'name',
-    'price'
+    'brand',
+    'price',
+    'createdDate'
   ];
 
   constructor(
@@ -41,6 +43,15 @@ export class EnginesComponent implements OnInit {
       this.loading = false;
       console.log(error);
     });
+
+
+    this.engineManagementService.findAllEnginesForCompany('5fb22a6bf69844622fd4bfc7')
+      .subscribe(resData => {
+        console.log(resData);
+      }, error => {
+        this.messageService.showMessage('Connection problem', 3000);
+        console.log(error);
+      });
   }
 
   clearFilters() {

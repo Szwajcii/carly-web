@@ -75,6 +75,7 @@ export const TEST_DATA = [
 export class FactoryPartsComponent implements OnInit {
 
   @Input() isMatched: boolean;
+  @Input() brakes: any;
   parts = new Map();
 
   constructor(
@@ -84,7 +85,7 @@ export class FactoryPartsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.parts.set('Brakes', TEST_DATA);
+    this.parts.set('Brakes', this.brakes);
     this.parts.set('Wheels', TEST_DATA);
     this.parts.set('Engines', TEST_DATA);
     this.parts.set('Equipment', TEST_DATA);
